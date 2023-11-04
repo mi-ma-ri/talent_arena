@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/choose_register', 'choose_register')->name('choose_register');
+Route::view('/player_register', 'auth.player_register')->name('player_register');
