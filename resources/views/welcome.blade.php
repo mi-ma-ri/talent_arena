@@ -5,7 +5,7 @@
         <div class="carousel-item active" data-bs-interval="5000">
             <img src="/soccer_ball.jpeg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h2>「高3の夏に怪我をして、選手としては大学サッカーを諦めた」</h2><br>
+                <h2>「怪我が理由でセレクションに参加できなかった」</h2><br>
                 <h2>「自分なんてどうせ可能性のない選手だ」</h2><br>
                 <h2>「どうせ俺のプレーなんて誰も注目していない」</h2><br>
             </div>
@@ -21,9 +21,9 @@
         <div class="carousel-item" data-bs-interval="10000">
             <img src="/logo.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-                <h2>自分のプレー動画を投稿して、活躍できるNextStageを見つける</h2><br>
-                <h2 class="logo-ver">入団・入部させたいあの選手のプレーをシステム上で確認できる</h2><br>
-                <h1>〜TalentArenaから"世界で戦える選手・チームへ"〜</h1><br>
+                <h1>自分が活躍できるNextStageを見つけろ</h1><br>
+                <h1 class="logo-ver">未来のエース・原石はどこにいる？</h1><br>
+                <h1>TalentArenaから世界で戦える選手・チームへ</h1>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- 理解できていない部分 -->
-                    {{ config('app.', 'TalentArena') }}
+                    {{ config('app.name', 'TalentArena') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('choose_register') }}">{{ __('新規登録') }}</a>
+                            <a class="nav-link" href="{{ route('choose') }}">{{ __('新規登録') }}</a> <!-- chooseは、web.phpのnameと一致させる -->
                         </li>
                         @endif
                         @else

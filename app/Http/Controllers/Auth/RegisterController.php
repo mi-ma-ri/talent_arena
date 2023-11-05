@@ -70,4 +70,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function choose()
+    {
+        return view('choose_register');
+    }
+
+    public function player()
+    {
+        return view('auth.player_register');
+    }
 }

@@ -11,7 +11,7 @@
 .carousel-caption {
     position: absolute;
     top: 50%;
-    left: 25%;
+    left: 30%;
     transform: translate(-50%, -50%);
     color: #ffffff;
     font-weight: bold;
@@ -22,7 +22,7 @@
 }
 
 .carousel-item img {
-    height: 90vh; /* ビューポートの高さの50% */
+    height: 100vh; /* ビューポートの高さの50% */
     width: 100%;
     object-fit: cover;
     opacity: 0.7;
@@ -36,7 +36,7 @@
 .py-4 {
     background-color: #27262c;
     width: 100vw;
-    height: 95vh;
+    height: 110vh;
 }
 
 .header-color {
@@ -97,7 +97,7 @@
 // player_register画面
 
 .font-left-player {
-    margin-top: 50px;
+    margin-top: 100px;
     color: #ffffff;
 }
 

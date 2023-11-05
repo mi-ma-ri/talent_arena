@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('lp')
-<div class="container">
+<div class="container h-auto">
     <div class="login-container">
         <h1 class="login-container-word">ログイン画面</h1>
         <div class="login-container-form">
