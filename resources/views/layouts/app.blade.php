@@ -81,6 +81,7 @@
             @yield('login')
             @yield('choose_register')
             @yield('player_register')
+            @yield('scout_register')
         </main>
     </div>
 </body>

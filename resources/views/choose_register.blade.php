@@ -15,7 +15,9 @@
         @if (Route::has('player_register'))
           <a class="btn d-block font-right border p-4 px-5 mb-3 rounded mb-5" href="{{ route('player_register') }}">{{ __('選手としてスカウトされたい') }}</a>
         @endif
-        <button class="btn d-block font-right border p-4 px-5 mb-3 rounded">チーム・組織として選手をスカウトしたい</button>
+        @if (Route::has('scout_register'))
+          <a class="btn d-block font-right border p-4 px-5 mb-3 rounded mb-5" href="{{ route('scout_register') }}">{{ __('選手をスカウトしたい') }}</a>
+        @endif
       </div>
     </div>
   </div>
