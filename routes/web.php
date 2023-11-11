@@ -26,3 +26,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/choose_register', [App\Http\Controllers\Auth\RegisterController::class, 'choose'])->name('choose_register');
 Route::get('/player_register', [App\Http\Controllers\Auth\RegisterController::class, 'player'])->name('player_register');
 Route::get('/scout_register', [App\Http\Controllers\Auth\RegisterController::class, 'scout'])->name('scout_register');
+Route::get('/completion_register', [App\Http\Controllers\Auth\RegisterController::class, 'completion'])->name('completion_register');
