@@ -47,10 +47,10 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                         </li>
                         @endif
-
-                        @if (Route::has('register'))
+                        <!-- choose_registerの部分は、web.phpのnameと一致させる -->
+                        @if (Route::has('choose_register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('choose') }}">{{ __('新規登録') }}</a> <!-- chooseは、web.phpのnameと一致させる -->
+                            <a class="nav-link" href="{{ route('choose_register') }}">{{ __('新規登録') }}</a>
                         </li>
                         @endif
                         @else
@@ -81,6 +81,7 @@
             @yield('login')
             @yield('choose_register')
             @yield('player_register')
+            @yield('scout_register')
         </main>
     </div>
 </body>

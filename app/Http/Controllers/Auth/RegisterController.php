@@ -80,4 +80,13 @@ class RegisterController extends Controller
     {
         return view('auth.player_register');
     }
+
+    public function scout()
+    {
+        return view('auth.scout_register');
+    }
+    public function completion()
+    {
+        return view('completion_register');
+    }
 }

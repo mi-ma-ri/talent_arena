@@ -40,9 +40,9 @@
                     <div class="row d-flex justify-content-center">
                         <div class="d-grid gap-2 col-3 mx-auto">
                             @if (Route::has('password.request'))
-                            <a class="btn btn-link d-flex mt-5 login-password" href="{{ route('password.request') }}">
-                                {{ __('パスワードをお忘れの方はこちら') }}
-                            </a>
+                                <a class="btn btn-link d-flex mt-5 login-password" href="{{ route('password.request') }}">
+                                    {{ __('パスワードをお忘れの方はこちら') }}
+                                </a>
                             @endif
                         </div>
                     </div>
