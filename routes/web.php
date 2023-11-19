@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::view('/player_register', 'auth.player_register')->name('player_register');
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/choose_register', [App\Http\Controllers\Auth\RegisterController::class, 'choose'])->name('choose_register');
 Route::get('/player_register', [App\Http\Controllers\Auth\RegisterController::class, 'player'])->name('player_register');
 Route::get('/scout_register', [App\Http\Controllers\Auth\RegisterController::class, 'scout'])->name('scout_register');
 Route::get('/completion_register', [App\Http\Controllers\Auth\RegisterController::class, 'completion'])->name('completion_register');
+Route::get('/player_register_hoge', [App\Http\Controllers\Auth\RegisterController::class, 'getSportsName'])->name('player_register_hoge');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
