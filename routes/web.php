@@ -26,5 +26,6 @@ Route::get('/choose_register', [App\Http\Controllers\Auth\RegisterController::cl
 Route::get('/player_register', [App\Http\Controllers\Auth\RegisterController::class, 'player'])->name('player_register');
 Route::get('/scout_register', [App\Http\Controllers\Auth\RegisterController::class, 'scout'])->name('scout_register');
 Route::get('/completion_register', [App\Http\Controllers\Auth\RegisterController::class, 'completion'])->name('completion_register');
-Route::get('/player_register_hoge', [App\Http\Controllers\Auth\RegisterController::class, 'getSportsName'])->name('player_register_hoge');
+Route::get('/player_register', [App\Http\Controllers\Auth\RegisterController::class, 'getSportsName'])->name('player_register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::post('/formValidation', [App\Http\Controllers\Auth\RegisterController::class])->name('formValidation');

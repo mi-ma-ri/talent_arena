@@ -12,6 +12,6 @@ class Sport extends Model
 
     public function players()
     {
-        return $this->hasMany(Sport::class, 'sport_id', 'sports_name');
+        return $this->hasMany(Player::class, 'sports_id', 'sports_name');
     }
 }

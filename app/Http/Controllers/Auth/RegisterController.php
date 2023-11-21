@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Player;
 use App\Models\Sport;
 use Illuminate\Http\Request;
+use App\Http\Requests\formValidation;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -21,9 +22,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\Player
      */
-    public function store(Request $request)
+    public function store(formValidation $request)
     {
+        $validatedData = $request->validated(); 
+
         $player = new Player;
+        // player_register.bladeからpostされた値
         $player->email = $request->input('address');
         $player->password = Hash::make($request->input('password'));
         $player->sports_id = $request->input('sport_id');
@@ -40,7 +44,7 @@ class RegisterController extends Controller
     public function getSportsName()
     {
         $sports = Sport::all(); // Sportモデルを使ってすべてのスポーツを取得
-        return view('auth.player_register', compact('sports')); // ビューにデータを渡す
+        return view('auth.player_register', compact('sports')); // ビューに1.サッカー2.野球3.バスケの選択肢データをcompact関数によって渡している。
     }
 
     public function choose()

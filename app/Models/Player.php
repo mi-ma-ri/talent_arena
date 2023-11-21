@@ -25,6 +25,6 @@ class Player extends Model
     // スポーツ(競技名)テーブルとのリレーション
     public function sports()
     {
-        return $this->belongsToMany(Sport::class, 'sport_id', 'sports_name');
+        return $this->belongsToMany(Sport::class, 'sports_id', 'sports_name');
     }
 }
