@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Player;
 use App\Models\Sport;
 use Illuminate\Http\Request;
-use App\Http\Requests\formValidation;
+use App\Http\Requests\FormValidation;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -22,7 +22,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\Player
      */
-    public function store(formValidation $request)
+    public function store(FormValidation $request)
     {
         $validatedData = $request->validated(); 
 

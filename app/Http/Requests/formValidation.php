@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-class formValidation extends FormRequest
+class FormValidation extends FormRequest
 
 {
     public function authorize(): bool
