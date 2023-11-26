@@ -1,9 +1,7 @@
 // Fonts
 @import url("https://fonts.bunny.net/css?family=Nunito");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
@@ -118,4 +116,30 @@
 .error {
     margin-left: 20px;
     color: red;
+}
+
+.player-info-nav {
+    text-decoration: underline;
+    font-size: 30px;
+    padding: 10px 10px 10px 10px;
+    color: #ffffff;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.list-group-item {
+    margin-bottom: 50px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.container-fluid {
+    background-color: #27262c;
+}
+
+.menu {
+    background-color: #27262c;
+    color: #ffffff;
 }
