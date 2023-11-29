@@ -10,7 +10,7 @@ class Sport extends Model
     use HasFactory;
     protected $table = "sports";
 
-    public function players()
+    public function player()
     {
         return $this->hasMany(Player::class, 'sports_id', 'sports_name');
     }

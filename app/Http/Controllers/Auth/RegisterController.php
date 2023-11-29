@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Player;
 use App\Models\Sport;
 use Illuminate\Http\Request;
-use App\Http\Requests\FormValidation;
+// use App\Http\Requests\FormValidation;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -22,13 +22,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\Player
      */
-    public function store(FormValidation $request)
+    public function store(Request $request)
     {
-        $validatedData = $request->validated(); 
+        // $validatedData = $request->validated(); 
 
         $player = new Player;
         // player_register.bladeからpostされた値
-        $player->email = $request->input('address');
+        $player->email = $request->input('email');
         $player->password = Hash::make($request->input('password'));
         $player->sports_id = $request->input('sport_id');
         $player->full_name = $request->input('firstName') . ' ' . $request->input('lastName'); // 姓と名を結合
@@ -52,15 +52,11 @@ class RegisterController extends Controller
         return view('choose_register');
     }
 
-    public function player()
-    {
-        return view('auth.player_register');
-    }
-
     public function scout()
     {
         return view('auth.scout_register');
     }
+    
     public function completion()
     {
         return view('completion_register');

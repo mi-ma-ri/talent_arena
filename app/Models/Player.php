@@ -23,7 +23,7 @@ class Player extends Model
     ];
 
     // スポーツ(競技名)テーブルとのリレーション
-    public function sports()
+    public function sport()
     {
         return $this->belongsTo(Sport::class, 'sports_id', 'sports_name');
     }

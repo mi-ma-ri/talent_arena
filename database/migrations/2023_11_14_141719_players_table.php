@@ -11,10 +11,9 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sports_id')->constrained('sports');
-            $table->foreignId('statuses_id')->constrained('statuses');
             $table->timestamps();
             $table->string('full_name', 128);
-            $table->integer('gender');
+            $table->string('gender', 10);
             $table->date('birthday');
             $table->string('email', 100)->unique();
             $table->string('current_team', 100);

@@ -17,10 +17,7 @@
                         <legend class="font-right-player">以下の必要情報を入力してください。</legend>
                         <div class="font-right-player">
                             <label for="playerEmail" class="form-label">メールアドレス</label>
-                            @if ($errors->has('address'))
-                                <span class="error">{{ $errors->first('address') }}</span>
-                            @endif
-                            <input type="email" class="form-control pt-3 pb-3 mb-2" id="playerEmail" name="address" placeholder="メールアドレスを入力">
+                            <input type="email" class="form-control pt-3 pb-3 mb-2" id="playerEmail" name="email" placeholder="メールアドレスを入力">
                             <label for="playerPassword" class="form-label">パスワード</label>
                             <input type="password" class="form-control pt-3 pb-3 mb-2" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
                             <label for="sportSelect" class="form-label">競技名</label>
@@ -42,8 +39,8 @@
                             <label for="genderSelect" class="form-label">性別</label>
                             <select id="genderSelect" name="gender" class="form-select pt-3 pb-3 mb-2">
                                 <option value="">選択してください</option>
-                                <option value="1">男性</option>
-                                <option value="2">女性</option>
+                                <option value="男性">男性</option>
+                                <option value="女性">女性</option>
                             </select>
                             <label for="playerBirth" class="form-label">生年月日</label>
                             <input type="date" id="playerBirth" name="birthday" class="form-control pt-3 pb-3 mb-2">

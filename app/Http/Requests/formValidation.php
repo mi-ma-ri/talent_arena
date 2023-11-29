@@ -14,7 +14,7 @@ class FormValidation extends FormRequest
     public function rules(): array
     {
         return [
-            'address' => 'required|email|unique:players',
+            'email' => 'required|email|unique:players',
             'password' => [
                 'required',
                 'string',
@@ -36,8 +36,8 @@ class FormValidation extends FormRequest
     public function messages(): array
     {
         return [
-            'address.required' => 'メールアドレスは入力必須項目です。',
-            'address.email' => 'メールアドレスの形式が正しくありません。',
+            'email.required' => 'メールアドレスは入力必須項目です。',
+            'email.email' => 'メールアドレスの形式が正しくありません。',
             'password.required' => 'パスワードは必須項目です。',
             'password.min' => 'パスワードは最低8文字以上である必要があります。',
             'password.max' => 'パスワードは最大16文字までです。',
