@@ -1,28 +1,28 @@
 version: "3"
 
 services:
-  php:
-    container_name: talent-arena-service
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 80:80
-    volumes:
-      - .:/var/www/html
-  db:
-    image: mariadb:10.9.4
-    container_name: talent-arena-service-db
-    environment:
-      MARIADB_PASSWORD: password
-      MYSQL_PASSWORD: password
-      MARIADB_ROOT_PASSWORD: password
-      MARIADB_DATABASE: talent-arena
-      TZ: "Asia/Tokyo"
-    volumes:
-      - ./docker/db/data:/var/lib/mysql
-      # - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
-      # - ./docker/db/sql:/docker-entrypoint-initdb.d
-    ports:
-      - "3306:3306"
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    php:
+        container_name: talent-arena-service
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        ports:
+            - 80:80
+        volumes:
+            - .:/var/www/html
+    db:
+        image: mariadb:10.9.4
+        container_name: talent-arena-service-db
+        environment:
+            MARIADB_PASSWORD: password
+            MYSQL_PASSWORD: password
+            MARIADB_ROOT_PASSWORD: password
+            MARIADB_DATABASE: talent-arena-db-2023
+            TZ: "Asia/Tokyo"
+        volumes:
+            - ./docker/db/data:/var/lib/mysql
+            # - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+            # - ./docker/db/sql:/docker-entrypoint-initdb.d
+        ports:
+            - "3306:3306"
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
