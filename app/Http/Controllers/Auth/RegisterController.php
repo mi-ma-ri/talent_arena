@@ -38,7 +38,7 @@ class RegisterController extends Controller
         $player->position = $request->input('position');
 
         $player->save();
-        return redirect('/completion_register');
+        return redirect('/completion-register');
     }
 
     public function getSportsName()

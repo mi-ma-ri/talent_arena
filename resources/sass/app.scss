@@ -143,3 +143,29 @@
     background-color: #27262c;
     color: #ffffff;
 }
+
+.video-post-texare {
+    resize: none;
+}
+
+.fieldset-border {
+    border: 1px solid #27262c; /* 線の色をダークグレーに */
+    padding: 20px;
+    margin-top: 20px; /* 上にマージンを設ける */
+    margin-bottom: 20px; /* 下にマージンを設ける */
+    border-radius: 5px; /* 角を丸める */
+    background-color: #f0f0f0;
+}
+
+.fieldset-border {
+    border-top: 2px solid #27262c; /* 上の線を少し太くして強調 */
+}
+
+.fieldset-border legend {
+    font-size: 1.2em; /* フォントサイズを大きく */
+    font-weight: bold; /* フォントを太く */
+    width: auto; /* コンテンツの幅に合わせる */
+    padding: 0 10px; /* テキストの周囲に余白を設ける */
+    margin-bottom: 10px; /* 下に余白を設ける */
+    border-bottom: 1px solid #27262c; /* レジェンドの下に線を引く */
+}
