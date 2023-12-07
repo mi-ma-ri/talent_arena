@@ -55,13 +55,13 @@
       </a>
       <ul class="nav nav-pills flex-column">
         <li>
-          <a href="/player_info" class="nav-link text-white mb-4 fs-5">
+          <a href="/player/info" class="nav-link text-white mb-4 fs-5">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
             選手情報
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link text-white mb-4 fs-5">
+          <a href="/player/video" class="nav-link text-white mb-4 fs-5">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
             動画投稿画面
           </a>

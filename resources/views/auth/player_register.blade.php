@@ -3,7 +3,7 @@
 
 <body>
     <div class="text-center h-25">
-        <img src="logo_header.png" alt="サンプル画像" style="width:250px;">
+        <img src="{{ asset('/logo_header.png')}}" style="width: 250px">
     </div>
     <div class="container">
         <div class="row">
@@ -17,7 +17,7 @@
                         <legend class="font-right-player">以下の必要情報を入力してください。</legend>
                         <div class="font-right-player">
                             <label for="playerEmail" class="form-label">メールアドレス</label>
-                            <input type="email" class="form-control pt-3 pb-3 mb-2" id="playerEmail" name="email" placeholder="メールアドレスを入力">
+                            <input type="email" class="form-control pt-3 pb-3 mb-2" id="playerEmail" name="email" placeholder="投稿したいプレーのURLを入力してください。">
                             <label for="playerPassword" class="form-label">パスワード</label>
                             <input type="password" class="form-control pt-3 pb-3 mb-2" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
                             <label for="sportSelect" class="form-label">競技名</label>
