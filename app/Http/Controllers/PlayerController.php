@@ -34,7 +34,7 @@ class PlayerController extends Controller
     public function player_video_post () 
     {
         $scouts_team = Scouts_team::all();
-        return view('player_videoPost', compact('scouts_team'));
+        return view('player_video_post', compact('scouts_team'));
     }
 
     public function player_register_info() 
