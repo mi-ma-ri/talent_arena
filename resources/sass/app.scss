@@ -5,6 +5,11 @@
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
+.error-message {
+    color: red;
+    margin-left: 10px;
+    font-size: 0.8em;
+}
 // lp画面
 .carousel-caption {
     position: absolute;

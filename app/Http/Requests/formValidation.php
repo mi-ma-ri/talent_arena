@@ -23,12 +23,9 @@ class FormValidation extends FormRequest
                 'regex:/^[A-Za-z0-9]+$/'  // 半角英数字のみ
             ],
             'full_name' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u',
-            'gender' => [
-                'required',
-                'in:1,2' // 有効な値は "1"（男性）または "2"（女性）
-            ],
+            'gender' => 'required',
             'birthday' => 'required|date|before:today',
-            'current_team' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u',
+            'team_name' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u',
             'position' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u'
         ];
     }
@@ -46,12 +43,12 @@ class FormValidation extends FormRequest
             'full_name.max' => '姓名は最大100文字までです。',
             'gender.required' => '性別は選択必須項目です。',
             'gender.in' => '選択された性別が無効です。',
-            'birthday.required' => '誕生日は選択必須項目です。',
-            'birthday.date' => '誕生日は有効な日付である必要があります。',
-            'birthday.before' => '誕生日は今日より前の日付である必要があります。',
-            'current_team.required' => '現所属チームは入力必須項目です。',
-            'current_team.max' => '現所属チームは最大100文字までです。',
-            'current_team.regex' => '現所属チーム名に無効な文字が含まれています。',
+            'birthday.required' => '生年月日は選択必須項目です。',
+            'birthday.date' => '生年月日は有効な日付である必要があります。',
+            'birthday.before' => '生年月日は今日より前の日付である必要があります。',
+            'team_name.required' => '現所属チームは入力必須項目です。',
+            'team_name.max' => '現所属チームは最大100文字までです。',
+            'team_name.regex' => '現所属チーム名に無効な文字が含まれています。',
             'position.required' => 'ポジションは入力必須項目です。',
             'position.max' => 'ポジションは最大100文字までです。',
             'position.regex' => 'ポジション名に無効な文字が含まれています。',

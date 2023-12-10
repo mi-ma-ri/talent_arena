@@ -17,41 +17,61 @@
                         <legend class="font-right-player">以下の必要情報を入力してください。</legend>
                         <div class="font-right-player">
                             <label for="playerEmail" class="form-label">メールアドレス</label>
-                            <input type="email" class="form-control pt-3 pb-3 mb-2" id="playerEmail" name="email" placeholder="投稿したいプレーのURLを入力してください。">
+                            @error('email')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <input type="email" class="form-control pt-3 pb-3 mb-2 @error('email') is-invalid @enderror" id="playerEmail" name="email">
+
                             <label for="playerPassword" class="form-label">パスワード</label>
-                            <input type="password" class="form-control pt-3 pb-3 mb-2" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
+                            @error('password')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <input type="password" class="form-control pt-3 pb-3 mb-2 @error('password') is-invalid @enderror" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
                             <label for="sportSelect" class="form-label">競技名</label>
                             <select id="sportSelect" name="sport_id" class="form-select pt-3 pb-3 mb-2">
                                 @foreach ($sports as $sport)
                                     <option value="{{ $sport->id }}">{{ $sport->sports_name }}</option>
                                 @endforeach
                             </select>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="playerFirstName" class="form-label">姓</label>
-                                    <input type="text" id="playerFirstName" name="firstName" class="form-control pt-3 pb-3 mb-2" placeholder="姓">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="playerLastName" class="form-label">名</label>
-                                    <input type="text" id="playerLastName" name="lastName" class="form-control pt-3 pb-3 mb-2" placeholder="名">
-                                </div>
-                            </div>
+                            <label for="playerFullName" class="form-label">姓名</label>
+                            @error('full_name')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <input type="text" id="playerFullName" name="full_name" class="form-control pt-3 pb-3 mb-2 @error('full_name') is-invalid @enderror" placeholder="姓名を入力してください。">
+
                             <label for="genderSelect" class="form-label">性別</label>
-                            <select id="genderSelect" name="gender" class="form-select pt-3 pb-3 mb-2">
+                            @error('full_name')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <select id="genderSelect" name="gender" class="form-select pt-3 pb-3 mb-2 @error('full_name') is-invalid @enderror">
+                                @error('gender')
+                                    <span class="error-message">{{ $message }}</span>
+                                @enderror
                                 <option value="">選択してください</option>
                                 <option value="男性">男性</option>
                                 <option value="女性">女性</option>
                             </select>
+
                             <label for="playerBirth" class="form-label">生年月日</label>
-                            <input type="date" id="playerBirth" name="birthday" class="form-control pt-3 pb-3 mb-2">
+                            @error('birthday')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <input type="date" id="playerBirth" name="birthday" class="form-control pt-3 pb-3 mb-2 @error('birthday') is-invalid @enderror">
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="team" class="form-label">現所属チーム・学校名</label>
-                                    <input type="text" id="team" name="team_name" class="form-control pt-3 pb-3 mb-2" placeholder="チーム名・学校名">
+                                    @error('team_name')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                    <input type="text" id="team" name="team_name" class="form-control pt-3 pb-3 mb-2 @error('team_name') is-invalid @enderror" placeholder="チーム名・学校名">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="playerPosition" class="form-label">ポジション</label>
-                                    <input type="text" id="playerPosition" name="position" class="form-control pt-3 pb-3 mb-2" placeholder="※一番得意なポジションを入力">
+                                    @error('position')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                    <input type="text" id="playerPosition" name="position" class="form-control pt-3 pb-3 mb-2 @error('position') is-invalid @enderror" placeholder="※一番得意なポジションを入力">
                                 </div>
                             </div>
                         </div>
