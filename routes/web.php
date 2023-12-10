@@ -30,6 +30,7 @@ Route::get('/completion-register', [App\Http\Controllers\Auth\RegisterController
 Route::get('/player/register', [App\Http\Controllers\Auth\RegisterController::class, 'getSportsName'])->name('player_register');
 Route::get('/player/info', [App\Http\Controllers\PlayerController::class, 'player_register_info'])->name('player_register_info');
 Route::get('/player/video', [App\Http\Controllers\PlayerController::class, 'player_video_post'])->name('player_video');
+Route::get('/player/video-history', [App\Http\Controllers\PlayerController::class, 'player_video_history'])->name('player_video_history');
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');
 Route::post('/formValidation', [App\Http\Controllers\Auth\RegisterController::class])->name('formValidation');
