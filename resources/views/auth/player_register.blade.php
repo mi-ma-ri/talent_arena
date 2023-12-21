@@ -28,7 +28,11 @@
                             @enderror
                             <input type="password" class="form-control pt-3 pb-3 mb-2 @error('password') is-invalid @enderror" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
                             <label for="sportSelect" class="form-label">競技名</label>
-                            <select id="sportSelect" name="sport_id" class="form-select pt-3 pb-3 mb-2">
+                            @error('sport_id')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <select id="sportSelect" name="sport_id" class="form-select pt-3 pb-3 mb-2 @error('sport_id') is-invalid @enderror">
+                                <option value="">選択してください</option>
                                 @foreach ($sports as $sport)
                                     <option value="{{ $sport->id }}">{{ $sport->sports_name }}</option>
                                 @endforeach

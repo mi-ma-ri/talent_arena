@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Sport;
-use Illuminate\Http\Request;
 use App\Http\Requests\FormValidation;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $player = new Player;
         $player->email = $validated['email'];
         $player->password = Hash::make($validated['password']);
-        $player->sports_id = $request->input('sport_id');
+        $player->sports_id = $validated('sport_id');
         $player->full_name = $validated['full_name'];
         $player->gender = $validated['gender'];
         $player->birthday = $validated['birthday'];
