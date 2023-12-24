@@ -13,8 +13,7 @@ class Player extends Model
     protected $fillable = [
         'email',
         'password',
-        'sport_id',
-        'statuses_id',
+        'sports_id',
         'full_name',
         'gender',
         'birthday',
@@ -25,6 +24,6 @@ class Player extends Model
     // スポーツ(競技名)テーブルとのリレーション
     public function sport()
     {
-        return $this->belongsTo(Sport::class, 'sports_id', 'sports_name');
+        return $this->belongsTo(Sport::class, 'sports_id', 'id');
     }
 }

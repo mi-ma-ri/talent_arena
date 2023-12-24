@@ -16,10 +16,10 @@ return new class extends Migration
             $table->datetime('post_date');
             $table->string('post_url_1', 255);
             $table->string('check_point_1', 100);
-            $table->string('post_url_2', 255);
-            $table->string('check_point_2', 100);
-            $table->string('post_url_3', 255);
-            $table->string('check_point_3', 100);
+            $table->string('post_url_2', 255)->nullable();
+            $table->string('check_point_2', 100)->nullable();
+            $table->string('post_url_3', 255)->nullable();
+            $table->string('check_point_3', 100)->nullable();
         });
     }
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Sport;
-use Illuminate\Http\Request;
-// use App\Http\Requests\FormValidation;
+use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -22,20 +22,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\Player
      */
-    public function store(Request $request)
+    public function store(UserRegisterRequest $request)
     {
-        // $validatedData = $request->validated(); 
+        $validated = $request->validated();
 
         $player = new Player;
-        // player_register.bladeからpostされた値
-        $player->email = $request->input('email');
-        $player->password = Hash::make($request->input('password'));
-        $player->sports_id = $request->input('sport_id');
-        $player->full_name = $request->input('firstName') . ' ' . $request->input('lastName'); // 姓と名を結合
-        $player->gender = $request->input('gender');
-        $player->birthday = $request->input('birthday');
-        $player->current_team = $request->input('team_name');
-        $player->position = $request->input('position');
+        $player->email = $validated['email'];
+        $player->password = Hash::make($validated['password']);
+        $player->sports_id = $validated['sports_id'];
+        $player->full_name = $validated['full_name'];
+        $player->gender = $validated['gender'];
+        $player->birthday = $validated['birthday'];
+        $player->current_team = $validated['team_name'];
+        $player->position = $validated['position'];
 
         $player->save();
         return redirect('/completion-register');
