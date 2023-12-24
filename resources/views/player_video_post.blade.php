@@ -81,11 +81,14 @@
                   @error('url2')
                     <span class="error-message">{{ $message }}</span>
                   @enderror
-                  <input type="url" class="form-control" id="post_url2" name="url2" placeholder="投稿する動画URLを入力">
+                  <input type="url" class="form-control" id="post_url2" name="url2" value="{{ old('url2') }}" placeholder="投稿する動画URLを入力">
                 </div>
               </div>
               <div class="mb-3 mt-2">
                 <label for="textarea2" class="form-label">注目してほしいポイント ※背番号の入力は必須でお願いします。</label>
+                @error('point2')
+                  <span class="error-message">{{ $message }}</span>
+                @enderror
                 <textarea class="form-control video-post-texare @error('point2') is-invalid @enderror" id="textarea2" name="point2" rows="7">{{ old('point2') }}</textarea>
               </div>
             </fieldset>
@@ -94,12 +97,18 @@
               <div class="row">
                 <div class="col-md-8 mb-3 mt-2">
                   <label for="post_url3" class="form-label">投稿URL3</label>
-                  <input type="url" class="form-control" id="post_url3" name="url3" placeholder="投稿する動画URLを入力">
+                    @error('url3')
+                      <span class="error-message">{{ $message }}</span>
+                    @enderror
+                  <input type="url" class="form-control @error('url3') is-invalid @enderror" id="post_url3" name="url3" value="{{ old('url3') }}" placeholder="投稿する動画URLを入力">
                 </div>
               </div>
               <div class="mb-5 mt-2">
                 <label for="textarea3" class="form-label">注目してほしいポイント ※背番号の入力は必須でお願いします。</label>
-                <textarea class="form-control video-post-texare" id="textarea3" name="point3" rows="7">{{ old('point3') }}</textarea>
+                @error('point3')
+                  <span class="error-message">{{ $message }}</span>
+                @enderror
+                <textarea class="form-control video-post-texare @error('point3') is-invalid @enderror" id="textarea3" name="point3" rows="7">{{ old('point3') }}</textarea>
               </div>
             </fieldset>
             <div class="mt-4 mb-4 d-flex justify-content-center">

@@ -33,5 +33,5 @@ Route::get('/player/video', [App\Http\Controllers\PlayerController::class, 'play
 Route::get('/player/video-history', [App\Http\Controllers\PlayerController::class, 'player_video_history'])->name('player_video_history');
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');
-Route::post('/formValidation', [App\Http\Controllers\Auth\RegisterController::class])->name('formValidation');
-Route::post('/formValidation', [App\Http\Controllers\PlayerController::class])->name('formValidation');
+Route::post('/player/register-validation', [App\Http\Controllers\Auth\RegisterController::class])->name('UserRegisterRequest');
+Route::post('/player/video-validation', [App\Http\Controllers\PlayerController::class])->name('VideoPostRequest');

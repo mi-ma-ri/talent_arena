@@ -8,20 +8,20 @@ use App\Models\Player;
 use App\Models\Scouts_team;
 use App\Models\Video_posts;
 use Carbon\Carbon;
-use App\Http\Requests\FormValidation;
+use App\Http\Requests\VideoPostRequest;
 
 
 class PlayerController extends Controller
 {
 
     // 選手が希望チーム宛に動画を投稿する
-    public function store (FormValidation $request) 
+    public function store (VideoPostRequest $request) 
     {
         $validated = $request->validated();
         
         $videoPost = new Video_posts;
-        $videoPost->players_id = $request->input('player_id');
-        $videoPost->scouts_team_id = $validated('team_id');
+        $videoPost->players_id = 1; // $request->input('player_id');
+        $videoPost->scouts_team_id = $validated['team_id'];
         $videoPost->post_date = $validated['day'];
         $videoPost->post_url_1 = $validated['url1'];
         $videoPost->check_point_1 = $validated['point1'];

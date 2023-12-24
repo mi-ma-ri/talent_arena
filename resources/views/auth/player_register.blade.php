@@ -21,17 +21,16 @@
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                             <input type="email" class="form-control pt-3 pb-3 mb-2 @error('email') is-invalid @enderror" id="playerEmail" name="email">
-
                             <label for="playerPassword" class="form-label">パスワード</label>
                             @error('password')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                             <input type="password" class="form-control pt-3 pb-3 mb-2 @error('password') is-invalid @enderror" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
                             <label for="sportSelect" class="form-label">競技名</label>
-                            @error('sport_id')
-                                <span class="error-message">{{ $message }}</span>
-                            @enderror
-                            <select id="sportSelect" name="sport_id" class="form-select pt-3 pb-3 mb-2 @error('sport_id') is-invalid @enderror">
+                               @error('sports_id')
+                                    <span class="error-message">{{ $message }}</span>
+                                @enderror
+                            <select id="sportSelect" name="sports_id" class="form-select pt-3 pb-3 mb-2 @error('sports_id') is-invalid @enderror">
                                 <option value="">選択してください</option>
                                 @foreach ($sports as $sport)
                                     <option value="{{ $sport->id }}">{{ $sport->sports_name }}</option>
@@ -42,9 +41,8 @@
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                             <input type="text" id="playerFullName" name="full_name" class="form-control pt-3 pb-3 mb-2 @error('full_name') is-invalid @enderror" placeholder="姓名を入力してください。">
-
                             <label for="genderSelect" class="form-label">性別</label>
-                            @error('full_name')
+                            @error('gender')
                                 <span class="error-message">{{ $message }}</span>
                             @enderror
                             <select id="genderSelect" name="gender" class="form-select pt-3 pb-3 mb-2 @error('full_name') is-invalid @enderror">

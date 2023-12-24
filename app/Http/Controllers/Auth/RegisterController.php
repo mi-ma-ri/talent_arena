@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Sport;
-use App\Http\Requests\FormValidation;
+use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -22,14 +22,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\Player
      */
-    public function store(FormValidation $request)
+    public function store(UserRegisterRequest $request)
     {
         $validated = $request->validated();
 
         $player = new Player;
         $player->email = $validated['email'];
         $player->password = Hash::make($validated['password']);
-        $player->sports_id = $validated('sport_id');
+        $player->sports_id = $validated['sports_id'];
         $player->full_name = $validated['full_name'];
         $player->gender = $validated['gender'];
         $player->birthday = $validated['birthday'];
