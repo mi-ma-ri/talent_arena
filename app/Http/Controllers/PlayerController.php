@@ -31,7 +31,7 @@ class PlayerController extends Controller
         $videoPost->check_point_3 = $validated['point3'];
 
         $videoPost->save();
-        return redirect('/completion-register');
+        return redirect('/completion-success');
     }
 
     // 投稿先のチームを取
@@ -53,6 +53,11 @@ class PlayerController extends Controller
     {
         $players = Player::all(); // すべてのユーザーデータを取得
         return view('player_info', compact('players')); // ビューにデータを渡す
+    }
+
+    public function success () 
+    {
+        return view('completion_success');
     }
 
 }
