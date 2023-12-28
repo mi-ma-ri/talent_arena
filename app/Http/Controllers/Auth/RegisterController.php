@@ -50,11 +50,6 @@ class RegisterController extends Controller
     {
         return view('choose_register');
     }
-
-    public function scout()
-    {
-        return view('auth.scout_register');
-    }
     
     public function completion()
     {
