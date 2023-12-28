@@ -36,5 +36,3 @@ Route::get('/player/video-history', [App\Http\Controllers\PlayerController::clas
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('team/register', [TeamRegisterController::class, 'store'])->name('team.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');
-Route::post('/player/register-validation', [App\Http\Controllers\Auth\RegisterController::class])->name('UserRegisterRequest');
-Route::post('/player/video-validation', [App\Http\Controllers\PlayerController::class])->name('VideoPostRequest');
