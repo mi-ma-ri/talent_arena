@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Player;
-use App\Models\Scouts_team;
+use App\Models\ScoutsTeam;
 use App\Models\Video_posts;
 use Carbon\Carbon;
 use App\Http\Requests\VideoPostRequest;
@@ -37,7 +37,7 @@ class PlayerController extends Controller
     // 投稿先のチームを取
     public function player_video_post () 
     {
-        $scouts_team = Scouts_team::all();
+        $scouts_team = ScoutsTeam::all();
         return view('player_video_post', compact('scouts_team'));
     }
 
