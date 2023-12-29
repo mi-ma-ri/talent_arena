@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Player;
-use App\Models\ScoutsTeam;
-use App\Models\Video_posts;
+use App\Models\Scouts_team;
+use App\Models\VideoPosts;
+
 use Carbon\Carbon;
 use App\Http\Requests\VideoPostRequest;
 use Illuminate\Support\Facades\Auth;

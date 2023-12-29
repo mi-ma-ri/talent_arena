@@ -10,7 +10,7 @@ use App\Models\ScoutsTeam;
 class VideoPosts extends Model
 {
     use HasFactory;
-    protected $table = "video_posts";
+    protected $table = "videoPosts";
 
     protected $fillable = [
         'player_id',
