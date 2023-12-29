@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Scouts_team;
-use App\Models\Video_posts;
+use App\Models\VideoPosts;
 use Carbon\Carbon;
 use App\Http\Requests\VideoPostRequest;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class PlayerController extends Controller
     {
         $validated = $request->validated();
         
-        $videoPost = new Video_posts;
+        $videoPost = new VideoPosts;
         $videoPost->players_id = Auth::id();
         $videoPost->scouts_team_id = $validated['team_id'];
         $videoPost->post_date = $validated['day'];
@@ -46,7 +46,7 @@ class PlayerController extends Controller
     public function player_video_history ()
     {
         $userIds = Auth::id(); // ログインしているユーザーのIDを取得
-        $videoPosts = Video_posts::with('scoutsTeam')->where('players_id', $userIds)->get();
+        $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->get();
         return view('player_video_history', compact('videoPosts'));
     }
 

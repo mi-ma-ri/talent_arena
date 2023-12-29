@@ -35,6 +35,7 @@ return [
     |
     */
 
+    // 認証・ログインで使われる
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -59,6 +60,7 @@ return [
     |
     */
 
+    // 
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
