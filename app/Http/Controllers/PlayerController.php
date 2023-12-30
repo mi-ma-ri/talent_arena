@@ -9,6 +9,7 @@ use App\Models\ScoutsTeam;
 use App\Models\Video_posts;
 use Carbon\Carbon;
 use App\Http\Requests\VideoPostRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class PlayerController extends Controller
@@ -19,8 +20,8 @@ class PlayerController extends Controller
     {
         $validated = $request->validated();
         
-        $videoPost = new Video_posts;
-        $videoPost->players_id = 1; // $request->input('player_id');
+        $videoPost = new VideoPosts;
+        $videoPost->players_id = Auth::id();
         $videoPost->scouts_team_id = $validated['team_id'];
         $videoPost->post_date = $validated['day'];
         $videoPost->post_url_1 = $validated['url1'];
@@ -44,15 +45,16 @@ class PlayerController extends Controller
     // URL投稿履歴画面に関する処理
     public function player_video_history ()
     {
-        $videoPost = Video_posts::with('scoutsTeam')->get();
-        return view('player_video_history', compact('videoPost'));
+        $userIds = Auth::id(); // ログインしているユーザーのIDを取得
+        $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->get();
+        return view('player_video_history', compact('videoPosts'));
     }
 
     // ユーザー(player)情報を取得し、viewに返却
     public function player_register_info() 
     {
-        $players = Player::all(); // すべてのユーザーデータを取得
-        return view('player_info', compact('players')); // ビューにデータを渡す
+        $player = Auth::user(); // 現在ログインしているユーザーを取得
+        return view('player_info', compact('player')); // ビューにデータを渡す
     }
 
     public function success () 

@@ -19,7 +19,7 @@ class ScoutsTeam extends Model
 
     public function videoPosts()
     {
-        return $this->hasMany(Video_posts::class, 'scouts_team_id');
+        return $this->hasMany(VideoPosts::class, 'scouts_team_id');
     }
 
     public function sport()

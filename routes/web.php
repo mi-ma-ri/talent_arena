@@ -22,9 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Authディレクトリに含まれるルーティング設定
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/choose-register', [App\Http\Controllers\Auth\RegisterController::class, 'choose'])->name('choose_register');
 Route::get('/completion-register', [App\Http\Controllers\Auth\RegisterController::class, 'completion'])->name('completion_register');
 Route::get('/completion-success', [App\Http\Controllers\PlayerController::class, 'success'])->name('completion_success');
