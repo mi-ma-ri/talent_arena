@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Scouts_team;
 
 
-class Video_posts extends Model
+class VideoPosts extends Model
 {
     use HasFactory;
     protected $table = "video_posts";

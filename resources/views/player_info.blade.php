@@ -48,24 +48,12 @@
           <div class="col-md-4 text-center">
             <ul class="list-group shadow-sm">
               <li class="list-group-item menu">登録内容</li>
-              @foreach ($players as $player)
-                <li class="list-group-item">{{ $player->email }}</li>
-              @endforeach
-              @foreach ($players as $player)
-                <li class="list-group-item">{{ $player->full_name }}</li>
-              @endforeach
-              @foreach ($players as $player)
-                <li class="list-group-item">{{ $player->gender }}</li>
-              @endforeach
-              @foreach ($players as $player)
-                <li class="list-group-item">{{ $player->birthday }}</li>
-              @endforeach
-              @foreach ($players as $player)
-                <li class="list-group-item">{{ $player->current_team }}</li>
-              @endforeach
-              @foreach ($players as $player)
-                <li class="list-group-item">{{ $player->position }}</li>
-              @endforeach  
+              <li class="list-group-item">{{ $player->email }}</li>
+              <li class="list-group-item">{{ $player->full_name }}</li>
+              <li class="list-group-item">{{ $player->gender }}</li>
+              <li class="list-group-item">{{ $player->birthday }}</li>
+              <li class="list-group-item">{{ $player->current_team }}</li>
+              <li class="list-group-item">{{ $player->position }}</li>
             </ul>
           </div>
         </div>

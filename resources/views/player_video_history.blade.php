@@ -42,31 +42,29 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($videoPost as $video)
-                @if ($video->post_url_1)
-                  <tr class="text-center">
-                    <td>{{ \Carbon\Carbon::parse($video->post_date)->format('Y-m-d') }}</td>
-                    <td><a href="{{ $video->post_url_1 }}">{{ $video->post_url_1 }}</a></td>
-                    <td>{{ $video->check_point_1 }}</td>
-                    <td>{{ $video->scoutsTeam->team_name }}</td>
-                  </tr>
-                @endif
-                @if ($video->post_url_2)
-                  <tr class="text-center">
-                    <td>{{ \Carbon\Carbon::parse($video->post_date)->format('Y-m-d') }}</td>
-                    <td><a href="{{ $video->post_url_2 }}">{{ $video->post_url_2 }}</a></td>
-                    <td>{{ $video->check_point_2 }}</td>
-                    <td>{{ $video->scoutsTeam->team_name }}</td>
-                  </tr>
-                @endif
-                @if ($video->post_url_3)
-                  <tr class="text-center">
-                    <td>{{ \Carbon\Carbon::parse($video->post_date)->format('Y-m-d') }}</td>
-                    <td><a href="{{ $video->post_url_3 }}">{{ $video->post_url_3 }}</a></td>
-                    <td>{{ $video->check_point_3 }}</td>
-                    <td>{{ $video->scoutsTeam->team_name }}</td>
-                  </tr>
-                @endif
+              @foreach ($videoPosts as $videoPost)
+                <tr class="text-center">
+                  <td>{{ \Carbon\Carbon::parse($videoPost->post_date)->format('Y-m-d') }}</td>
+                  <td><a href="{{ $videoPost->post_url_1 }}">{{ $videoPost->post_url_1 }}</a></td>
+                  <td>{{ $videoPost->check_point_1 }}</td>
+                  <td>{{ $videoPost->scoutsTeam->team_name }}</td>
+                </tr>
+                <tr class="text-center">
+                  @if ($videoPost->post_url_2)
+                    <td><a href="{{ $videoPost->post_url_2 }}">{{ $videoPost->post_url_2 }}</a></td>
+                  @endif
+                  @if ($videoPost->check_point_2)
+                    <td>{{ $videoPost->check_point_2 }}</td>
+                  @endif
+                </tr>
+                <tr class="text-center">
+                  @if ($videoPost->post_url_3)
+                    <td><a href="{{ $videoPost->post_url_3 }}">{{ $videoPost->post_url_3 }}</a></td>
+                  @endif
+                  @if ($videoPost->check_point_3)
+                    <td>{{ $videoPost->check_point_3 }}</td>
+                  @endif
+                </tr>
               @endforeach
             </tbody>
           </table>

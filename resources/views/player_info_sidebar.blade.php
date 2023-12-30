@@ -73,10 +73,13 @@
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link text-white mb-3 fs-5">
-            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-            ログアウト
-          </a>
+          <form action="{{ route('logout') }}" method="POST" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-link nav-link text-white mb-3 fs-5">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+              ログアウト
+            </button>
+          </form>
         </li>
       </ul>
     </div>
