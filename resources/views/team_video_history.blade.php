@@ -39,10 +39,12 @@
           </thead>
           <tbody>
             @foreach ($players as $player)
-              <tr>
-                <td>{{ $player->full_name }}</td>
-                <td>{{ $player->post_date }}</td>
-              </tr>
+              @foreach ($player->video_posts as $video_post)
+                <tr>
+                  <td>{{ $player->full_name }}</td>
+                  <td>{{ $video_post->post_date }}</td>
+                </tr>
+              @endforeach
             @endforeach
           </tbody>
         </table>
