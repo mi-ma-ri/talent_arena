@@ -35,6 +35,7 @@ Route::get('/player/video', [App\Http\Controllers\PlayerController::class, 'play
 Route::get('/player/video-history', [App\Http\Controllers\PlayerController::class, 'player_video_history'])->name('player_video_history');
 Route::get('/team/players-list', [App\Http\Controllers\TeamController::class, 'players_list'])->name('players_list');
 Route::get('/team/videos-list', [App\Http\Controllers\TeamController::class, 'videos_list'])->name('videos_list');
+Route::get('/team/url-point-list/{id}', [App\Http\Controllers\TeamController::class, 'url_point_list'])->name('url_point_list');
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('team/register', [TeamRegisterController::class, 'store'])->name('team.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');

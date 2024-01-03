@@ -43,6 +43,7 @@
                 <tr>
                   <td>{{ $player->full_name }}</td>
                   <td>{{ $video_post->post_date }}</td>
+                  <td><a href="{{ route('url_point_list', ['id' => $video_post->id]) }}">投稿詳細</a></td>
                 </tr>
               @endforeach
             @endforeach
