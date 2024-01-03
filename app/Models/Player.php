@@ -10,6 +10,7 @@ use App\Models\VideoPosts;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class Player extends Authenticatable
 {
     use Notifiable;
