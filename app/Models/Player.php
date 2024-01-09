@@ -30,7 +30,7 @@ class Player extends Authenticatable
         return $this->belongsTo(Sport::class, 'sports_id', 'id');
     }
 
-    public function video_posts()
+    public function videoPosts()
     {
         return $this->hasMany(VideoPosts::class, 'players_id', 'id');
     }

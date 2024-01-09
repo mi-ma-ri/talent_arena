@@ -9,6 +9,15 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="row mb-5">
+                        <div class="col-md-4 offset-md-4 text-center">
+                            <label for="LoginRole" class="form-label">ログインするユーザーを選んでください。</label>
+                            <select id="LoginRole" name="user_type" class="form-select text-center">
+                                <option value="player">選手ログイン</option>
+                                <option value="teams">スカウトチームログイン</option>
+                            </select>
+                        </div>
+                    </div>       
+                    <div class="row mb-5">
                         <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
                         <div class="col-md-4">
                             <input id="email" type="email" class="form-control form-control-lg login-form @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">

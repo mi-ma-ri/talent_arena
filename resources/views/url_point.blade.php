@@ -33,6 +33,7 @@
           <div class="col-md-3 text-center">
               <ul class="list-group shadow-sm">
                 <li class="list-group-item menu">項目</li>
+                <li class="list-group-item">投稿日</li>
                 <li class="list-group-item">投稿URL1</li>
                 <li class="list-group-item">閲覧ポイント1</li>
                 <li class="list-group-item">投稿URL2</li>
@@ -45,6 +46,9 @@
             <ul class="list-group shadow-sm">
               <li class="list-group-item menu">
                 投稿内容
+              </li>
+              <li class="list-group-item">
+                {{ $videoPosts->post_date }}</>
               </li>
               <li class="list-group-item">
                 <a href="{{ $videoPosts->post_url_1 }}">{{ $videoPosts->post_url_1 }}</a>
@@ -83,7 +87,7 @@
             </ul>
           </div>
           <div class="mt-5 d-flex justify-content-center">
-            <a href="{{ route('videos_list') }}" class="btn btn-primary pt-3 pb-3 w-25">戻る</a>
+            <a href="{{ route('players_list') }}" class="btn btn-primary pt-3 pb-3 w-25">戻る</a>
           </div>
         </div>
       </div>
