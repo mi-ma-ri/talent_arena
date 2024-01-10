@@ -25,7 +25,7 @@
         <nav class="navbar">
           <div class="container-fluid justify-content-center">
             <span class="navbar-text player-info-nav">
-              選手一覧情報
+              選手一覧リスト
             </span>
           </div>
         </nav>
@@ -38,17 +38,25 @@
               <th scope="col" class="p-3">ステータス</th>
               <th scope="col" class="p-3">現所属チーム</th>
               <th scope="col" class="p-3">ポジション</th>
+              <th scope="col" class="p-3">投稿内容</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($players as $player)
-              <tr>
-                <td>{{ $player->full_name }}</td>
+              <tr class="align-middle">
+                <td >{{ $player->full_name }}</td>
                 <td>{{ $player->gender }}</td>
                 <td>{{ $player->email }}</td>
                 <td>Mark</td>
                 <td>{{ $player->current_team }}</td>
                 <td>{{ $player->position }}</td>
+                <td>
+                  @foreach ($player->videoPosts as $videoPost)
+                    <div class="pb-3 pt-3">
+                      <a href="{{ route('url_point_list', ['id' => $videoPost->id]) }}">投稿詳細</a>
+                    </div>
+                  @endforeach
+                </td>
               </tr>
             @endforeach
           </tbody>

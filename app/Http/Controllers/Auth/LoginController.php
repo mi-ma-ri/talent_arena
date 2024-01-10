@@ -8,23 +8,40 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+
     public function login(LoginRequest $request)
     {
+        $userType = $request->input('user_type'); //login.bladeからPostされる
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        $guard = $userType === 'teams' ? 'teams' : 'web';
+
+         Log::debug('ログイン試行', ['userType' => $userType, 'guard' => $guard]);
+
+        if (Auth::guard($guard)->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('player/info');
+            $redirectView = $userType === 'teams' ? 'team/players-list' : 'player/info';
+            return redirect()->intended($redirectView);
         }
+
+        // Log::debug('ログイン失敗', ['email' => $credentials['email']]);
 
         return back();
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        
+        return redirect('/login');
+    }
     
 
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.

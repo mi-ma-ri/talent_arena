@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class ScoutsTeam extends Model
+class ScoutsTeam extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
     protected $table = "scouts_team";
 
     protected $fillable = [

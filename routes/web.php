@@ -24,7 +24,6 @@ Route::get('/', function () {
 
 // Authディレクトリに含まれるルーティング設定
 Auth::routes();
-
 Route::get('/choose-register', [App\Http\Controllers\Auth\RegisterController::class, 'choose'])->name('choose_register');
 Route::get('/completion-register', [App\Http\Controllers\Auth\RegisterController::class, 'completion'])->name('completion_register');
 Route::get('/completion-success', [App\Http\Controllers\PlayerController::class, 'success'])->name('completion_success');
@@ -34,7 +33,6 @@ Route::get('/player/info', [App\Http\Controllers\PlayerController::class, 'playe
 Route::get('/player/video', [App\Http\Controllers\PlayerController::class, 'player_video_post'])->name('player_video');
 Route::get('/player/video-history', [App\Http\Controllers\PlayerController::class, 'player_video_history'])->name('player_video_history');
 Route::get('/team/players-list', [App\Http\Controllers\TeamController::class, 'players_list'])->name('players_list');
-Route::get('/team/videos-list', [App\Http\Controllers\TeamController::class, 'videos_list'])->name('videos_list');
 Route::get('/team/url-point-list/{id}', [App\Http\Controllers\TeamController::class, 'url_point_list'])->name('url_point_list');
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('team/register', [TeamRegisterController::class, 'store'])->name('team.store');

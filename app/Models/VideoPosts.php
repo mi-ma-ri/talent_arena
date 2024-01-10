@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ScoutsTeam;
+use App\Models\player;
+
 
 
 class VideoPosts extends Model
@@ -29,4 +31,8 @@ class VideoPosts extends Model
         return $this->belongsTo(ScoutsTeam::class, 'scouts_team_id');
     }
 
+    public function player()
+    {
+        return $this->belongsTo(Player::class, 'players_id');
+    }
 }

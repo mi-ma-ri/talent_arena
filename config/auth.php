@@ -39,7 +39,11 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'players',
+        ],
+        'teams' => [
+            'driver' => 'session',
+            'provider' => 'teams',
         ],
     ],
 
@@ -62,15 +66,14 @@ return [
 
     // 
     'providers' => [
-        'users' => [
+        'players' => [
             'driver' => 'eloquent',
             'model' => App\Models\Player::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'teams' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ScoutsTeam::class,
+        ],
     ],
 
     /*

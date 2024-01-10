@@ -53,7 +53,7 @@ class PlayerController extends Controller
     // ユーザー(player)情報を取得し、viewに返却
     public function player_register_info() 
     {
-        $player = Auth::user(); // 現在ログインしているユーザーを取得
+        $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
         return view('player_info', compact('player')); // ビューにデータを渡す
     }
 
