@@ -23,44 +23,48 @@
       </div>
       <div class="col p-0">
         <nav class="navbar">
-          <div class="container-fluid justify-content-center">
+          <div class="container-fluid justify-content-center pb-3 pt-3">
             <span class="navbar-text player-info-nav">
               選手一覧リスト
             </span>
           </div>
         </nav>
-        <table class="table table-bordered text-center">
-          <thead>
-            <tr>
-              <th scope="col" class="p-3">姓名</th>
-              <th scope="col" class="p-3">性別</th>
-              <th scope="col" class="p-3">メールアドレス</th>
-              <th scope="col" class="p-3">ステータス</th>
-              <th scope="col" class="p-3">現所属チーム</th>
-              <th scope="col" class="p-3">ポジション</th>
-              <th scope="col" class="p-3">投稿内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($players as $player)
-              <tr class="align-middle">
-                <td >{{ $player->full_name }}</td>
-                <td>{{ $player->gender }}</td>
-                <td>{{ $player->email }}</td>
-                <td>Mark</td>
-                <td>{{ $player->current_team }}</td>
-                <td>{{ $player->position }}</td>
-                <td>
-                  @foreach ($player->videoPosts as $videoPost)
-                    <div class="pb-3 pt-3">
-                      <a href="{{ route('url_point_list', ['id' => $videoPost->id]) }}">投稿詳細</a>
-                    </div>
-                  @endforeach
-                </td>
+        <div class="table-responsive mt-5 mx-5"> <!-- テーブルのレスポンシブ対応 -->
+          <table class="table table-bordered text-center">
+            <thead>
+              <tr>
+                <th scope="col" class="p-3">姓名</th>
+                <th scope="col" class="p-3">性別</th>
+                <th scope="col" class="p-3">メールアドレス</th>
+                <th scope="col" class="p-3">ステータス</th>
+                <th scope="col" class="p-3">現所属チーム</th>
+                <th scope="col" class="p-3">ポジション</th>
+                <th scope="col" class="p-3">投稿内容</th>
               </tr>
-            @endforeach
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              @foreach ($players as $player)
+                <tr class="align-middle">
+                  <td >{{ $player->full_name }}</td>
+                  <td>{{ $player->gender }}</td>
+                  <td>{{ $player->email }}</td>
+                  <td>Mark</td>
+                  <td>{{ $player->current_team }}</td>
+                  <td>{{ $player->position }}</td>
+                  <td>
+                    @foreach ($player->videoPosts as $videoPost)
+                      <div class="pb-3 pt-3">
+                        <a href="{{ route('url_point_list', ['id' => $videoPost->id]) }}">
+                          {{ \Carbon\Carbon::parse($videoPost->post_date)->format('Y-m-d') }} 投稿詳細
+                        </a>
+                      </div>
+                    @endforeach
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>

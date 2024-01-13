@@ -21,7 +21,6 @@
       <div class="col-md-3 bg-dark">
         @include('player_info_sidebar')
       </div>
-    
       {{-- その他のメインコンテンツ --}}
       <div class="col p-0">
         <nav class="navbar">
@@ -31,39 +30,101 @@
             </span>
           </div>
         </nav>
-        <div class="table-responsive mt-4 mx-5 mb-3"> <!-- テーブルのレスポンシブ対応 -->
-          <table class="table table-striped-columns">
+        <div class="table-responsive mt-5 mx-5"> <!-- テーブルのレスポンシブ対応 -->
+          <table class="table table-bordered table-hover">
             <thead>
               <tr class="text-center history-table">
                 <th scope="col">投稿日</th>
-                <th scope="col">投稿URL</th>
+                <th scope="col">投稿チーム</th>
                 <th scope="col">投稿詳細</th>
-                <th scope="col">投稿先チーム</th>
               </tr>
             </thead>
             <tbody>
               @foreach ($videoPosts as $videoPost)
                 <tr class="text-center">
-                  <td>{{ \Carbon\Carbon::parse($videoPost->post_date)->format('Y-m-d') }}</td>
-                  <td><a href="{{ $videoPost->post_url_1 }}">{{ $videoPost->post_url_1 }}</a></td>
-                  <td>{{ $videoPost->check_point_1 }}</td>
-                  <td>{{ $videoPost->scoutsTeam->team_name }}</td>
-                </tr>
-                <tr class="text-center">
-                  @if ($videoPost->post_url_2)
-                    <td><a href="{{ $videoPost->post_url_2 }}">{{ $videoPost->post_url_2 }}</a></td>
+                  @if ($videoPost->post_date)
+                    <td class="align-middle">{{ \Carbon\Carbon::parse($videoPost->post_date)->format('Y-m-d') }}</td>
                   @endif
-                  @if ($videoPost->check_point_2)
-                    <td>{{ $videoPost->check_point_2 }}</td>
-                  @endif
-                </tr>
-                <tr class="text-center">
-                  @if ($videoPost->post_url_3)
-                    <td><a href="{{ $videoPost->post_url_3 }}">{{ $videoPost->post_url_3 }}</a></td>
-                  @endif
-                  @if ($videoPost->check_point_3)
-                    <td>{{ $videoPost->check_point_3 }}</td>
-                  @endif
+                  @if ($videoPost->scoutsTeam && $videoPost->scoutsTeam->team_name)
+                    <td class="align-middle">{{ $videoPost->scoutsTeam->team_name }}</td>   
+                  @endif             
+                  <td class="align-middle">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      動画・閲覧ポイント
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">投稿詳細</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <ul class="list-group">
+                            <li class="list-group-item menu">投稿①</li>
+                            <li class="list-group-item">
+                              <div class="d-flex flex-row align-items-center">
+                                <div class="col-md-6">
+                                  {{ $videoPost->check_point_1 }}
+                                </div>
+                                <div class="col-md-6">
+                                  @if($videoPost->thumbnail_url_1)
+                                    <img src="{{ $videoPost->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid">
+                                  @endif
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>                        
+                        <div class="modal-body">
+                          <ul class="list-group">
+                            <!-- 投稿2の表示 -->
+                            <li class="list-group-item menu">投稿②</li>
+                            <li class="list-group-item">
+                              @if($videoPost->post_url_2)
+                                <div class="d-flex flex-row align-items-center">
+                                  <div class="col-md-6">
+                                    {{ $videoPost->check_point_2 }}
+                                  </div>
+                                  <div class="col-md-6">
+                                    @if($videoPost->thumbnail_url_2)
+                                      <img src="{{ $videoPost->thumbnail_url_2 }}" alt="YouTube Thumbnail" class="img-fluid">
+                                    @endif
+                                  </div>
+                                </div>
+                              @else
+                                <div class="text-center">投稿なし</div>
+                              @endif
+                            </li>
+                            <!-- 投稿3の表示 -->
+                            <li class="list-group-item menu">投稿③</li>
+                            <li class="list-group-item">
+                              @if($videoPost->post_url_3)
+                                <div class="d-flex flex-row align-items-center">
+                                  <div class="col-md-6">
+                                    {{ $videoPost->check_point_3 }}
+                                  </div>
+                                  <div class="col-md-6">
+                                    @if($videoPost->thumbnail_url_3)
+                                      <img src="{{ $videoPost->thumbnail_url_3 }}" alt="YouTube Thumbnail" class="img-fluid">
+                                    @endif
+                                  </div>
+                                </div>
+                              @else
+                                <div class="text-center">投稿なし</div>
+                              @endif
+                            </li>
+                          </ul>
+                        </div>                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </td>
                 </tr>
               @endforeach
             </tbody>

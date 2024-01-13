@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TeamController;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\ScoutsTeam;
@@ -47,6 +48,13 @@ class PlayerController extends Controller
     {
         $userIds = Auth::id(); // ログインしているユーザーのIDを取得
         $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->get();
+        // 自身で投稿したyoutubeURLをサムネイル化してbladeに渡している
+        foreach ($videoPosts as $videoPost) {
+            $videoPost->thumbnail_url_1 = $this->getYouTubeThumbnailUrl($videoPost->post_url_1);
+            $videoPost->thumbnail_url_2 = $this->getYouTubeThumbnailUrl($videoPost->post_url_2);
+            $videoPost->thumbnail_url_3 = $this->getYouTubeThumbnailUrl($videoPost->post_url_3);
+        }
+
         return view('player_video_history', compact('videoPosts'));
     }
 

@@ -29,9 +29,14 @@ class TeamController extends Controller
   }
 
   // 各選手の投稿詳細画面を表示される
-    public function url_point_list($id)  
-    {
-      $videoPosts = VideoPosts::findOrFail($id);
-      return view('url_point', compact('videoPosts'));
-    }
+  public function url_point_list($id)  
+  {
+    $videoPosts = VideoPosts::findOrFail($id);
+
+    $videoPosts->thumbnail_url_1 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_1);
+    $videoPosts->thumbnail_url_2 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_2);
+    $videoPosts->thumbnail_url_3 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_3);
+
+    return view('url_point', compact('videoPosts'));
+  }
 }
