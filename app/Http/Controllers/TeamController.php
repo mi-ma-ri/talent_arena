@@ -37,6 +37,11 @@ class TeamController extends Controller
     $videoPosts->thumbnail_url_2 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_2);
     $videoPosts->thumbnail_url_3 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_3);
 
+    // youtubeのタイトル表示
+    $videoPosts->title_1 = $this->getYouTubeVideoTitle($videoPosts->post_url_1);
+    $videoPosts->title_2 = $this->getYouTubeVideoTitle($videoPosts->post_url_2);
+    $videoPosts->title_3 = $this->getYouTubeVideoTitle($videoPosts->post_url_3);
+
     return view('url_point', compact('videoPosts'));
   }
 }

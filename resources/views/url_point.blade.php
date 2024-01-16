@@ -40,9 +40,10 @@
                   </div>
                   <div class="col-md-6">
                     @if($videoPosts->thumbnail_url_1)
-                      <a href="{{ $videoPosts->post_url_1 }}">
-                        <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail">
-                      </a>
+                      <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
+                      <p>
+                        <a href="{{ $videoPosts->post_url_1 }}" target="_blank">{{ $videoPosts->title_1 }}</a>
+                      </p>
                     @endif
                   </div>
                 </div>
@@ -61,8 +62,11 @@
                       {{ $videoPosts->check_point_2 }}
                     </div>
                     <div class="col-md-6">
-                      @if($videoPosts->thumbnail_url_2)
-                        <img src="{{ $videoPosts->thumbnail_url_2 }}" alt="YouTube Thumbnail" class="img-fluid">
+                      @if($videoPosts->thumbnail_url_1)
+                        <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
+                        <p>
+                          <a href="{{ $videoPosts->post_url_1 }}" target="_blank">{{ $videoPosts->title_1 }}</a>
+                        </p>
                       @endif
                     </div>
                   </div>
@@ -79,8 +83,11 @@
                       {{ $videoPosts->check_point_3 }}
                     </div>
                     <div class="col-md-6">
-                      @if($videoPosts->thumbnail_url_3)
-                        <img src="{{ $videoPosts->thumbnail_url_3 }}" alt="YouTube Thumbnail" class="img-fluid">
+                      @if($videoPosts->thumbnail_url_1)
+                        <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
+                        <p>
+                          <a href="{{ $videoPosts->post_url_1 }}" target="_blank">{{ $videoPosts->title_1 }}</a>
+                        </p>
                       @endif
                     </div>
                   </div>
@@ -92,7 +99,7 @@
           </div>
           <!-- 各行のための繰り返し開始 -->
           <div class="mt-5 d-flex justify-content-center">
-            <a href="{{ route('players_list') }}" class="btn btn-primary pt-3 pb-3 w-25">戻る</a>
+            <a href="{{ route('players_list') }}" class="btn btn-primary pt-3 pb-3 mb-5 w-25">戻る</a>
           </div>
         </div>
       </div>
