@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Lib\YoutubeClient;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\VideoPosts;
@@ -33,14 +34,18 @@ class TeamController extends Controller
   {
     $videoPosts = VideoPosts::findOrFail($id);
 
-    $videoPosts->thumbnail_url_1 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_1);
-    $videoPosts->thumbnail_url_2 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_2);
-    $videoPosts->thumbnail_url_3 = $this->getYouTubeThumbnailUrl($videoPosts->post_url_3);
+    // app/LibのYoutubeClint.phpを呼び出し
+    $youtubeClient = new YoutubeClient();
 
-    // youtubeのタイトル表示
-    $videoPosts->title_1 = $this->getYouTubeVideoTitle($videoPosts->post_url_1);
-    $videoPosts->title_2 = $this->getYouTubeVideoTitle($videoPosts->post_url_2);
-    $videoPosts->title_3 = $this->getYouTubeVideoTitle($videoPosts->post_url_3);
+    // youtube動画のサムネイル表示
+    $videoPosts->thumbnail_url_1 = $youtubeClient->getYouTubeThumbnailUrl($videoPosts->post_url_1);
+    $videoPosts->thumbnail_url_2 = $youtubeClient->getYouTubeThumbnailUrl($videoPosts->post_url_2);
+    $videoPosts->thumbnail_url_3 = $youtubeClient->getYouTubeThumbnailUrl($videoPosts->post_url_3);
+
+    // youtube動画のタイトル表示
+    $videoPosts->title_1 = $youtubeClient->getYouTubeVideoTitle($videoPosts->post_url_1);
+    $videoPosts->title_2 = $youtubeClient->getYouTubeVideoTitle($videoPosts->post_url_2);
+    $videoPosts->title_3 = $youtubeClient->getYouTubeVideoTitle($videoPosts->post_url_3);
 
     return view('url_point', compact('videoPosts'));
   }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TeamController;
+use App\Lib\YoutubeClient;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\ScoutsTeam;
@@ -49,16 +50,18 @@ class PlayerController extends Controller
         $userIds = Auth::id(); // ログインしているユーザーのIDを取得
         $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->get();
 
+        $youtubeClient = new YoutubeClient();
+
         foreach ($videoPosts as $videoPost) {
             // youtubeサムネイル化
-            $videoPost->thumbnail_url_1 = $this->getYouTubeThumbnailUrl($videoPost->post_url_1);
-            $videoPost->thumbnail_url_2 = $this->getYouTubeThumbnailUrl($videoPost->post_url_2);
-            $videoPost->thumbnail_url_3 = $this->getYouTubeThumbnailUrl($videoPost->post_url_3);
+            $videoPost->thumbnail_url_1 = $youtubeClient->getYouTubeThumbnailUrl($videoPost->post_url_1);
+            $videoPost->thumbnail_url_2 = $youtubeClient->getYouTubeThumbnailUrl($videoPost->post_url_2);
+            $videoPost->thumbnail_url_3 = $youtubeClient->getYouTubeThumbnailUrl($videoPost->post_url_3);
 
             // youtubeのタイトル表示
-            $videoPost->title_1 = $this->getYouTubeVideoTitle($videoPost->post_url_1);
-            $videoPost->title_2 = $this->getYouTubeVideoTitle($videoPost->post_url_2);
-            $videoPost->title_3 = $this->getYouTubeVideoTitle($videoPost->post_url_3);
+            $videoPost->title_1 = $youtubeClient->getYouTubeVideoTitle($videoPost->post_url_1);
+            $videoPost->title_2 = $youtubeClient->getYouTubeVideoTitle($videoPost->post_url_2);
+            $videoPost->title_3 = $youtubeClient->getYouTubeVideoTitle($videoPost->post_url_3);
         }
 
         return view('player_video_history', compact('videoPosts'));
