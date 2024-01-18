@@ -8,5 +8,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+  const MAX_SNIPPETS_COUNT = 50;
+  const DEFAULT_ORDER_TYPE = 'viewCount';
+  use AuthorizesRequests, ValidatesRequests;
+
 }

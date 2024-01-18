@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Lib\YoutubeClient;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\VideoPosts;
@@ -29,9 +30,23 @@ class TeamController extends Controller
   }
 
   // 各選手の投稿詳細画面を表示される
-    public function url_point_list($id)  
-    {
-      $videoPosts = VideoPosts::findOrFail($id);
-      return view('url_point', compact('videoPosts'));
-    }
+  public function url_point_list($id)  
+  {
+    $videoPosts = VideoPosts::findOrFail($id);
+
+    // app/LibのYoutubeClint.phpを呼び出し
+    $youtubeClient = new YoutubeClient();
+
+    // youtube動画のサムネイル表示
+    $videoPosts->thumbnail_url_1 = $youtubeClient->getYouTubeThumbnailUrl($videoPosts->post_url_1);
+    $videoPosts->thumbnail_url_2 = $youtubeClient->getYouTubeThumbnailUrl($videoPosts->post_url_2);
+    $videoPosts->thumbnail_url_3 = $youtubeClient->getYouTubeThumbnailUrl($videoPosts->post_url_3);
+
+    // youtube動画のタイトル表示
+    $videoPosts->title_1 = $youtubeClient->getYouTubeVideoTitle($videoPosts->post_url_1);
+    $videoPosts->title_2 = $youtubeClient->getYouTubeVideoTitle($videoPosts->post_url_2);
+    $videoPosts->title_3 = $youtubeClient->getYouTubeVideoTitle($videoPosts->post_url_3);
+
+    return view('url_point', compact('videoPosts'));
+  }
 }

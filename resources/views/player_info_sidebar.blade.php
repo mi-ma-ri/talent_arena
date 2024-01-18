@@ -69,7 +69,7 @@
         <li>
           <a href="/player/video-history" class="nav-link text-white mb-4 fs-5">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-            投稿履歴
+            投稿履歴画面
           </a>
         </li>
         <li>
