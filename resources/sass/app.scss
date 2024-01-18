@@ -1,23 +1,95 @@
 // Fonts
-@import url("https://fonts.bunny.net/css?family=Nunito");
-// Variables
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap");
 @import "variables";
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
+body {
+    font-family: "Lato", sans-serif;
+    font-family: "Rubik Burned", system-ui;
+    background-color: #27262c;
+}
+
+// エラーメッセージ
 .error-message {
     color: red;
     margin-left: 10px;
     font-size: 0.8em;
 }
-// lp画面
+
+// ナビバー
+.navbar {
+    padding: 20px;
+    background-color: #ffe2c7;
+    width: 100%;
+}
+
+.header-login {
+    color: #27262c;
+    font-size: 22px;
+    margin: 0 20px 0 0;
+    text-decoration: none; /* ホバー前は下線なし */
+    transition: text-decoration 0.3s; /* 下線の表示をスムーズに */
+}
+
+.header-login:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+.header-signup {
+    color: #fff;
+    background-color: #27262c;
+    font-size: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.header-title {
+    font-size: 40px;
+    height: 48px;
+    display: block;
+}
+
+// カルーセル画面
 .carousel-caption {
     position: absolute;
     top: 50%;
     left: 30%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
+    transform: translate(-50%, -60%);
+    color: #ffe2c7;
     font-weight: bold;
+}
+
+.carousel-caption__main {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -0%);
+    color: #ffe2c7;
+    font-weight: bold;
+}
+
+.top-title__sub {
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    background-color: #ffe2c7;
+    opacity: 0.8;
+    padding: 20px 20px;
+}
+
+.top-title {
+    font-size: 79px;
+    padding-top: 160px;
+    font-weight: bold;
+    color: white;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 3px white;
+}
+
+.brake {
+    display: inline;
 }
 
 .carousel-item {
@@ -31,21 +103,7 @@
     opacity: 0.7;
 }
 
-.logo-ver {
-    margin-bottom: 200px;
-}
-
 // login画面
-.py-4 {
-    background-color: #27262c;
-    width: 100vw;
-    height: 110vh;
-}
-
-.header-color {
-    background-color: #ffe2c7;
-}
-
 .login-container {
     margin-top: 150px;
 }
@@ -130,18 +188,10 @@
     color: #ffffff;
 }
 
-.navbar {
-    padding: 0;
-}
-
 .list-group-item {
     margin-bottom: 50px;
     text-decoration: none;
     font-size: 20px;
-}
-
-.container-fluid {
-    background-color: #27262c;
 }
 
 .menu {
