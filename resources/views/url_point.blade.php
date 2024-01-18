@@ -21,73 +21,85 @@
     {{-- その他のメインコンテンツ --}}
     <div class="col p-0">
       <nav class="navbar">
-        <div class="container-fluid justify-content-center">
+        <div class="container-fluid justify-content-center pt-3 pb-3">
           <span class="navbar-text player-info-nav">
             選手から投稿された動画URL・閲覧ポイント
           </span>
         </div>
       </nav>
       <div class="container">
-        <div class="row justify-content-center mt-5">
-          <!-- 各行のための繰り返し開始 -->
-          <div class="col-md-3 text-center">
-              <ul class="list-group shadow-sm">
-                <li class="list-group-item menu">項目</li>
-                <li class="list-group-item">投稿日</li>
-                <li class="list-group-item">投稿URL1</li>
-                <li class="list-group-item">閲覧ポイント1</li>
-                <li class="list-group-item">投稿URL2</li>
-                <li class="list-group-item">閲覧ポイント2</li>
-                <li class="list-group-item">投稿URL3</li>
-                <li class="list-group-item">閲覧ポイント3</li>
-              </ul>
-          </div>
-          <div class="col-md-5 text-center">
-            <ul class="list-group shadow-sm">
-              <li class="list-group-item menu">
-                投稿内容
-              </li>
+        <div class="row text-center">
+          <!-- 列1 -->
+          <div class="modal-body">
+            <ul class="list-group pt-5">
+              <li class="list-group-item menu">投稿動画1</li>
               <li class="list-group-item">
-                {{ $videoPosts->post_date }}</>
+                <div class="d-flex flex-row align-items-center">
+                  <div class="col-md-6">
+                    {{ $videoPosts->check_point_1 }}
+                  </div>
+                  <div class="col-md-6">
+                    @if($videoPosts->thumbnail_url_1)
+                      <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
+                      <p>
+                        <a href="{{ $videoPosts->post_url_1 }}" target="_blank">{{ $videoPosts->title_1 }}</a>
+                      </p>
+                    @endif
+                  </div>
+                </div>
               </li>
-              <li class="list-group-item">
-                <a href="{{ $videoPosts->post_url_1 }}">{{ $videoPosts->post_url_1 }}</a>
-              </li>
-              <li class="list-group-item">
-                {{ $videoPosts->check_point_1 }}</>
-              </li>
-              @if($videoPosts->post_url_2)
-                <li class="list-group-item">
-                  <a href="{{ $videoPosts->post_url_2 }}">{{ $videoPosts->post_url_2 }}</a>
-                </li>
-              @else
-                <li class="list-group-item">投稿なし</li>
-              @endif
-              @if($videoPosts->check_point_2)
-                <li class="list-group-item">
-                  {{ $videoPosts->check_point_2 }}</>
-                </li>
-              @else
-                <li class="list-group-item">投稿なし</li>
-              @endif
-              @if($videoPosts->post_url_3)
-                <li class="list-group-item">
-                  <a href="{{ $videoPosts->post_url_3 }}">{{ $videoPosts->post_url_3 }}</a>
-                </li>
-              @else
-                <li class="list-group-item">投稿なし</li>
-              @endif
-              @if($videoPosts->check_point_3)
-                <li class="list-group-item">
-                  {{ $videoPosts->check_point_3 }}</>
-                </li>
-              @else
-                <li class="list-group-item">投稿なし</li>
-              @endif
             </ul>
           </div>
+          <!-- 列2 -->
+          <div class="modal-body">
+            <ul class="list-group">
+              <!-- 投稿2の表示 -->
+              <li class="list-group-item menu">投稿②</li>
+              <li class="list-group-item">
+                @if($videoPosts->post_url_2)
+                  <div class="d-flex flex-row align-items-center">
+                    <div class="col-md-6">
+                      {{ $videoPosts->check_point_2 }}
+                    </div>
+                    <div class="col-md-6">
+                      @if($videoPosts->thumbnail_url_1)
+                        <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
+                        <p>
+                          <a href="{{ $videoPosts->post_url_1 }}" target="_blank">{{ $videoPosts->title_1 }}</a>
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                @else
+                  <div class="text-center">投稿なし</div>
+                @endif
+              </li>
+              <!-- 投稿3の表示 -->
+              <li class="list-group-item menu">投稿③</li>
+              <li class="list-group-item">
+                @if($videoPosts->post_url_3)
+                  <div class="d-flex flex-row align-items-center">
+                    <div class="col-md-6">
+                      {{ $videoPosts->check_point_3 }}
+                    </div>
+                    <div class="col-md-6">
+                      @if($videoPosts->thumbnail_url_1)
+                        <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
+                        <p>
+                          <a href="{{ $videoPosts->post_url_1 }}" target="_blank">{{ $videoPosts->title_1 }}</a>
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                @else
+                  <div class="text-center">投稿なし</div>
+                @endif
+              </li>
+            </ul>
+          </div>
+          <!-- 各行のための繰り返し開始 -->
           <div class="mt-5 d-flex justify-content-center">
-            <a href="{{ route('players_list') }}" class="btn btn-primary pt-3 pb-3 w-25">戻る</a>
+            <a href="{{ route('players_list') }}" class="btn btn-primary pt-3 pb-3 mb-5 w-25">戻る</a>
           </div>
         </div>
       </div>
