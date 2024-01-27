@@ -1,29 +1,37 @@
 @extends('layouts.app')
-@section('lp')
+@section('top')
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="5000">
-            <img src="/soccer_ball.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h2>「怪我が理由でセレクションに参加できなかった」</h2><br>
-                <h2>「自分なんてどうせ可能性のない選手だ」</h2><br>
-                <h2>「どうせ俺のプレーなんて誰も注目していない」</h2><br>
+            <img src="/soccer_ball.jpeg" class="w-100" alt="...">
+            <div class="carousel-caption">
+                <h2 class="top-title__sub">
+                    <span>プロの世界で活躍したい。</span>
+                    <span>チームに貢献できる選手になりたい。</span>
+                </h2>
+                <h1 class="top-title">
+                    <span>活躍するステージを切り拓け</span>
+                </h1>
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="5000">
-            <img src="/team.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h2>「日本一のチームを作りたい」</h2><br>
-                <h2>「世界で活躍する選手を輩出できるチームにしたい」</h2><br>
-                <h2>「眠っている才能を開花させたい」</h2><br>
+            <img src="/team.jpeg" class="w-100" alt="...">
+            <div class="carousel-caption">
+                <h2 class="top-title__sub">
+                    <span>日本一のチームを作りたい。</span>
+                    <span>世界で活躍する選手を輩出したい。</span>
+                </h2>
+                <h1 class="top-title">
+                    <span>チームの可能性を広げる</span>
+                </h1>
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="10000">
-            <img src="/logo.png" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h1>自分が活躍できるNextStageを見つけろ</h1><br>
-                <h1 class="logo-ver">未来のエース・原石はどこにいる？</h1><br>
-                <h1>TalentArenaから世界で戦える選手・チームへ</h1>
+            <img src="/logo_header.png" class="w-100" alt="...">
+            <div class="carousel-caption__main">
+                <span class="top-title">
+                    TalentArenaから世界へ</span>
+                </span>            
             </div>
         </div>
     </div>

@@ -18,52 +18,46 @@
   <body>
     <div class="row vh-100">
       {{-- サイドバーの内容をインクルード --}}
-      <div class="col-md-3 bg-dark">
+      <div class="col-md-3">
         @include('team_sidebar')
       </div>
-      <div class="col p-0">
-        <nav class="navbar">
-          <div class="container-fluid justify-content-center pb-3 pt-3">
-            <span class="navbar-text player-info-nav">
-              選手一覧リスト
-            </span>
-          </div>
-        </nav>
-        <div class="table-responsive mt-5 mx-5"> <!-- テーブルのレスポンシブ対応 -->
-          <table class="table table-bordered text-center">
-            <thead>
-              <tr>
-                <th scope="col" class="p-3">姓名</th>
-                <th scope="col" class="p-3">性別</th>
-                <th scope="col" class="p-3">メールアドレス</th>
-                <th scope="col" class="p-3">ステータス</th>
-                <th scope="col" class="p-3">現所属チーム</th>
-                <th scope="col" class="p-3">ポジション</th>
-                <th scope="col" class="p-3">投稿内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($players as $player)
-                <tr class="align-middle">
-                  <td >{{ $player->full_name }}</td>
-                  <td>{{ $player->gender }}</td>
-                  <td>{{ $player->email }}</td>
-                  <td>Mark</td>
-                  <td>{{ $player->current_team }}</td>
-                  <td>{{ $player->position }}</td>
-                  <td>
-                    @foreach ($player->videoPosts as $videoPost)
-                      <div class="pb-3 pt-3">
-                        <a href="{{ route('url_point_list', ['id' => $videoPost->id]) }}">
-                          {{ \Carbon\Carbon::parse($videoPost->post_date)->format('Y-m-d') }} 投稿詳細
-                        </a>
-                      </div>
-                    @endforeach
-                  </td>
+      <div class="container background">
+        <div class="row justify-content-center">
+          <div class="col-md-8 info_top">
+            <h1 class="mb-3 font-color">投稿履歴</h1>
+            <div class="table-container">
+              <table class="table-list">
+                <tr>
+                    <th>姓名</th>
+                    <th>性別</th>
+                    <th>メールアドレス</th>
+                    <th>ステータス</th>
+                    <th>現所属チーム</th>
+                    <th>ポジション</th>
+                    <th>投稿詳細</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
+                @foreach ($players as $player)
+                  <tr class="align-middle">
+                    <td >{{ $player->full_name }}</td>
+                    <td>{{ $player->gender }}</td>
+                    <td><a href="mailto:" class="font-color">{{ $player->email }}</a></td>
+                    <td>Mark</td>
+                    <td>{{ $player->current_team }}</td>
+                    <td>{{ $player->position }}</td>
+                    <td>
+                      @foreach ($player->videoPosts as $videoPost)
+                        <div class="pb-3 pt-3">
+                          <a href="{{ route('url_point_list', ['id' => $videoPost->id]) }}" class="table-list">
+                            {{ \Carbon\Carbon::parse($videoPost->post_date)->format('Y-m-d') }} <br> 投稿詳細
+                          </a>
+                        </div>
+                      @endforeach
+                    </td>
+                  </tr>
+                @endforeach
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

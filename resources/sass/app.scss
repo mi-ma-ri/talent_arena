@@ -1,23 +1,126 @@
 // Fonts
-@import url("https://fonts.bunny.net/css?family=Nunito");
-// Variables
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap");
 @import "variables";
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
+body {
+    font-family: "Lato", sans-serif;
+    font-family: "Rubik Burned", system-ui;
+}
+
+.background {
+    background-color: #27262c;
+    min-height: 100vh; /* ビューポートの高さに合わせる */
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+/* 
+    エラーメッセージ
+*/
 .error-message {
     color: red;
     margin-left: 10px;
     font-size: 0.8em;
 }
-// lp画面
+
+/* 
+    ナビバー
+*/
+.navbar {
+    padding: 20px;
+    background-color: #ffe2c7;
+    width: 100%;
+}
+
+.header-login {
+    color: #27262c;
+    font-size: 22px;
+    margin: 0 20px 0 0;
+    text-decoration: none; /* ホバー前は下線なし */
+    transition: text-decoration 0.3s; /* 下線の表示をスムーズに */
+}
+
+.header-login:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+.header-signup {
+    color: #fff;
+    background-color: #27262c;
+    font-size: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.header-title {
+    font-size: 40px;
+    height: 48px;
+    display: block;
+}
+.user-name {
+    position: absolute;
+    right: 100px;
+    font-size: 22px;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.user-name-btn {
+    background-color: #27262c;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 
+    Top画面,カルーセル
+    welcome.blade
+*/
 .carousel-caption {
     position: absolute;
     top: 50%;
     left: 30%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
+    transform: translate(-50%, -60%);
+    color: #ffe2c7;
     font-weight: bold;
+}
+
+.carousel-caption__main {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -0%);
+    color: #ffe2c7;
+    font-weight: bold;
+}
+
+.top-title__sub {
+    font-size: 40px;
+    font-weight: bold;
+    color: #27262c;
+    background-color: #ffe2c7;
+    opacity: 0.8;
+    padding: 20px 20px;
+}
+
+.top-title {
+    font-size: 79px;
+    padding-top: 160px;
+    font-weight: bold;
+    color: white;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 3px white;
+}
+
+.brake {
+    display: inline;
 }
 
 .carousel-item {
@@ -31,21 +134,10 @@
     opacity: 0.7;
 }
 
-.logo-ver {
-    margin-bottom: 200px;
-}
-
-// login画面
-.py-4 {
-    background-color: #27262c;
-    width: 100vw;
-    height: 110vh;
-}
-
-.header-color {
-    background-color: #ffe2c7;
-}
-
+/* 
+    選手、チームログイン画面
+    login.blade
+*/
 .login-container {
     margin-top: 150px;
 }
@@ -79,7 +171,19 @@
     font-size: 16px;
 }
 
-// choose_resister画面
+.login-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+/* 
+    選手、チームどちらの新規登録をするか選択する画面
+    choose_register.blade
+*/
+.register-logo {
+    width: 300px;
+}
+
 .font-right {
     color: black;
     font-size: 32px;
@@ -97,8 +201,46 @@
     margin-top: 100px;
 }
 
-// player_register画面
+/* 
+    選手_新規登録画面
+    player_register.blade
+*/
+.player-regi__btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 50px 0 50px 0;
+}
 
+.form-check {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+/* 
+    非活性状態のスタイル
+*/
+#submitButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* 
+    活性状態のスタイル
+*/
+#submitButton {
+    background-color: #007bff; /* 例: ブルー */
+    color: white;
+}
+
+.player-regi__logo {
+    width: 300px;
+}
+.register-btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+}
 .font-left-player {
     margin-top: 100px;
     color: #ffffff;
@@ -127,21 +269,13 @@
     text-decoration: underline;
     font-size: 30px;
     padding: 10px 10px 10px 10px;
-    color: #ffffff;
-}
-
-.navbar {
-    padding: 0;
+    color: #27262c;
 }
 
 .list-group-item {
     margin-bottom: 50px;
     text-decoration: none;
     font-size: 20px;
-}
-
-.container-fluid {
-    background-color: #27262c;
 }
 
 .menu {
@@ -175,6 +309,281 @@
     border-bottom: 1px solid #27262c; /* レジェンドの下に線を引く */
 }
 
-.history-table {
+.header {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    max-width: 100%;
+    background-color: #ffe2c7;
+    z-index: 10;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    margin-top: 100px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    background: #ffe2c7;
+    color: #fff;
+    text-align: center;
+}
+.sidebarMenuInner {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 20px;
+}
+.sidebarMenuInner li {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 30px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebarMenuInner li span {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+}
+.sidebarMenuInner li a {
+    color: #27262c;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out; /* アニメーション効果 */
+}
+.sidebarMenuInner li a:hover {
+    color: #fff;
+    background-color: #27262c;
+    text-decoration: none;
+    transform: scale(1.05); /* わずかに拡大 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* 影を追加 */
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type="checkbox"] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+.sidebarIconToggle {
+    position: absolute;
+    z-index: 99;
+    top: 40px;
+    left: 30px;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    height: 22px;
+    width: 22px;
+}
+.toggle-checkbox {
+    display: none;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+.system-name {
+    font-size: 50px;
+    color: #27262c;
+    font-weight: bold;
+    margin-left: 100px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    background-color: #27262c;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type="checkbox"]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 10px;
+}
+input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -10px;
+}
+
+.playerInfo {
+    width: 100%;
+    border-collapse: collapse;
+    animation-name: playerInfoAnime;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    font-weight: bold;
+    font-size: 22px;
+}
+@keyframes playerInfoAnime {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.font-color {
+    color: #fff;
+}
+
+.p-modal-background {
+    background-color: #ffe2c7;
+}
+.p-modal-font {
+    color: #27262c;
     font-size: 18px;
+}
+
+.table-list {
+    width: 100%;
+    font-size: 18px;
+}
+
+table tr {
+    border-bottom: solid 4px white;
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+
+table td {
+    text-align: left;
+    width: 10%;
+    text-align: center;
+    color: white;
+    padding: 40px 0;
+}
+
+table th {
+    position: relative;
+    text-align: left;
+    width: 15%;
+    background-color: #27262c;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.table th:after {
+    display: block;
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: calc(50% - 10px);
+    right: -10px;
+    border-left: 10px solid black;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.info_top {
+    margin-top: 200px;
+}
+
+.p-post-text {
+    margin-top: 50px;
+    color: #fff;
+}
+
+.p-post-padding {
+    padding: 20px;
+}
+
+.text-none {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.p-modal-btn {
+    background-color: #27262c;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.p-modal-link {
+    padding: 0 10px;
+    background-image: linear-gradient(to right, rgb(255, 226, 199) 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: 0.3s;
+    color: #27262c;
+    font-size: 20px;
+}
+
+.p-modal-link:hover {
+    background-position: -100% 0;
+    color: #fff;
+}
+
+.list-item {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.table-list {
+    padding: 0 10px;
+    background-image: linear-gradient(to right, rgb(255, 226, 199) 50%);
+    background-position: 0 0;
+    background-size: 200% auto;
+    transition: 0.3s;
+    color: white;
+}
+
+.table-list:hover {
+    background-position: -100% 0;
+    color: #ffe2c7;
 }

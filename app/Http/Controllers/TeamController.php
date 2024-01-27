@@ -49,4 +49,11 @@ class TeamController extends Controller
 
     return view('url_point', compact('videoPosts'));
   }
+
+  // 現在ログインしているチームを取得。ログイン後、チーム情報を表示。
+  public function team_register_info() 
+  {
+    $team = Auth::guard('teams')->user(); 
+    return view('team_info', compact('team')); 
+  }
 }

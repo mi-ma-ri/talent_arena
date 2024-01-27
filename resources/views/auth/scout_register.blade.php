@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('body-class', 'background')
 @section('scout_register')
 
 <body>
@@ -45,10 +46,17 @@
                                     <input type="text" id="teamName" class="form-control pt-3 pb-3 mb-2 @error('club_name') is-invalid @enderror" name="club_name" placeholder="チーム名をご入力ください。">
                                 </div>
                             </div>
+                            <!-- 同意チェックボックス -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agreementCheckbox">
+                                <label class="form-check-label" for="agreementCheckbox">
+                                    登録情報を確認しました
+                                </label>
+                            </div>
                         </div>
-                        <div class="mt-5">
-                            <button type="submit" class="btn btn-primary pt-3 pb-3 w-25">作成</button>
-                        </div>
+                        <button type="submit" class="btn btn-primary player-regi__btn" id="submitButton" disabled>
+                            送信
+                        </button>
                     </fieldset>
                 </form>
             </div>

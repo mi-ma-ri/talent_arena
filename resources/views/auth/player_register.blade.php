@@ -1,9 +1,10 @@
 @extends('layouts.app')
+@section('body-class', 'background')
 @section('player_register')
 
 <body>
     <div class="text-center h-25">
-        <img src="{{ asset('/logo_header.png')}}" style="width: 250px">
+        <img src="{{ asset('/logo_header.png')}}" class="player-regi__logo">
     </div>
     <div class="container">
         <div class="row">
@@ -53,7 +54,6 @@
                                 <option value="男性">男性</option>
                                 <option value="女性">女性</option>
                             </select>
-
                             <label for="playerBirth" class="form-label">生年月日</label>
                             @error('birthday')
                                 <span class="error-message">{{ $message }}</span>
@@ -76,10 +76,17 @@
                                     <input type="text" id="playerPosition" name="position" class="form-control pt-3 pb-3 mb-2 @error('position') is-invalid @enderror" placeholder="※一番得意なポジションを入力">
                                 </div>
                             </div>
+                            <!-- 同意チェックボックス -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agreementCheckbox">
+                                <label class="form-check-label" for="agreementCheckbox">
+                                    登録情報を確認しました
+                                </label>
+                            </div>
                         </div>
-                        <div class="mt-4">
-                            <input type="submit"  class="btn btn-primary pt-3 pb-3 w-25" value="作成">
-                        </div>
+                        <button type="submit" class="btn btn-primary player-regi__btn" id="submitButton" disabled>
+                            送信
+                        </button>
                     </fieldset>
                 </form>
             </div>

@@ -19,7 +19,7 @@
   <div class="row">
     {{-- サイドバーの内容をインクルード --}}
     <div class="col-md-3">
-      @include('player_info_sidebar')
+      @include('team_sidebar')
     </div>
     <div class="container background">
       <div class="row justify-content-center">
@@ -28,24 +28,12 @@
           <div class="table-container">
             <table class="playerInfo">
               <tr>
+                <th>登録チーム名</th>
+                <td>{{ $team->team_name }}</td>
+              </tr>
+              <tr>
                 <th>メールアドレス</th>
-                <td>{{ $player->email }}</td>
-              </tr>
-              <tr>
-                <th>姓名</th>
-                <td>{{ $player->full_name }}</td>
-              </tr>
-              <tr>
-                <th>生年月日</th>
-                <td>{{ $player->birthday }}</td>
-              </tr>
-              <tr>
-                <th>現所属チーム</th>
-                <td>{{ $player->current_team }}</td>
-              </tr>
-              <tr>
-                <th>ポジション</th>
-                <td>{{ $player->position }}</td>
+                <td>{{ $team->email }}</td>
               </tr>
             </table>
           </div>
