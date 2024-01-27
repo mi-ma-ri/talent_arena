@@ -1,10 +1,10 @@
 @extends('layouts.app')
-
+@section('body-class', 'background')
 @section('choose_register')
 
 <body>
   <div class="text-center">
-    <img src="logo_header.png" alt="サンプル画像" style="width:250px;">
+    <img src="{{ asset('/logo_header.png') }}" class="register-logo" >
   </div>
   <div class="container">
     <div class="row">

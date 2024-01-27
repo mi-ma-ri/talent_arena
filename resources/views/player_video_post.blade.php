@@ -16,37 +16,31 @@
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-  <div class="row vh-100">
+  <div class="row">
     {{-- サイドバーの内容をインクルード --}}
-    <div class="col-md-3 bg-dark">
+    <div class="col-md-3">
       @include('player_info_sidebar')
     </div>
-    <div class="col p-0">
-      <nav class="navbar">
-        <div class="container-fluid justify-content-center pb-3 pt-3">
-          <span class="navbar-text player-info-nav">
-            動画投稿画面
-          </span>
-        </div>
-      </nav>
-      <div class="row justify-content-center">
-        <div class="col-md-5 mt-5">
+    <div class="container mt-5">
+      <div class="row justify-content-center background">
+        <div class="col-md-4 mt-5">
           <form method="POST" action="{{ route('player.store') }}">
             @csrf
-            <div class="row">
+            <div class="row p-post-text">
+              <h1 class="text-center mb-3">動画URL投稿</h1>
               <div class="col-md-6 mb-2 mt-2">
                 <label for="post_day" class="form-label">投稿日</label>
                 @error('day')
                   <span class="error-message">{{ $message }}</span>
                 @enderror
-                <input type="date" class="form-control @error('day') is-invalid @enderror" id="post_day" name="day">
+                <input type="date" class="form-control p-post-padding @error('day') is-invalid @enderror" id="post_day" name="day">
               </div>
               <div class="col-md-6 mb-2 mt-2">
                 <label for="team" class="form-label @error('team_id') is-invalid @enderror">投稿先チーム</label>
                   @error('team_id')
                     <span class="error-message">{{ $message }}</span>
                   @enderror
-                <select id="team" name="team_id" class="form-select">
+                <select id="team" name="team_id" class="form-select p-post-padding">
                   <option value="">選択してください</option>
                   @foreach ($scouts_team as $team)
                     <option value="{{ $team->id }}">{{ $team->team_name }}</option>
@@ -122,5 +116,3 @@
   </div>
 </body>
 </html>
-  </div>
-</body>

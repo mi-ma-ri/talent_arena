@@ -25,7 +25,7 @@ class LoginController extends Controller
 
         if (Auth::guard($guard)->attempt($credentials)) {
             $request->session()->regenerate();
-            $redirectView = $userType === 'teams' ? 'team/players-list' : 'player/info';
+            $redirectView = $userType === 'teams' ? 'team/info' : 'player/info';
             return redirect()->intended($redirectView);
         }
 
@@ -38,7 +38,12 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         
-        return redirect('/login');
+        return redirect('/completion-logout');
+    }
+
+    public function completion_logout()
+    {
+        return view('completion_logout');
     }
     
 
