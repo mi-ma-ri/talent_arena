@@ -59,7 +59,6 @@ h1 {
 }
 
 .header-title {
-    font-size: 40px;
     height: 48px;
     display: block;
 }
@@ -134,6 +133,7 @@ h1 {
     opacity: 0.7;
 }
 
+
 /* 
     選手、チームログイン画面
     login.blade
@@ -180,10 +180,6 @@ h1 {
     選手、チームどちらの新規登録をするか選択する画面
     choose_register.blade
 */
-.register-logo {
-    width: 300px;
-}
-
 .font-right {
     color: black;
     font-size: 32px;
@@ -232,10 +228,6 @@ h1 {
 #submitButton {
     background-color: #007bff; /* 例: ブルー */
     color: white;
-}
-
-.player-regi__logo {
-    width: 300px;
 }
 .register-btn {
     padding: 10px 20px;
@@ -320,6 +312,17 @@ h1 {
     max-width: 100%;
     background-color: #ffe2c7;
     z-index: 10;
+}
+.header-logo {
+    position: relative;
+    width: 100%;
+}
+.sub_header {
+    width: 350px;
+    margin-top: 30px;
+}
+.sidebar_header {
+    margin-left: 30px;
 }
 #sidebarMenu {
     height: 100%;
@@ -586,4 +589,66 @@ table th {
 .table-list:hover {
     background-position: -100% 0;
     color: #ffe2c7;
+}
+
+#toast-container > .toast {
+    background-color: green;
+    color: white; /* テキストの色を変更する場合 */
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+    font-size: 20px;
+}
+
+.statusSelect {
+    position: relative;
+}
+
+.statusSelect::before,
+.statusSelect::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.statusSelect::before {
+    right: 0;
+    display: inline-block;
+    width: 2.8em;
+    height: 2.8em;
+    border-radius: 0 3px 3px 0;
+    background-color: #27262c;
+    content: "";
+}
+
+.statusSelect::after {
+    position: absolute;
+    top: 50%;
+    right: 1.4em;
+    transform: translate(50%, -50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-bottom: 3px solid #fff;
+    border-right: 3px solid #fff;
+    content: "";
+}
+
+.statusSelect select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: 230px;
+    height: 2.8em;
+    padding: 0.4em 3.6em 0.4em 0.8em;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.statusSelect select:focus {
+    outline: 1px solid #ffffff;
 }

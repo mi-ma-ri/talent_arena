@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\TeamRegisterController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TeamController;
+
 
 
 /*
@@ -38,5 +40,6 @@ Route::get('/player/video-history', [App\Http\Controllers\playerController::clas
 Route::get('/team/players-list', [App\Http\Controllers\TeamController::class, 'players_list'])->name('players_list');
 Route::get('/team/url-point-list/{id}', [App\Http\Controllers\TeamController::class, 'url_point_list'])->name('url_point_list');
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
-Route::post('team/register', [TeamRegisterController::class, 'store'])->name('team.store');
+Route::post('team/register', [TeamRegisterController::class, 'registerStore'])->name('teamregister.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');
+Route::post('/team/{player_id}', [TeamController::class, 'store'])->name('team.store');

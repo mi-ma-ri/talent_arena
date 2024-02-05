@@ -8,10 +8,28 @@ use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\VideoPosts;
 use App\Models\ScoutsTeam;
+use App\Models\Statuses;
 use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
+
+  public function store(Request $request, $player_id) 
+  {
+    $status_id = $request->input('status');
+
+    $player = Player::find($player_id);
+
+    if ($player) {
+      $player->statuses_id = $status_id;
+      $player->save();
+    }
+
+    session()->flash('flash_message', 'ステータス設定完了');
+    return redirect('/team/players-list');
+
+
+  }
 
   /*該当チームに投稿した選手の情報と投稿詳細ボタンが表示される
     $playersには、scouts_team_id が $teamIds と一致するレコードがある Playerレコードを取得する条件を設定
@@ -19,15 +37,20 @@ class TeamController extends Controller
   */
   public function players_list () 
   {
-    $teamIds = Auth::guard('teams')->id(); // ログインしているチームのIDを取得
-    $players = Player::WhereHas('videoPosts', function($query) use ($teamIds) {
-      $query->where('scouts_team_id', $teamIds);
-    })->with(['videoPosts' => function($query) use ($teamIds) {
-      $query->where('scouts_team_id', $teamIds);
-    }])->get();
-    
-    return view('team_playerlist', compact('players'));
+    $teamId = Auth::guard('teams')->id(); // ログインしているチームのIDを取得
+    $statusIds = Player::get(['statuses_id']); // PlayerテーブルのステータスIDカラムを取得
+
+    $players = Player::with(['videoPosts', 'statuses'])
+      ->whereHas('videoPosts', function($query) use ($teamId) {
+          $query->where('scouts_team_id', $teamId);
+      })
+      ->whereIn('statuses_id', $statusIds) // statuses_idが1, 2, 3のいずれかの選手を取得
+      ->get();
+
+      $statusList = Statuses::all();
+    return view('team_playerlist', compact('players', 'statusList'));
   }
+
 
   // 各選手の投稿詳細画面を表示される
   public function url_point_list($id)  

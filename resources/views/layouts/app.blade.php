@@ -25,7 +25,7 @@
     <div class="header">
       <div class="container-fluid d-flex align items-center justify-content-between">
         <a href="{{ url('/') }}" class="navbar-brand header-title">
-          <h1>TalentArena</h1>
+          <img src="{{ asset('/talentarena.logo.png') }}" class="header-logo" >
         </a>
         <div class="text-end">
           <!-- Authentication Links -->

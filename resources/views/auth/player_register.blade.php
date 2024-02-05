@@ -4,7 +4,7 @@
 
 <body>
     <div class="text-center h-25">
-        <img src="{{ asset('/logo_header.png')}}" class="player-regi__logo">
+        <img src="{{ asset('/logo_header.png')}}" class="sub_header">
     </div>
     <div class="container">
         <div class="row">

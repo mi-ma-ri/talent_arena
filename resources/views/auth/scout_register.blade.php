@@ -3,8 +3,8 @@
 @section('scout_register')
 
 <body>
-    <div class="text-center h-25">
-        <img src="{{ asset('/logo_header.png')}}" style="width: 250px">
+    <div class="text-center">
+        <img src="{{ asset('/logo_header.png')}}" class="sub_header">
     </div>
     <div class="container">
         <div class="row">
@@ -12,7 +12,7 @@
                 <h1 class="display-1 font-left-player">チーム<br>情報入力</h1>
             </div>
             <div class="col-md-6 w-50">
-                <form method="POST" action="{{ route('team.store') }}">
+                <form method="POST" action="{{ route('teamregister.store') }}">
                     @csrf
                     <fieldset>
                         <legend class="font-right-player">以下の必要情報を入力してください。</legend>
