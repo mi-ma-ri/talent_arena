@@ -38,6 +38,6 @@ class Player extends Authenticatable
 
     public function statuses()
     {
-        return $this->belongsTo(Statuses::class, 'statuses_id');
+        return $this->belongsTo(Statuses::class, 'status_id');
     }
 }

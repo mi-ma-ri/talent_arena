@@ -9,13 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('players', function (Blueprint $table) {
             $table->renameColumn('statuses_id', 'status_id');
         });
     }
-    
 
     /**
      * Reverse the migrations.

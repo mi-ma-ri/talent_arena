@@ -35,6 +35,8 @@ class RegisterController extends Controller
         $player->birthday = $validated['birthday'];
         $player->current_team = $validated['team_name'];
         $player->position = $validated['position'];
+        // ステータスのデフォルト値を「未定」で設定。チーム側に未定で表示される。
+        $player->status_id = 1; 
 
         $player->save();
         return redirect('/completion-register');

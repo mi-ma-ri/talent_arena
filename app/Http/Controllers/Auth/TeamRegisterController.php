@@ -22,7 +22,7 @@ class TeamRegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\ScoutsTeam
      */
-    public function registerStore(TeamRegisterRequest $request)
+    public function store(TeamRegisterRequest $request)
     {
       $validated = $request->validated();
 

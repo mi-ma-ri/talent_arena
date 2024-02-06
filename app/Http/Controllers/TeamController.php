@@ -21,7 +21,7 @@ class TeamController extends Controller
     $player = Player::find($player_id);
 
     if ($player) {
-      $player->statuses_id = $status_id;
+      $player->status_id = $status_id;
       $player->save();
     }
 
@@ -38,13 +38,13 @@ class TeamController extends Controller
   public function players_list () 
   {
     $teamId = Auth::guard('teams')->id(); // ログインしているチームのIDを取得
-    $statusIds = Player::get(['statuses_id']); // PlayerテーブルのステータスIDカラムを取得
+    $statusIds = Player::get(['status_id']); // PlayerテーブルのステータスIDカラムを取得
 
     $players = Player::with(['videoPosts', 'statuses'])
       ->whereHas('videoPosts', function($query) use ($teamId) {
-          $query->where('scouts_team_id', $teamId);
+        $query->where('scouts_team_id', $teamId);
       })
-      ->whereIn('statuses_id', $statusIds) // statuses_idが1, 2, 3のいずれかの選手を取得
+      ->whereIn('status_id', $statusIds) // status_idが1, 2, 3のいずれかの選手を取得
       ->get();
 
       $statusList = Statuses::all();

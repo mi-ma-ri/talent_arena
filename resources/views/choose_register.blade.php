@@ -3,7 +3,7 @@
 @section('choose_register')
 
 <body>
-  <div>
+  <div class="text-center">
     <img src="{{ asset('/logo_header.png') }}" class="sub_header">
   </div>
   <div class="container">

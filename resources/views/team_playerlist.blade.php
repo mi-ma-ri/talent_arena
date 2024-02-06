@@ -86,7 +86,7 @@
                                   <select name="status">
                                     <option value="">選択してください</option>
                                     @foreach ($statusList as $status) 
-                                      @if($status->id === $player->statuses_id )
+                                      @if($status->id === $player->status_id )
                                         <option value="{{ $status->id }}" selected>{{ $status->statuses_name }}</option>
                                       @else
                                         <option value="{{ $status->id }}">{{ $status->statuses_name }}</option>
