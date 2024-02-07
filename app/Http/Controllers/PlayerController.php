@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PlayerController extends Controller
 {
-
-    // 選手が希望チーム宛に動画を投稿する
+// 選手が希望チーム宛に動画を投稿する
     public function store (VideoPostRequest $request) 
     {
         $validated = $request->validated();

@@ -12,6 +12,7 @@ use App\Models\Statuses;
 class Player extends Authenticatable
 {
     use Notifiable;
+    const DEFAULT_STATUS = 1; // 定数を定義
     protected $table = "players";
 
     protected $fillable = [
