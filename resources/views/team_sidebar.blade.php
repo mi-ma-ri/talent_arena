@@ -26,7 +26,7 @@
         <div class="spinner horizontal"></div>
         <div class="spinner diagonal part-2"></div>
       </label>
-      <span class="system-name">TalentArena</span>
+      <img src="{{ asset('/talentarena.logo.png') }}" class="sidebar_header" >
       <div class="user-name">
         <a href="{{ route('team_register_info')}}" class="user-name-btn">
           登録情報に戻る

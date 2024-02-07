@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\ScoutsTeam;
 use App\Models\VideoPosts;
+use App\Models\Statuses;
 use Carbon\Carbon;
 use App\Http\Requests\VideoPostRequest;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PlayerController extends Controller
 {
-
-    // 選手が希望チーム宛に動画を投稿する
+// 選手が希望チーム宛に動画を投稿する
     public function store (VideoPostRequest $request) 
     {
         $validated = $request->validated();
@@ -37,7 +37,7 @@ class PlayerController extends Controller
         return redirect('/completion-success');
     }
 
-    // 投稿先のチームを取
+    // 投稿先のチームを取得
     public function player_video_post () 
     {
         $scouts_team = ScoutsTeam::all();

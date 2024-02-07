@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\VideoPosts;
+use App\Models\Statuses;
 
 
 class Player extends Authenticatable
 {
     use Notifiable;
+    const DEFAULT_STATUS = 1; // 定数を定義
     protected $table = "players";
 
     protected $fillable = [
@@ -33,5 +35,10 @@ class Player extends Authenticatable
     public function videoPosts()
     {
         return $this->hasMany(VideoPosts::class, 'players_id', 'id');
+    }
+
+    public function statuses()
+    {
+        return $this->belongsTo(Statuses::class, 'status_id');
     }
 }

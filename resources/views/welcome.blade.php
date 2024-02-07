@@ -22,7 +22,8 @@
                     <span>世界で活躍する選手を輩出したい。</span>
                 </h2>
                 <h1 class="top-title">
-                    <span>チームの可能性を広げる</span>
+                    <span>スカウトティングの質をあげて<br></span>
+                    <span>チーム力を向上させる。</span>
                 </h1>
             </div>
         </div>
@@ -30,7 +31,7 @@
             <img src="/logo_header.png" class="w-100" alt="...">
             <div class="carousel-caption__main">
                 <span class="top-title">
-                    TalentArenaから世界へ</span>
+                    TalentArenaから世界で通用する選手を発掘</span>
                 </span>            
             </div>
         </div>
