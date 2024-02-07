@@ -79,7 +79,7 @@
                               <h5 class="modal-title p-modal-font">{{$player->full_name}} 選手のステータスを選択してください。</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body p-modal-font">
+                            <div class="modal-body">
                               <form method="POST" action="{{ route('team.store', ['player_id' => $player->id]) }}">
                                 @csrf
                                 <label class="statusSelect">

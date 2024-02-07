@@ -24,7 +24,7 @@
     {{-- その他のメインコンテンツ --}}
     <div class="container background">
       <div class="row justify-content-center">
-        <div class="col-md-6 info_top">
+        <div class="col-md-7 info_top">
           <h1 class="mb-3 font-color">投稿履歴</h1>
           <div class="row text-center">
             <!-- 列1 -->
@@ -33,7 +33,7 @@
                 <li class="list-group-item menu">投稿①</li>
                   <div class="d-flex flex-row align-items-center p-modal-background">
                     <div class="col-md-6 p-modal-font">
-                      {{ $videoPosts->check_point_1 }}
+                      {!! nl2br(e($videoPosts->check_point_1)) !!}
                     </div>
                     <div class="col-md-6 pt-4">
                       @if($videoPosts->thumbnail_url_1)
@@ -55,7 +55,7 @@
                   @if($videoPosts->post_url_2)
                     <div class="d-flex flex-row align-items-center p-modal-background">
                       <div class="col-md-6 p-modal-font">
-                        {{ $videoPosts->check_point_2 }}
+                        {!! nl2br(e($videoPosts->check_point_2)) !!}
                       </div>
                       <div class="col-md-6 pt-4">
                         @if($videoPosts->thumbnail_url_2)
@@ -67,7 +67,7 @@
                       </div>
                     </div>
                   @else
-                    <div class="text-center text-none">投稿なし</div>
+                    <div class="text-none__team">投稿なし</div>
                   @endif
                 </li>
                 <!-- 投稿3の表示 -->
@@ -75,7 +75,7 @@
                   @if($videoPosts->post_url_3)
                     <div class="d-flex flex-row align-items-center p-modal-background">
                       <div class="col-md-6 p-modal-font">
-                        {{ $videoPosts->check_point_3 }}
+                        {!! nl2br(e($videoPosts->check_point_3)) !!}
                       </div>
                       <div class="col-md-6 pt-4">
                         @if($videoPosts->thumbnail_url_3)
@@ -87,7 +87,7 @@
                       </div>
                     </div>
                   @else
-                    <div class="text-none p-modal-font">投稿なし</div>
+                    <div class="text-none__team">投稿なし</div>
                   @endif
                 </li>
               </ul>

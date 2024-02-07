@@ -37,9 +37,9 @@
               </div>
               <div class="col-md-6 mb-2 mt-2">
                 <label for="team" class="form-label @error('team_id') is-invalid @enderror">投稿先チーム</label>
-                  @error('team_id')
-                    <span class="error-message">{{ $message }}</span>
-                  @enderror
+                @error('team_id')
+                  <span class="error-message">{{ $message }}</span>
+                @enderror
                 <select id="team" name="team_id" class="form-select p-post-padding">
                   <option value="">選択してください</option>
                   @foreach ($scouts_team as $team)
@@ -48,6 +48,18 @@
                 </select>
               </div>
             </div>
+            <span>
+              <div class="tooltip2">
+                <p>■ 記入例 ■</p>
+                <div class="description2">
+                  背番号 10<br>
+                  大会名:インターハイ県予選準決勝<br>
+                  ポジションはFWで、相手との競り合いで負けないところが特徴<br>
+                  <br>
+                  ※ あくまでも記入例になるので必要に応じて記述してください。
+                </div>
+              </div>
+            </span>
             <fieldset class="fieldset-border">
               <legend>投稿詳細1</legend>
               <div class="row">
@@ -60,7 +72,7 @@
                 </div>
               </div>
               <div class="mb-3 mt-2">
-                <label for="textarea1" class="form-label">注目してほしいポイント ※背番号の入力は必須でお願いします。</label>
+                <label for="textarea1" class="form-label">注目してほしいポイント ※1つ目の投稿に背番号入力は必須でお願いします。</label>
                 @error('point1')
                   <span class="error-message">{{ $message }}</span>
                 @enderror
@@ -79,7 +91,7 @@
                 </div>
               </div>
               <div class="mb-3 mt-2">
-                <label for="textarea2" class="form-label">注目してほしいポイント ※背番号の入力は必須でお願いします。</label>
+                <label for="textarea2" class="form-label">注目してほしいポイント</label>
                 @error('point2')
                   <span class="error-message">{{ $message }}</span>
                 @enderror
@@ -98,7 +110,7 @@
                 </div>
               </div>
               <div class="mb-5 mt-2">
-                <label for="textarea3" class="form-label">注目してほしいポイント ※背番号の入力は必須でお願いします。</label>
+                <label for="textarea3" class="form-label">注目してほしいポイント</label>
                 @error('point3')
                   <span class="error-message">{{ $message }}</span>
                 @enderror
