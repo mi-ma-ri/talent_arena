@@ -32,7 +32,7 @@
                 <td>{{ $player->email }}</td>
               </tr>
               <tr>
-                <th>姓名</th>
+                <th>名前</th>
                 <td>{{ $player->full_name }}</td>
               </tr>
               <tr>

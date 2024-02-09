@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('body-class', 'background')
 @section('player_register')
-
-<body>
     <div class="text-center h-25">
         <img src="{{ asset('/logo_header.png')}}" class="sub_header">
     </div>
@@ -28,7 +26,7 @@
                             @enderror
                             <input type="password" class="form-control pt-3 pb-3 mb-2 @error('password') is-invalid @enderror" id="playerPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
                             <label for="sportSelect" class="form-label">競技名</label>
-                               @error('sports_id')
+                                @error('sports_id')
                                     <span class="error-message">{{ $message }}</span>
                                 @enderror
                             <select id="sportSelect" name="sports_id" class="form-select pt-3 pb-3 mb-2 @error('sports_id') is-invalid @enderror">
@@ -92,5 +90,4 @@
             </div>
         </div>
     </div>
-</body>
 @endsection
