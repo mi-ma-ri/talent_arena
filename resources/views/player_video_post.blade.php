@@ -57,6 +57,8 @@
                   特徴としては、遠い位置から得点を決めれるところが特徴です。<br>
                   また、怪我で離脱することがない部分も自分の特徴の一つです。<br>
                   <br>※ あくまでも記入例になるので必要に応じて記述してください。
+                  <br>注目してほしいポイントについては100文字以内で記入をお願いいたします。<br>
+                  <br><a class="font-color" href="https://sundryst.com/convenienttool/strcount.html">入力した文字数チェックはこちら</a>
                 </div>
               </div>
             </span>
