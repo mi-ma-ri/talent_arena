@@ -22,10 +22,10 @@ class UserRegisterRequest extends FormRequest
                 'regex:/^[A-Za-z0-9]+$/'  // 半角英数字のみ
             ],
             'sports_id' => 'required',
-            'full_name' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u',
+            'full_name' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠ー・]+$/u',
             'gender' => 'required',
             'birthday' => 'required|date|before:today',
-            'team_name' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u',
+            'team_name' => 'required|string|max:100',
             'position' => 'required|string|max:100|regex:/^[a-zA-Zぁ-んァ-ン一-龠]+$/u'
         ];
     }

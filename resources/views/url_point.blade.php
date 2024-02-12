@@ -31,11 +31,11 @@
             <div class="modal-body">
               <ul class="list-group">
                 <li class="list-group-item menu">投稿①</li>
-                  <div class="d-flex flex-row align-items-center p-modal-background">
+                  <div class="d-flex flex-row align-items-center p-modal-background p-4">
                     <div class="col-md-6 p-modal-font">
                       {!! nl2br(e($videoPosts->check_point_1)) !!}
                     </div>
-                    <div class="col-md-6 pt-4">
+                    <div class="col-md-6">
                       @if($videoPosts->thumbnail_url_1)
                         <img src="{{ $videoPosts->thumbnail_url_1 }}" alt="YouTube Thumbnail" class="img-fluid pb-5">
                         <p>
