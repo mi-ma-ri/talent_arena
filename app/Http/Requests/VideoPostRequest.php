@@ -28,7 +28,7 @@ class VideoPostRequest extends FormRequest
   {
     return [
       'day.required' => '投稿日は入力必須項目です。',
-      'before_or_equal' => '未来の日付は選択できません。',
+      'before_or_equal' => '今日以前の日付を選択してください',
       'team_id.required' => '投稿先チームは選択必須項目です。',
       'url1.required' => '投稿URLは必須項目です。',
       'url1.url' => '無効なURLです。有効なURLを入力してください。',
