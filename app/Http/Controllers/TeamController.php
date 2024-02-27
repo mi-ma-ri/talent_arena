@@ -45,8 +45,7 @@ class TeamController extends Controller
         $query->where('scouts_team_id', $teamId);
       })
       ->whereIn('status_id', $statusIds) // status_idが1, 2, 3のいずれかの選手を取得
-      ->get();
-
+      ->paginate(3);
       $statusList = Statuses::all();
     return view('team_playerlist', compact('players', 'statusList'));
   }

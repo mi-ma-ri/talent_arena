@@ -121,7 +121,7 @@
                 @endforeach
               </table>
             </div>
-          </div>
+            @include('paginate', ['data' => $videoPosts])
         </div>
       </div>
     </div>

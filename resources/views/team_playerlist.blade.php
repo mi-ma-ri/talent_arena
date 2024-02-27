@@ -108,6 +108,7 @@
                 @endforeach
               </table>
             </div>
+            @include('paginate', ['data' => $players])
           </div>
         </div>
       </div>
