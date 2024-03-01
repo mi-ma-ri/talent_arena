@@ -48,7 +48,7 @@ class PlayerController extends Controller
     public function player_video_history ()
     {
         $userIds = Auth::id(); // ログインしているユーザーのIDを取得
-        $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->get();
+        $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->paginate(3);
 
         $youtubeClient = new YoutubeClient();
 
