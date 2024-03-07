@@ -37,9 +37,12 @@ Route::get('/player/info', [App\Http\Controllers\PlayerController::class, 'playe
 Route::get('/player/video', [App\Http\Controllers\PlayerController::class, 'player_video_post'])->name('player_video');
 Route::get('/team/info', [App\Http\Controllers\teamController::class, 'team_register_info'])->name('team_register_info');
 Route::get('/player/video-history', [App\Http\Controllers\playerController::class, 'player_video_history'])->name('player_video_history');
+Route::get('/player/info-edit/{id}', [App\Http\Controllers\playerController::class, 'playerEdit'])->name('player_edit');
 Route::get('/team/players-list', [App\Http\Controllers\TeamController::class, 'players_list'])->name('players_list');
 Route::get('/team/url-point-list/{id}', [App\Http\Controllers\TeamController::class, 'url_point_list'])->name('url_point_list');
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('team/register', [TeamRegisterController::class, 'store'])->name('teamregister.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');
 Route::post('/team/{player_id}', [TeamController::class, 'store'])->name('team.store');
+Route::match(['get', 'post'], '/player/info-update/{id}', [PlayerController::class, 'playerUpdate'])->name('player_update');
+

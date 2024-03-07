@@ -24,7 +24,12 @@
     <div class="container background">
       <div class="row justify-content-center">
         <div class="col-md-7 info_top">
-          <h1 class="mb-3 font-color">登録情報</h1>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="mb-3 font-color">登録情報</h1>
+            <div class="edit-container">
+              <a href="{{ route('player_edit', ['id' => $player->id]) }}" class="edit-button">編集</a>
+            </div>
+          </div>
           <div class="table-container">
             <table class="playerInfo">
               <tr>

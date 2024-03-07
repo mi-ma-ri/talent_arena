@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\TeamController;
 use App\Lib\YoutubeClient;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\Player;
 use App\Models\ScoutsTeam;
 use App\Models\VideoPosts;
@@ -34,7 +35,8 @@ class PlayerController extends Controller
         $videoPost->check_point_3 = $validated['point3'];
 
         $videoPost->save();
-        return redirect('/completion-success');
+        return view('completion_success', ['redirectRoute' => '/player/video-history']);
+
     }
 
     // 投稿先のチームを取得
@@ -72,6 +74,26 @@ class PlayerController extends Controller
     {
         $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
         return view('player_info', compact('player')); // ビューにデータを渡す
+    }
+
+    public function playerEdit($id) {
+        $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
+        return view('player_edit', compact('player'));
+    }
+
+    public function playerUpdate(UserUpdateRequest $request, $id) {
+        
+        $validated = $request->validated();
+
+        $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
+        $player->email = $validated['email'];
+        $player->full_name = $validated['full_name'];
+        $player->birthday = $validated['birthday'];
+        $player->current_team = $validated['team_name'];
+        $player->position = $validated['position'];
+
+        $player->save();
+        return view('completion_success', ['redirectRoute' => '/player/info']);
     }
 
     public function success () 

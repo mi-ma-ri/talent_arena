@@ -702,3 +702,38 @@ table th {
     top: 0px;
     left: 80px;
 }
+
+/* 
+    player登録情報編集画面
+*/
+
+.edit-secondary {
+    color: #fff;
+    font-size: 16px;
+}
+
+.edit-button {
+    background-color: #ffe2c7;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #27262c;
+    text-decoration: none;
+    margin-left: 30px;
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.edit-button:hover {
+    text-decoration: underline;
+    background-color: #007bff;
+}
+
+.edit-common {
+    padding: 15px;
+    background-color: #ffe2c7;
+}
