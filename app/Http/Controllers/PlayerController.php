@@ -35,8 +35,7 @@ class PlayerController extends Controller
         $videoPost->check_point_3 = $validated['point3'];
 
         $videoPost->save();
-        return view('completion_success', ['redirectRoute' => '/player/video-history']);
-
+        return redirect('/completion-success');
     }
 
     // 投稿先のチームを取得
@@ -93,12 +92,17 @@ class PlayerController extends Controller
         $player->position = $validated['position'];
 
         $player->save();
-        return view('completion_success', ['redirectRoute' => '/player/info']);
+        return view('completion_update');
     }
 
     public function success () 
     {
         return view('completion_success');
+    }
+
+    public function updateSuccess () 
+    {
+        return view('completion_update');
     }
 
 }
