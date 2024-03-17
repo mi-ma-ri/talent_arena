@@ -27,8 +27,8 @@
                     <img src="{{ asset('/logo_header.png') }}" class="completion-logo">
                     <h1 class="display-5 text-light mb-5">あなたの情報が正常に保存されました。</h1>
                 </div>
-                @if (Route::has('completion_success'))
-                    <a class="btn btn-primary mt-5 p-3" href="{{ route('player_video_history') }}">{{ __('投稿履歴画面へ') }}</a>
+                @if (Route::has('completion_update'))
+                  <a class="btn btn-primary mt-5 p-3" href="{{ route('player_register_info') }}">{{ __('登録情報画面へ') }}</a>
                 @endif
             </div>
         </div>
