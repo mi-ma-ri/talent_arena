@@ -37,6 +37,7 @@
     <div id="sidebarMenu">
       <ul class="sidebarMenuInner">
         <li><a href="/team/players-list">選手一覧リスト</a></li>
+        <li><a href="/team/team-details">チーム情報投稿</a></li>
         <li>
           <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">ログアウト</a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST">

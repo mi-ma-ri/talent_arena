@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\TeamDetails; // 追加
+
 use Illuminate\Notifications\Notifiable;
 
 class ScoutsTeam extends Authenticatable
@@ -26,5 +29,10 @@ class ScoutsTeam extends Authenticatable
     public function sport()
     {
         return $this->belongsTo(Sport::class, 'sports_id');
+    }
+
+    public function teamDetails(): HasOne
+    {
+        return $this->hasOne(TeamDetails::class, 'scouts_team_id');
     }
 }
