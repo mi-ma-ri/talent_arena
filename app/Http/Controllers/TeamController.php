@@ -7,29 +7,12 @@ use App\Lib\YoutubeClient;
 use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\VideoPosts;
-use App\Models\ScoutsTeam;
 use App\Models\Statuses;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 
 class TeamController extends Controller
 {
-  public function hoge(Request $request)
-  {
-    Log::debug('hode');
-    // $status_id = $request->input('status');
-
-    // $player = Player::find($player_id);
-
-    // if ($player) {
-    //   $player->status_id = $status_id;
-    //   $player->save();
-    // }
-
-    // session()->flash('flash_message', 'ステータス設定完了');
-    return redirect('/');
-  }
   public function store(Request $request, $player_id)
   {
     $status_id = $request->input('status');
@@ -45,7 +28,8 @@ class TeamController extends Controller
     return redirect('/team/players-list');
   }
 
-  /*該当チームに投稿した選手の情報と投稿詳細ボタンが表示される
+  /*
+    該当チームに投稿した選手の情報と投稿詳細ボタンが表示される
     $playersには、scouts_team_id が $teamIds と一致するレコードがある Playerレコードを取得する条件を設定
     併せて関連モデルとなるvideoPostsの値を取得する場合はwithメソッドで条件を設定
   */
@@ -58,9 +42,10 @@ class TeamController extends Controller
       ->whereHas('videoPosts', function ($query) use ($teamId) {
         $query->where('scouts_team_id', $teamId);
       })
-      ->whereIn('status_id', $statusIds) // status_idが1, 2, 3のいずれかの選手を取得
+      ->whereIn('status_id', $statusIds) // status_idと$statusIdsで一致したレコードを探す
       ->paginate(3);
-    $statusList = Statuses::all();
+
+    $statusList = Statuses::all(); // ステータステーブルを全件取得
     return view('team_playerlist', compact('players', 'statusList'));
   }
 

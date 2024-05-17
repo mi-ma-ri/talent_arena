@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,34 +18,36 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="header">
-      <label for="openSidebarMenu" class="sidebarIconToggle">
-        <div class="spinner diagonal part-1"></div>
-        <div class="spinner horizontal"></div>
-        <div class="spinner diagonal part-2"></div>
-      </label>
-      <img src="{{ asset('/talentarena.logo.png') }}" class="sidebar_header" >
-      <div class="user-name">
-        <a href="{{ route('team_register_info')}}" class="user-name-btn">
-          登録情報に戻る
-        </a>
-      </div>
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+        <img src="{{ asset('/talentarena.logo.png') }}" class="sidebar_header">
+        <div class="user-name">
+            <a href="{{ route('team_register_info') }}" class="user-name-btn">
+                登録情報に戻る
+            </a>
+        </div>
     </div>
     <input type="checkbox" class="openSidebarMenu toggle-checkbox" id="openSidebarMenu">
     <div id="sidebarMenu">
-      <ul class="sidebarMenuInner">
-        <li><a href="/team/players-list">選手一覧リスト</a></li>
-        <li><a href="/team/team-details">チーム情報投稿</a></li>
-        <li>
-          <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">ログアウト</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-          </form>
-        </li>
-      </ul>
+        <ul class="sidebarMenuInner">
+            <li><a href="/team/players-list">選手一覧リスト</a></li>
+            <li><a href="/team/team-details">チーム情報投稿</a></li>
+            <li><a href="/team/team-details-edit">チーム情報投稿編集</a></li>
+            <li>
+                <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">ログアウト</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
+            </li>
+        </ul>
     </div>
-  </body>
-</html>
+</body>
 
+</html>

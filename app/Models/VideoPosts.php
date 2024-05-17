@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ScoutsTeam;
 use App\Models\player;
@@ -11,7 +10,6 @@ use App\Models\player;
 
 class VideoPosts extends Model
 {
-    use HasFactory;
     protected $table = "video_posts";
 
     protected $fillable = [

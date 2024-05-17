@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Sport;
 use App\Http\Requests\UserRegisterRequest;
@@ -36,7 +35,7 @@ class RegisterController extends Controller
         $player->current_team = $validated['team_name'];
         $player->position = $validated['position'];
         // ステータスのデフォルト値を「未定」を定数で設定。投稿したチーム側には「未定」のステータスで表示される。
-        $player->status_id = Player::DEFAULT_STATUS; 
+        $player->status_id = Player::DEFAULT_STATUS;
 
         $player->save();
         return redirect('/completion-register');
@@ -52,7 +51,7 @@ class RegisterController extends Controller
     {
         return view('choose_register');
     }
-    
+
     public function completion()
     {
         return view('completion_register');

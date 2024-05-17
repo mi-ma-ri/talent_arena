@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+// use Illuminate\Notifications\Notifiable;
 use App\Models\VideoPosts;
 use App\Models\Statuses;
 
 
 class Player extends Authenticatable
 {
-    use Notifiable;
+    /*
+        メール・SMSなどの通知を送信する.現状実装していない
+        use Notifiable;
+    */
     const DEFAULT_STATUS = 1; // 定数を定義
     protected $table = "players";
 

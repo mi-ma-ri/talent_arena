@@ -44,11 +44,19 @@ Route::get('/player/info-edit/{id}', [App\Http\Controllers\playerController::cla
 Route::get('/team/players-list', [App\Http\Controllers\TeamController::class, 'players_list'])->name('players_list');
 Route::get('/team/url-point-list/{id}', [App\Http\Controllers\TeamController::class, 'url_point_list'])->name('url_point_list');
 Route::get('/team/team-details', [App\Http\Controllers\TeamDetailsController::class, 'teamDetails'])->name('team_details');
+Route::get('/team/team-details-edit', [App\Http\Controllers\TeamDetailsController::class, 'teamDetailsEdit'])->name('team_detailsEdit');
+Route::get('team/teamId', [TeamDetailsController::class, 'getTeams'])->name('getTeams');
+
 // postリクエスト
 Route::post('player/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('/player/video', [PlayerController::class, 'store'])->name('player.store');
 Route::post('/player/info-update/{id}', [PlayerController::class, 'playerUpdate'])->name('player_update');
 Route::post('team/register', [TeamRegisterController::class, 'store'])->name('teamregister.store');
-Route::post('/team/{player_id}', [TeamController::class, 'store'])->name('team.store');
+/*
+    「50-部活動情報を掲載」の実装で、postしてもリダイレクトされる件
+    同じルート(/team)の場合。固定ルートを先に定義し、パラメータルートを後に定義
+    参考:「Laravel ルート定義 順序」で検索。
+*/
 Route::post('/team/introduction', [TeamDetailsController::class, 'store'])->name('teamDetails.store');
-Route::post('/team/hoge', [TeamController::class, 'hoge'])->name('team.hoge');
+Route::post('/team/team-details-update', [TeamDetailsController::class, 'teamDetailsUpdate'])->name('teamDetailsUpdate');
+Route::post('/team/{player_id}', [TeamController::class, 'store'])->name('team.store');

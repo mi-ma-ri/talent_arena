@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TeamDetailsRequest extends FormRequest
+class TeamDetailsUpdateRequest extends FormRequest
 
 {
   public function authorize(): bool
@@ -15,9 +15,9 @@ class TeamDetailsRequest extends FormRequest
   public function rules(): array
   {
     return [
-      'ground.0' => 'required|string|max:30',
-      'ground.1' => 'nullable|string|max:30',
-      'ground.2' => 'nullable|string|max:30',
+      'ground_1' => 'required|string|max:30',
+      'ground_2' => 'nullable|string|max:30',
+      'ground_3' => 'nullable|string|max:30',
       'member' => 'required|string|max:100',
       'staff' => 'required|string|max:30',
       'schedule' => 'required|string|max:100',
@@ -33,9 +33,13 @@ class TeamDetailsRequest extends FormRequest
   public function messages(): array
   {
     return [
-      'ground.0.required' => 'グラウンド名は最低1つ入力必須項目です。',
-      'ground.*.string' => '文字列で記入してください。',
-      'ground.*.max' => 'グラウンド名は最大30文字です。',
+      'ground_1.required' => 'グラウンド名は最低1つ入力必須項目です。',
+      'ground_1.string' => '文字列で記入してください。',
+      'ground_1.max' => 'グラウンド名は最大30文字です。',
+      'ground_2.string' => '文字列で記入してください。',
+      'ground_2.max' => 'グラウンド名は最大30文字です。',
+      'ground_3.string' => '文字列で記入してください。',
+      'ground_3.max' => 'グラウンド名は最大30文字です。',
       'member.required' => '部員数は入力必須項目です。',
       'member.max' => '部員数は最大100文字です。',
       'staff.required' => '監督名は入力必須項目です。',
