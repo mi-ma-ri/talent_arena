@@ -38,8 +38,11 @@
     <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
             <li><a href="/team/players-list">選手一覧リスト</a></li>
-            <li><a href="/team/team-details">チーム情報投稿</a></li>
-            <li><a href="/team/team-details-edit">チーム情報投稿編集</a></li>
+            @if (!$teamDetailsExist)
+                <li><a href="/team/team-details">チーム情報投稿</a></li>
+            @else
+                <li><a href="/team/team-details-edit">チーム情報編集</a></li>
+            @endif
             <li>
                 <a href="javascript:void(0);" onclick="document.getElementById('logout-form').submit();">ログアウト</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">

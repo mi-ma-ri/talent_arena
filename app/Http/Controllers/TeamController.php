@@ -8,11 +8,20 @@ use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\VideoPosts;
 use App\Models\Statuses;
+use App\Models\TeamDetails;
 use Illuminate\Support\Facades\Auth;
 
 
 class TeamController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware(function ($request, $next) {
+      $this->viewSwitch();
+      return $next($request);
+    });
+  }
   public function store(Request $request, $player_id)
   {
     $status_id = $request->input('status');
@@ -71,10 +80,27 @@ class TeamController extends Controller
     return view('url_point', compact('videoPosts'));
   }
 
-  // 現在ログインしているチームを取得。ログイン後、チーム情報を表示。
+  /*
+    現在ログインしているチームを取得。ログイン後、チーム情報を表示
+  */
   public function team_register_info()
   {
     $team = Auth::guard('teams')->user();
+    $teamDetails = TeamDetails::where('scouts_team_id', $team->id)->first();
+
     return view('team_info', compact('team'));
+  }
+
+  /*
+   チーム紹介を既に投稿しているか確認
+   チーム情報投稿とチーム情報編集のbool値を生成
+  */
+  public function viewSwitch()
+  {
+    $team = Auth::guard('teams')->user();
+    $teamDetails = TeamDetails::where('scouts_team_id', $team->id)->first();
+    $teamDetailsExist = $teamDetails ? true : false;
+
+    view()->share('teamDetailsExist', $teamDetailsExist);
   }
 }

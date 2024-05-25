@@ -16,12 +16,22 @@ class TeamDetails extends Model
 
     /*
         guardedは不正データに書き換えられたくないカラム指定
+        fillableにidや更新されたくないものは記述しない
     */
-    protected $guarded = [
-        'id',
-        'scouts_team_id',
+    protected $fillable = [
+        'ground_1',
+        'ground_2',
+        'ground_3',
+        'members',
+        'coach',
+        'weekly_schedule',
+        'tr_time',
+        'pitch',
+        'expenses',
+        'dormitory',
+        'conditions',
+        'is_part_time_allowed'
     ];
-
     public function scoutsTeam(): BelongsTo
     {
         return $this->belongsTo(ScoutsTeam::class, 'scouts_team_id');
