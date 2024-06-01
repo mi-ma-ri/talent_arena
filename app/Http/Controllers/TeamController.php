@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
-
+  /*
+    @todo
+  */
   public function __construct()
   {
     $this->middleware(function ($request, $next) {
