@@ -16,13 +16,21 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $userType = $request->input('user_type'); //login.bladeからPostされる
+        // login.bladeからPostされる
+        $userType = $request->input('user_type');
+
+        // メール・パスワードを取得
         $credentials = $request->only('email', 'password');
 
+        // config/auth.php上の「guards」に定義されている
         $guard = $userType === 'teams' ? 'teams' : 'web';
+        Log::debug('ログイン試行', ['userType' => $userType, 'guard' => $guard]);
 
-         Log::debug('ログイン試行', ['userType' => $userType, 'guard' => $guard]);
-
+        /*
+            認証試行
+            セッションの再生成
+            リダイレクト
+        */
         if (Auth::guard($guard)->attempt($credentials)) {
             $request->session()->regenerate();
             $redirectView = $userType === 'teams' ? 'team/info' : 'player/info';
@@ -34,10 +42,11 @@ class LoginController extends Controller
         return back();
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
         $request->session()->invalidate();
-        
+
         return redirect('/completion-logout');
     }
 
@@ -45,7 +54,7 @@ class LoginController extends Controller
     {
         return view('completion_logout');
     }
-    
+
 
 
     /**

@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'players',
     ],
 
     /*
@@ -35,7 +35,9 @@ return [
     |
     */
 
-    // 認証・ログインで使われる
+    /*
+        認証機能を提供。認証対象を設定する
+    */
     'guards' => [
         'web' => [
             'driver' => 'session',

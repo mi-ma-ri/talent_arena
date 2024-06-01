@@ -3,28 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\TeamController;
 use App\Lib\YoutubeClient;
-use Illuminate\Http\Request;
 use App\Http\Requests\UserUpdateRequest;
-use App\Models\Player;
 use App\Models\ScoutsTeam;
 use App\Models\VideoPosts;
-use App\Models\Statuses;
-use Carbon\Carbon;
+
 use App\Http\Requests\VideoPostRequest;
 use Illuminate\Support\Facades\Auth;
 
 
 class PlayerController extends Controller
 {
-// 選手が希望チーム宛に動画を投稿する
-    public function store (VideoPostRequest $request) 
+    // 選手が希望チーム宛に動画を投稿する
+    public function store(VideoPostRequest $request)
     {
         $validated = $request->validated();
-        
+
         $videoPost = new VideoPosts;
-        $videoPost->players_id = Auth::id();
+        $videoPost->players_id = Auth::id(); // 認証済みのユーザーidを取得
         $videoPost->scouts_team_id = $validated['team_id'];
         $videoPost->post_date = $validated['day'];
         $videoPost->post_url_1 = $validated['url1'];
@@ -38,15 +34,22 @@ class PlayerController extends Controller
         return redirect('/completion-success');
     }
 
-    // 投稿先のチームを取得
-    public function player_video_post () 
+    /*
+        プレイヤーがURLを投稿する「投稿先のチーム」を取得
+        player_video_postへ値を渡している
+    */
+    public function player_video_post()
     {
-        $scouts_team = ScoutsTeam::all();
+        // チーム名だけ取得
+        $scouts_team = ScoutsTeam::select('team_name', 'id')->get();
         return view('player_video_post', compact('scouts_team'));
     }
 
-    // URL投稿履歴画面に関する処理
-    public function player_video_history ()
+    /*
+        プレイヤー自身が投稿した履歴を取得
+        YouTubeのタイトル・サムネイルをYoutubeClient.phpから取得している。
+    */
+    public function player_video_history()
     {
         $userIds = Auth::id(); // ログインしているユーザーのIDを取得
         $videoPosts = VideoPosts::with('scoutsTeam')->where('players_id', $userIds)->paginate(3);
@@ -68,20 +71,24 @@ class PlayerController extends Controller
         return view('player_video_history', compact('videoPosts'));
     }
 
-    // ユーザー(player)情報を取得し、viewに返却
-    public function player_register_info() 
+    /*
+       ユーザー(player)情報を取得し、viewに返却
+    */
+    public function player_register_info()
     {
         $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
         return view('player_info', compact('player')); // ビューにデータを渡す
     }
 
-    public function playerEdit($id) {
+    public function playerEdit()
+    {
         $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
         return view('player_edit', compact('player'));
     }
 
-    public function playerUpdate(UserUpdateRequest $request, $id) {
-        
+    public function playerUpdate(UserUpdateRequest $request, $id)
+    {
+
         $validated = $request->validated();
 
         $player = Auth::guard('web')->user(); // 現在ログインしているユーザーを取得
@@ -95,14 +102,13 @@ class PlayerController extends Controller
         return view('completion_update');
     }
 
-    public function success () 
+    public function success()
     {
         return view('completion_success');
     }
 
-    public function updateSuccess () 
+    public function updateSuccess()
     {
         return view('completion_update');
     }
-
 }

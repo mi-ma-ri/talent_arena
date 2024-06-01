@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('players', function (Blueprint $table) {
-            $table->renameColumn('statuses_id', 'status_id');
+        Schema::table('team_details', function (Blueprint $table) {
+            $table->renameColumn('ground1', 'ground_1');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('players', function (Blueprint $table) {
-            //
+        Schema::table('team_details', function (Blueprint $table) {
+            $table->renameColumn('ground1', 'ground_1');
         });
     }
 };
