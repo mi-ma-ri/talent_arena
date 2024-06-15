@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\ScoutsTeam;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TeamDetails extends Model
 {
     /*
+        @todo 他モデルもリファクタ
         どのテーブルと関連付いているのか
     */
     protected $table = "team_details";

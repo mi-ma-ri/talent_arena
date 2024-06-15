@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Models\TeamDetails; // 追加
+use App\Models\TeamDetails;
 
 use Illuminate\Notifications\Notifiable;
 

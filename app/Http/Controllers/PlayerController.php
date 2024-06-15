@@ -7,7 +7,7 @@ use App\Lib\YoutubeClient;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\ScoutsTeam;
 use App\Models\VideoPosts;
-
+use App\Models\TeamDetails;
 use App\Http\Requests\VideoPostRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,6 +101,16 @@ class PlayerController extends Controller
         $player->save();
         return view('completion_update');
     }
+
+    /*
+       選手が各チーム情報の閲覧ができる
+    */
+    public function player_teamNotice()
+    {
+        $teamDetails = ScoutsTeam::with('TeamDetails')->paginate(2);
+        return view('player_teamNotice', compact('teamDetails'));
+    }
+
 
     public function success()
     {
