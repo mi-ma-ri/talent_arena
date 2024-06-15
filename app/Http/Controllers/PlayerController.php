@@ -107,7 +107,7 @@ class PlayerController extends Controller
     */
     public function player_teamNotice()
     {
-        $teamDetails = ScoutsTeam::with('TeamDetails')->paginate(2);
+        $teamDetails = ScoutsTeam::with('teamDetail')->paginate(2);
         return view('player_teamNotice', compact('teamDetails'));
     }
 

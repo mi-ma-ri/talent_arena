@@ -32,7 +32,7 @@ class ScoutsTeam extends Authenticatable
         return $this->belongsTo(Sport::class, 'sports_id');
     }
 
-    public function teamDetails(): HasOne
+    public function teamDetail(): HasOne
     {
         return $this->hasOne(TeamDetails::class, 'scouts_team_id');
     }
