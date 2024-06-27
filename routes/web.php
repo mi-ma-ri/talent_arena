@@ -38,6 +38,7 @@ Route::get('/player/register', [App\Http\Controllers\Auth\RegisterController::cl
 Route::get('/team/register', [App\Http\Controllers\Auth\TeamRegisterController::class, 'getSportsName'])->name('scout_register');
 Route::get('/player/info', [App\Http\Controllers\PlayerController::class, 'player_register_info'])->name('player_register_info');
 Route::get('/player/video', [App\Http\Controllers\PlayerController::class, 'player_video_post'])->name('player_video');
+Route::get('/player/team-notice', [App\Http\Controllers\PlayerController::class, 'player_teamNotice'])->name('player_teamNotice');
 Route::get('/team/info', [App\Http\Controllers\teamController::class, 'team_register_info'])->name('team_register_info');
 Route::get('/player/video-history', [App\Http\Controllers\playerController::class, 'player_video_history'])->name('player_video_history');
 Route::get('/player/info-edit/{id}', [App\Http\Controllers\playerController::class, 'playerEdit'])->name('player_edit');

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Models\TeamDetails; // 追加
+use App\Models\TeamDetails;
 
 use Illuminate\Notifications\Notifiable;
 
@@ -32,7 +32,7 @@ class ScoutsTeam extends Authenticatable
         return $this->belongsTo(Sport::class, 'sports_id');
     }
 
-    public function teamDetails(): HasOne
+    public function teamDetail(): HasOne
     {
         return $this->hasOne(TeamDetails::class, 'scouts_team_id');
     }
