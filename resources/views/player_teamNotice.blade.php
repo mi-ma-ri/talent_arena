@@ -54,51 +54,51 @@
                                                             <table class="table-list justify-content-center">
                                                                 <tr>
                                                                     <td>グラウンド情報(活動が多い順)</td>
-                                                                    <td>①{{ $team->TeamDetails->ground_1 }}</td>
-                                                                    @if ($team->TeamDetails->ground_2)
-                                                                        <td>②{{ $team->TeamDetails->ground_2 }}</td>
+                                                                    <td>①{{ $team->teamDetail->ground_1 }}</td>
+                                                                    @if ($team->teamDetail->ground_2)
+                                                                        <td>②{{ $team->teamDetail->ground_2 }}</td>
                                                                     @endif
-                                                                    @if ($team->TeamDetails->ground_3)
-                                                                        <td>③{{ $team->TeamDetails->ground_3 }}</td>
+                                                                    @if ($team->teamDetail->ground_3)
+                                                                        <td>③{{ $team->teamDetail->ground_3 }}</td>
                                                                     @endif
 
                                                                 </tr>
                                                                 <tr>
                                                                     <td>メンバー数</td>
-                                                                    <td>{{ $team->TeamDetails->members }}</td>
+                                                                    <td>{{ $team->teamDetail->members }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>監督名</td>
-                                                                    <td>{{ $team->TeamDetails->coach }}</td>
+                                                                    <td>{{ $team->teamDetail->coach }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>週間スケジュール(流れ)</td>
-                                                                    <td>{{ $team->TeamDetails->weekly_schedule }}</td>
+                                                                    <td>{{ $team->teamDetail->weekly_schedule }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>練習時間予定</td>
-                                                                    <td>{{ $team->TeamDetails->tr_time }}</td>
+                                                                    <td>{{ $team->teamDetail->tr_time }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>グラウンド環境</td>
-                                                                    <td>{{ $team->TeamDetails->pitch }}</td>
+                                                                    <td>{{ $team->teamDetail->pitch }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>諸経費</td>
-                                                                    <td>{{ $team->TeamDetails->expenses }}</td>
+                                                                    <td>{{ $team->teamDetail->expenses }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>寮</td>
-                                                                    <td>{{ $team->TeamDetails->dormitory }}</td>
+                                                                    <td>{{ $team->teamDetail->dormitory }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>入部条件</td>
-                                                                    <td>{{ $team->TeamDetails->conditions }}</td>
+                                                                    <td>{{ $team->teamDetail->conditions }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>アルバイト可否</td>
                                                                     <td>
-                                                                        @if ($team->TeamDetails->is_part_time_allowed == 1)
+                                                                        @if ($team->teamDetail->is_part_time_allowed == 1)
                                                                             可能
                                                                         @else
                                                                             不可
