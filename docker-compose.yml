@@ -17,7 +17,7 @@ services:
             MARIADB_PASSWORD: password
             MYSQL_PASSWORD: password
             MARIADB_ROOT_PASSWORD: password
-            MARIADB_DATABASE: talent-arena-db-24
+            MARIADB_DATABASE: talent_arena_db_25
             TZ: "Asia/Tokyo"
         volumes:
             - ./docker/db/data:/var/lib/mysql
