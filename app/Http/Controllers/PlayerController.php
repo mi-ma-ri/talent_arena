@@ -6,18 +6,25 @@ use App\Consts\CommonConsts;
 use App\Http\Controllers\Controller;
 use App\Lib\YoutubeClient;
 use App\Http\Requests\UserUpdateRequest;
-use App\Http\Requests\playerPostEmailAuthRequest;
+use App\Http\Requests\PlayerPostEmailAuthRequest;
+use App\Http\Requests\PlayerGetAuthRequest;
 use App\Models\ScoutsTeam;
 use App\Models\VideoPosts;
 use App\Models\TeamDetails;
 use App\Http\Requests\VideoPostRequest;
 use App\Services\PlayerService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Throwable;
+use Exception;
 
 
 class PlayerController extends Controller
 {
 
+    /**
+     * 仮登録メール送信画面
+     */
     public function getTemporary()
     {
         return view('player.temporary', [
@@ -25,17 +32,50 @@ class PlayerController extends Controller
         ]);
     }
 
-    public function postEmailAuth(playerPostEmailAuthRequest $request, PlayerService $playerService)
-
+    /**
+     * 仮登録メール送信処理
+     */
+    public function postEmailAuth(PlayerPostEmailAuthRequest $request, PlayerService $player_service)
     {
-        $email = $request->email;
-        session()->put('player.email', $email);
-        session()->put('player.player_status', CommonConsts::PLAYER_STATUS_REGISTER);
-
-        $playerService->postEmailAuth($request->email);
-        return redirect()->route('player.get.temporary');
+        try {
+            $player_service->postEmailAuth($request->email);
+            return redirect()->route('player.get.email_auth_send');
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            return redirect()->route('player.get.email_duplicate');
+        }
     }
 
+    /**
+     * 仮登録メール送信完了画面
+     */
+    public function getEmailAuthSend(PlayerService $player_service)
+    {
+        return view('player.register_auth_send', $player_service->getEmailAuthSend());
+    }
+    /**
+     * 仮登録メール送信失敗画面
+     */
+    public function getEmailDuplicate()
+    {
+        return view('player.register_duplicate');
+    }
+
+    /**
+     * 選手情報登録画面
+     */
+    public function getAuth(PlayerGetAuthRequest $request, PlayerService $player_service)
+    {
+        try {
+            return view (
+                'player.register',
+                $player_service->getRegister($request->key)
+            );
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            return redirect()->route('player.get.temporary');
+        }
+    }
 
 
 

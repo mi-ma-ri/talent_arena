@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://https://local-ta.jp'),
+    'url' => env('APP_URL', 'http:local-ta.jp'),
 
     'asset_url' => env('ASSET_URL'),
 

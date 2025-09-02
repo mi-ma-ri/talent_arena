@@ -26,9 +26,13 @@ Route::controller(App\Http\Controllers\IndexController::class)
 Route::controller(App\Http\Controllers\PlayerController::class)
     ->name('player.')
     ->prefix('player')
+    ->middleware(App\Http\Middleware\CheckNonMember::class)
     ->group(function () {
         Route::get('temporary', 'getTemporary')->name('get.temporary');
         Route::post('email_auth', 'postEmailAuth')->name('post.email_auth');
+        Route::get('auth', 'getAuth')->name('get.auth');
+        Route::get('email_auth_send', 'getEmailAuthSend')->name('get.email_auth_send');
+        Route::get('email_duplicate', 'getEmailDuplicate')->name('get.email_duplicate');
     });
 
 

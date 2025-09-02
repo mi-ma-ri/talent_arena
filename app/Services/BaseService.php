@@ -49,14 +49,13 @@ class BaseService
   public function talentArenaApi(string $url, string $method = 'get', array $parameter = []): array
   {
     $url = substr($url, 0, 1) == "/" ? substr($url, 1) : $url;
-    $fullUrl = config("app.talent_arena_api_url") . "/{$url}";
 
     // # member_id必須設定
     // if (!isset($parameter["member_id"])) {
     //   $parameter['member_id'] = session()->get('member.member_id', 0);
     // }
 
-    return $this->api($fullUrl, $method, $parameter);
+    return $this->api(config("app.talent_arena_api_url") . "/{$url}", $method, $parameter);
   }
 
   /**

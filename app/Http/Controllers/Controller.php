@@ -11,5 +11,4 @@ class Controller extends BaseController
   const MAX_SNIPPETS_COUNT = 50;
   const DEFAULT_ORDER_TYPE = 'viewCount';
   use AuthorizesRequests, ValidatesRequests;
-
 }
