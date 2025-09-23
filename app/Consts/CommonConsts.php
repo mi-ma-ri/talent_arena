@@ -7,19 +7,26 @@ class CommonConsts
 
   /*
     |--------------------------------------------------------------------------
-    | user_status(選手側のステータス)
+    | パスワードの最低文字数
     |--------------------------------------------------------------------------
   */
-  public const PLAYER_STATUS_REGISTER = 0; // 仮登録
-  public const PLAYER_STATUS_USE = 1; // 登録済み
-  public const STATUS_MATCHING_LEAVED = 2; // マッチング退会
-  public const STATUS_NORMAL_LEAVED   = 3; // 通常退会
+  public const PASSWORD_MIN_LENGTH = 8;
 
   /*
     |--------------------------------------------------------------------------
-    | user_type(認証ロール)
+    | status
     |--------------------------------------------------------------------------
   */
-  public const USER_TYPE_PLAYERS = 0; // 選手
-  public const USER_TYPE_TEAMS = 1; // スカウトチーム
+  public const IS_TMP_MEMBER = 0; // 仮登録
+  public const IS_MEMBER = 1; // 登録済み
+  public const IS_MATCHING_LEAVED = 2; // マッチング退会
+  public const IS_NORMAL_LEAVED   = 3; // 通常退会
+
+  /*
+    |--------------------------------------------------------------------------
+    | subject_type(認証ロール)
+    |--------------------------------------------------------------------------
+  */
+  public const SUBJECT_TYPE_PLAYERS = 0; // 選手
+  public const SUBJECT_TYPE_TEAMS = 1; // スカウトチーム
 }

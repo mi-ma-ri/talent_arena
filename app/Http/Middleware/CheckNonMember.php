@@ -17,7 +17,7 @@ class CheckNonMember
     public function handle(Request $request, Closure $next): Response
     {
         # 本登録済みの選手は、TOP画面にリダイレクト
-        if (session()->get('player.user_status') == CommonConsts::PLAYER_STATUS_USE) {
+        if (session()->get('player.status') == CommonConsts::IS_MEMBER) {
             return redirect()->route('index.top.index');
         }
 

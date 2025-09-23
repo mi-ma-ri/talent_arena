@@ -33,6 +33,9 @@ Route::controller(App\Http\Controllers\PlayerController::class)
         Route::get('auth', 'getAuth')->name('get.auth');
         Route::get('email_auth_send', 'getEmailAuthSend')->name('get.email_auth_send');
         Route::get('email_duplicate', 'getEmailDuplicate')->name('get.email_duplicate');
+        Route::get('confirm', 'postConfirm')->name('get.confirm');
+        Route::post('confirm', 'postConfirm')->name('post.confirm');
+        Route::post('join', 'postJoin')->name('post.join');
     });
 
 

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Consts\CommonConsts;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Lib\YoutubeClient;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\PlayerPostEmailAuthRequest;
 use App\Http\Requests\PlayerGetAuthRequest;
+use App\Http\Requests\PlayerPostConfirmRequest;
 use App\Models\ScoutsTeam;
 use App\Models\VideoPosts;
 use App\Models\TeamDetails;
@@ -67,13 +69,42 @@ class PlayerController extends Controller
     public function getAuth(PlayerGetAuthRequest $request, PlayerService $player_service)
     {
         try {
-            return view (
-                'player.register',
-                $player_service->getRegister($request->key)
+            return view(
+                'player.auth',
+                $player_service->getAuth($request->key)
             );
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             return redirect()->route('player.get.temporary');
+        }
+    }
+    public function postConfirm(PlayerPostConfirmRequest $request)
+    {
+        return view(
+            'player.confirm',
+            [
+                'auth_key' => $request->auth_key,
+                'title' => 'プレイヤー(選手)登録確認',
+                'password' => $request->password,
+                'birth_year' => $request->birth_year,
+                'birth_month' => $request->birth_month,
+                'birth_day' => $request->birth_day,
+                'first_name' => $request->first_name,
+                'second_name' => $request->second_name,
+                'affiliated_team' => $request->affiliated_team,
+                'position' => $request->position,
+                'subject_id' => $request->subject_id,
+            ]
+        );
+    }
+
+    public function postJoin(Request $request, PlayerService $player_service)
+    {
+        try {
+            return view('register_success', $player_service->postJoin($request->all()));
+        } catch (Throwable $e) {
+            Log::error($e->getMessage());
+            return redirect()->route('player.get.auth');
         }
     }
 

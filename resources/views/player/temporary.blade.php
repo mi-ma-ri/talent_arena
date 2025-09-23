@@ -19,8 +19,8 @@
                         @enderror
                         <input type="email" class="form-control pt-3 pb-3 mb-2 @error('email') is-invalid @enderror"
                             id="playerEmail" name="email" placeholder="メールアドレスを入力してください">
-                        <input type="hidden" name="user_status" value="0">
-                        <input type="hidden" name="user_type" value="0">
+                        <input type="hidden" name="status" value="0">
+                        <input type="hidden" name="subject_type" value="0">
                         <button type="submit" class="btn btn-primary player-regi__btn">
                             送信
                         </button>
