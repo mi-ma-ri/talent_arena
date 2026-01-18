@@ -30,7 +30,7 @@ class PlayerController extends Controller
     public function getTemporary()
     {
         return view('player.temporary', [
-            'title' => 'ユーザー情報入力'
+            'title' => 'アカウント新規作成'
         ]);
     }
 

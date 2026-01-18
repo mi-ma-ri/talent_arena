@@ -3,46 +3,32 @@
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div id="app">
-                <div class="header">
-                    <div class="container-fluid d-flex align items-center justify-content-between">
-                        <a href="{{ url('/') }}" class="navbar-brand header-title">
-                            <img src="{{ asset('/talentarena.logo.png') }}" class="header-logo">
-                            <a href="{{ route('player.get.temporary') }}">学生はこちらから</a>
-                        </a>
-                    </div>
-                </div>
+                <header class="header">
+                    <a href="{{ url('/') }}" class="header-title">
+                        <img src="/talentarena.logo.png" class="header-logo" alt="Talent Arena">
+                    </a>
+                    <nav class="header-nav">
+                        <a href="{{ route('player.get.temporary') }}" class="header-link">選手ログインはこちら</a>
+                        <a href="{{ route('player.get.temporary') }}" class="header-link">選手登録はこちら</a>
+                    </nav>
+                </header>
             </div>
             <div class="carousel-item active" data-bs-interval="5000">
                 <img src="/soccer_ball.jpeg" class="w-100" alt="...">
                 <div class="carousel-caption">
-                    <h2 class="top-title__sub">
-                        <span>プロの世界で活躍したい。</span>
-                        <span>チームに貢献できる選手になりたい。</span>
-                    </h2>
                     <h1 class="top-title">
-                        <span>活躍するステージを切り拓け</span>
+                        <span>あなたのプレーが、</span><br>
+                        <span>次のステージへの扉を開く</span>
                     </h1>
                 </div>
             </div>
             <div class="carousel-item" data-bs-interval="5000">
                 <img src="/team.jpeg" class="w-100" alt="...">
                 <div class="carousel-caption">
-                    <h2 class="top-title__sub">
-                        <span>日本一のチームを作りたい。</span>
-                        <span>世界で活躍する選手を輩出したい。</span>
-                    </h2>
                     <h1 class="top-title">
-                        <span>スカウトティングの質をあげて<br></span>
-                        <span>チーム力を向上させる。</span>
+                        <span>才能との出会い</span><br>
+                        <span>スカティング力でチーム力向上</span>
                     </h1>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="10000">
-                <img src="/logo_header.png" class="w-100" alt="...">
-                <div class="carousel-caption__main">
-                    <span class="top-title">
-                        TalentArenaから世界で通用する選手を発掘</span>
-                    </span>
                 </div>
             </div>
         </div>

@@ -48,7 +48,8 @@ class PlayerService extends BaseService
   public function getEmailAuthSend(): array
   {
     $result = [
-      'title' => '新規会員登録のお手続き(選手) | Talent Arena',
+      'title' => 'メール送信完了',
+      'email' => session('email'),
     ];
 
     return $result;
