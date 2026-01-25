@@ -1,0 +1,80 @@
+// トップページ
+.carousel-caption {
+    position: absolute;
+    top: 58%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: $color-secondary;
+    font-weight: bold;
+    text-align: left;
+}
+
+.top-title {
+    font-size: 60px;
+    font-weight: bold;
+    color: $color-white;
+    -webkit-text-fill-color: $color-white;
+    -webkit-text-stroke: 3px $color-white;
+
+    span {
+        display: block;
+        letter-spacing: 0.1em;
+        line-height: 0.9;
+    }
+}
+
+/*
+    仮登録ページ説明文
+*/
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 40px;
+
+    p {
+        margin: 0;
+    }
+}
+
+/*
+    メール送信完了画面
+    register_auth_send.blade.php
+*/
+.register-auth-send {
+    padding: 60px 0;
+
+    .email-display {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: $color-white;
+        margin-bottom: 1.5rem;
+    }
+
+    .message {
+        font-size: 1.5rem;
+        font-weight: normal;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .notice-list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem auto;
+        text-align: left;
+        max-width: 500px;
+
+        li {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    .back-btn {
+        margin-top: 1.5rem;
+        padding: 12px 40px;
+        font-size: 1rem;
+    }
+}
