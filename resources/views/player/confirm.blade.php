@@ -10,6 +10,9 @@
             <form action="/player/join" method="POST">
                 @csrf
                 <dl class="row">
+                    <dt class="col-sm-3">パスワード</dt>
+                    <dd class="col-sm-9">**********(ご自身で設定したパスワード)</dd>
+
                     <dt class="col-sm-3">氏名</dt>
                     <dd class="col-sm-9">{{ $first_name }} {{ $second_name }}</dd>
 
@@ -27,6 +30,7 @@
                 <button type="submit" class="btn btn-primary player-regi__btn" id="submitButton">
                     送信
                 </button>
+                <input type="hidden" name="password" value="{{ $password }}">
                 <input type="hidden" name="first_name" value="{{ $first_name }}">
                 <input type="hidden" name="second_name" value="{{ $second_name }}">
                 <input type="hidden" name="affiliated_team" value="{{ $affiliated_team }}">

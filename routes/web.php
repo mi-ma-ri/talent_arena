@@ -38,6 +38,15 @@ Route::controller(App\Http\Controllers\PlayerController::class)
         Route::post('join', 'postJoin')->name('post.join');
     });
 
+Route::controller(App\Http\Controllers\Auth\LoginController::class)
+    ->name('login.')
+    ->prefix('login')
+
+    ->group(function () {
+        Route::get('attempt', 'getLoginForm')->name('get.form');
+        Route::post('attempt', 'postPlayerLogin')->name('post.login');
+    });
+
 
 
 

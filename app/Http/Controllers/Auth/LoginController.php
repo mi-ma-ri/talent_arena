@@ -8,38 +8,26 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
+use App\Services\PlayerLoginService;
+
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    public function login(LoginRequest $request)
+    # ログイン画面
+    public function getLoginForm()
     {
-        // login.bladeからPostされる
-        $userType = $request->input('user_type');
+        return view('auth.login');
+    }
 
-        // メール・パスワードを取得
-        $credentials = $request->only('email', 'password');
-
-        // config/auth.php上の「guards」に定義されている
-        $guard = $userType === 'teams' ? 'teams' : 'web';
-        Log::debug('ログイン試行', ['userType' => $userType, 'guard' => $guard]);
-
-        /*
-            認証試行
-            セッションの再生成
-            リダイレクト
-        */
-        if (Auth::guard($guard)->attempt($credentials)) {
-            $request->session()->regenerate();
-            $redirectView = $userType === 'teams' ? 'team/info' : 'player/info';
-            return redirect()->intended($redirectView);
-        }
-
-        // Log::debug('ログイン失敗', ['email' => $credentials['email']]);
-
-        return back();
+    # ログイン処理
+    public function postPlayerLogin(LoginRequest $request, PlayerLoginService $login_service)
+    {
+        $login_service->authenticate($request->email, $request->password);
+        return view('auth.login');
     }
 
     public function logout(Request $request)
