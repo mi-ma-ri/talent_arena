@@ -40,10 +40,11 @@ Route::controller(App\Http\Controllers\PlayerController::class)
 
 Route::controller(App\Http\Controllers\Auth\LoginController::class)
     ->name('login.')
+    ->prefix('login')
 
     ->group(function () {
-        Route::get('login', 'getPlayerLogin')->name('get.player_login');
-        Route::post('login', 'postPlayerLogin')->name('post.player_login');
+        Route::get('attempt', 'getLoginForm')->name('get.form');
+        Route::post('attempt', 'postPlayerLogin')->name('post.login');
     });
 
 

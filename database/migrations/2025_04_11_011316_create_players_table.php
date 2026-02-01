@@ -16,7 +16,7 @@ class CreatePlayersTable extends Migration
             $table->tinyInteger('players_status')->comment('0:仮登録 1:登録済み 2:退会'); // ユーザーステータス
             $table->string('ms', 255)->comment('メールアドレス'); // メールアドレス
             $table->string('ms_hash', 255)->comment('メールアドレスハッシュ値'); // メールアドレスハッシュ値
-
+            $table->string('password', 255)->nullable()->comment('パスワード');
             // 本登録で必要だけど、仮登録時は未入力なので nullable にする
             $table->string('first_name', 50)->nullable()->comment('姓'); // 姓
             $table->string('second_name', 50)->nullable()->comment('名');; // 名

@@ -78,6 +78,9 @@ class PlayerController extends Controller
             return redirect()->route('player.get.temporary');
         }
     }
+    /**
+     * 選手情報登録確認画面
+     */
     public function postConfirm(PlayerPostConfirmRequest $request)
     {
         return view(
@@ -97,11 +100,13 @@ class PlayerController extends Controller
             ]
         );
     }
-
+    /**
+     * 選手情報登録処理
+     */
     public function postJoin(Request $request, PlayerService $player_service)
     {
         try {
-            return view('register_success', $player_service->postJoin($request->all()));
+            return view('complete', $player_service->postJoin($request->all()));
         } catch (Throwable $e) {
             Log::error($e->getMessage());
             return redirect()->route('player.get.auth');

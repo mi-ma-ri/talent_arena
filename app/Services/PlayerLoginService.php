@@ -10,21 +10,21 @@ use Exception;
 class PlayerLoginService extends BaseService
 {
   /**
-   * 選手
-   * param string $email
-   * param string $password
-   * return void
+   * 選手ログイン認証
+   * @param string $email
+   * @param string $password
+   * @return void
    * @throws Exception
    */
-  public function postPlayerLogin(string $email, string $password): void
+  public function authenticate(string $email, string $password): void
   {
     $param = new stdClass;
     $param->email = $email;
     $param->password = $password;
-    $param->status = CommonConsts::IS_TMP_MEMBER;
 
     $response = $this->talentArenaApi('login/restore', 'get', (array)$param);
-    if ($response['status'] != 200) {
+    dd($response);
+    if ($response['body']['result_code'] != 200) {
       throw new Exception($response['body']['result_message']);
     }
   }

@@ -1,12 +1,14 @@
 <body>
     @extends('layout')
     @section('content')
+        <section class="page-title-section">
+            <h1 class="page-title">選手ログイン画面</h1>
+        </section>
         <div class="container h-auto">
             <div class="login-container">
-                <h1 class="login-container-word">選手ログイン画面</h1> {{-- @todo 文字色修正 --}}
                 <div class="login-container-form">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login.post.player_login') }}">
+                        <form method="POST" action="{{ route('login.post.login') }}">
                             @csrf
                             <div class="row mb-5">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>

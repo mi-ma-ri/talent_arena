@@ -18,7 +18,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     # ログイン画面
-    public function getPlayerLogin()
+    public function getLoginForm()
     {
         return view('auth.login');
     }
@@ -26,7 +26,7 @@ class LoginController extends Controller
     # ログイン処理
     public function postPlayerLogin(LoginRequest $request, PlayerLoginService $login_service)
     {
-        $login_service->postPlayerLogin($request->email, $request->password);
+        $login_service->authenticate($request->email, $request->password);
         return view('auth.login');
     }
 
