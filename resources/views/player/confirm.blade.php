@@ -30,14 +30,13 @@
                 <button type="submit" class="btn btn-primary player-regi__btn" id="submitButton">
                     送信
                 </button>
+                <input type="hidden" name="subject_id" value="{{ $subject_id }}">
                 <input type="hidden" name="password" value="{{ $password }}">
                 <input type="hidden" name="first_name" value="{{ $first_name }}">
                 <input type="hidden" name="second_name" value="{{ $second_name }}">
                 <input type="hidden" name="affiliated_team" value="{{ $affiliated_team }}">
-                <input type="hidden" name="birth_date" value="{{ $dob->toDateString() }}">
                 <input type="hidden" name="position" value="{{ $position }}">
-                <input type="hidden" name="auth_key" value="{{ $auth_key }}">
-                <input type="hidden" name="subject_id" value="{{ $subject_id }}">
+                <input type="hidden" name="birth_date" value="{{ $dob->toDateString() }}">
             </form>
         </div>
     </div>

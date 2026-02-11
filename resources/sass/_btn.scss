@@ -1,4 +1,4 @@
-/* 
+/*
     選手_新規登録画面
     player_register.blade
 */
@@ -7,4 +7,31 @@
     padding: 10px 20px;
     border-radius: 10px;
     margin: 50px 0 50px 0;
+}
+
+/*
+    選手マイページ
+    player/info.blade
+*/
+.video-post-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    margin-top: 120px;
+}
+
+.video-post-btn {
+    background-color: #ffe2c7;
+    color: #27262c;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 0.8;
+        color: #27262c;
+    }
 }

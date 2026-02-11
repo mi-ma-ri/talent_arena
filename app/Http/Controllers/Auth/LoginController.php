@@ -17,48 +17,28 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    # ログイン画面
-    public function getLoginForm()
+    # 選手ログイン画面
+    public function getPlayerAttempt()
     {
-        return view('auth.login');
+        return view('auth.attempt');
     }
 
     # ログイン処理
     public function postPlayerLogin(LoginRequest $request, PlayerLoginService $login_service)
     {
-        $login_service->authenticate($request->email, $request->password);
-        return view('auth.login');
+        $token = $login_service->auth($request->email, $request->password);
+        session(['token' => $token]);
+
+        return redirect('/player/info');
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        // sessionからtokenを削除                                                                                              
+        $request->session()->forget('token');
         $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        return redirect('/completion-logout');
-    }
-
-    public function completion_logout()
-    {
-        return view('completion_logout');
-    }
-
-
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+        return redirect()->route('login.get.attempt');
     }
 }

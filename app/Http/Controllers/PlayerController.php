@@ -112,4 +112,13 @@ class PlayerController extends Controller
             return redirect()->route('player.get.auth');
         }
     }
+
+    /**
+     * トップページ
+     */
+    public function getInfo(Request $request, PlayerService $player_service)
+    {
+        // $player_service->getInfo($re)
+        return view('player.info');
+    }
 }

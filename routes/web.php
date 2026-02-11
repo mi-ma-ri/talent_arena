@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+// トップページ
 Route::controller(App\Http\Controllers\IndexController::class)
     ->name('index.')
     ->prefix('/')
@@ -23,6 +23,7 @@ Route::controller(App\Http\Controllers\IndexController::class)
         Route::get('', 'getIndex')->name('top.index');
     });
 
+// 選手(新規登録フロー)
 Route::controller(App\Http\Controllers\PlayerController::class)
     ->name('player.')
     ->prefix('player')
@@ -38,13 +39,33 @@ Route::controller(App\Http\Controllers\PlayerController::class)
         Route::post('join', 'postJoin')->name('post.join');
     });
 
+// 選手(ログインフロー)
 Route::controller(App\Http\Controllers\Auth\LoginController::class)
     ->name('login.')
     ->prefix('login')
 
     ->group(function () {
-        Route::get('attempt', 'getLoginForm')->name('get.form');
-        Route::post('attempt', 'postPlayerLogin')->name('post.login');
+        Route::get('attempt', 'getPlayerAttempt')->name('get.attempt');
+        Route::post('login', 'postPlayerLogin')->name('post.login');
+    });
+
+// 選手(ログイン済み)
+Route::controller(App\Http\Controllers\PlayerController::class)
+    ->name('player.')
+    ->prefix('player')
+    ->middleware(App\Http\Middleware\CheckPlayerLogin::class)
+    ->group(function () {
+        Route::get('info', 'getInfo')->name('get.info');
+        Route::get('upload', 'postUpload')->name('post.upload');
+    });
+
+// 選手(ログアウト) - 認証済み                                                                                             
+Route::controller(App\Http\Controllers\Auth\LoginController::class)
+    ->name('login.')
+    ->prefix('login')
+    ->middleware(App\Http\Middleware\CheckPlayerLogin::class)
+    ->group(function () {
+        Route::post('logout', 'logout')->name('post.logout');
     });
 
 
