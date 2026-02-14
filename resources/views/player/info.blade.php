@@ -13,7 +13,7 @@
                 <img src="/talentarena.logo.png" class="header-logo" alt="Talent Arena">
             </a>
             <nav class="header-nav">
-                {{-- <a href="{{ route('login.get.form') }}" class="header-link">プロフィール詳細</a> --}}
+                <a href="{{ route('player.get.profile') }}" class="header-link">プロフィール詳細</a>
                 <form action="{{ route('login.post.logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="header-link">ログアウト</button>

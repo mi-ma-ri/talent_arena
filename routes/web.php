@@ -56,6 +56,7 @@ Route::controller(App\Http\Controllers\PlayerController::class)
     ->middleware(App\Http\Middleware\CheckPlayerLogin::class)
     ->group(function () {
         Route::get('info', 'getInfo')->name('get.info');
+        Route::get('profile', 'getProfile')->name('get.profile');
         Route::get('upload', 'postUpload')->name('post.upload');
     });
 
