@@ -112,4 +112,33 @@ class PlayerController extends Controller
             return redirect()->route('player.get.auth');
         }
     }
+
+    /**
+     * 選手マイページトップ
+     */
+    public function getInfo()
+    {
+        return view('player.info');
+    }
+
+    /**
+     * 選手マイページトップ
+     */
+    public function getProfile(Request $request, PlayerService $player_service)
+    {
+        $token = session('token');
+        $profile = $player_service->getProfile($token);
+
+        return view(
+            'player.profile',
+            [
+                'address' => $profile['address'],
+                'first_name' => $profile['first_name'],
+                'second_name' => $profile['second_name'],
+                'affiliated_team' => $profile['affiliated_team'],
+                'position' => $profile['position'],
+                'birth_date' => $profile['birth_date'],
+            ]
+        );
+    }
 }

@@ -103,4 +103,25 @@ class PlayerService extends BaseService
 
     return $result;
   }
+
+  /**
+   * 仮登録メール送信処理
+   * param string $email
+   * return void
+   * @throws Exception
+   */
+  public function getProfile(string $token): array
+  {
+    $response = $this->talentArenaApi('player/profile', 'get', [
+      'token' => $token
+    ]);
+
+    if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
+      throw new Exception('選手情報を取得できませんでした。');
+    }
+
+    $profile = $response['body']['profile'];
+
+    return $profile;
+  }
 }

@@ -10,22 +10,25 @@ use Exception;
 class PlayerLoginService extends BaseService
 {
   /**
-   * 選手ログイン認証
+   * ログイン認証及びトークン取得
    * @param string $email
    * @param string $password
-   * @return void
+   * @return $token
    * @throws Exception
    */
-  public function authenticate(string $email, string $password): void
+  public function auth(string $email, string $password): string
   {
     $param = new stdClass;
     $param->email = $email;
     $param->password = $password;
 
-    $response = $this->talentArenaApi('login/restore', 'get', (array)$param);
-    dd($response);
+    $response = $this->talentArenaApi('login/auth', 'get', (array)$param);
     if ($response['body']['result_code'] != 200) {
       throw new Exception($response['body']['result_message']);
     }
+
+    $token = $response['body']['token'];
+
+    return $token;
   }
 }

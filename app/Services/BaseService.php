@@ -39,7 +39,7 @@ class BaseService
   }
 
   /**
-   * smoothie_api叩くマン
+   * TalentArena API呼び出し
    *
    * @param string $url
    * @param string $method
@@ -50,12 +50,14 @@ class BaseService
   {
     $url = substr($url, 0, 1) == "/" ? substr($url, 1) : $url;
 
-    // # member_id必須設定
-    // if (!isset($parameter["member_id"])) {
-    //   $parameter['member_id'] = session()->get('member.member_id', 0);
-    // }
+    // 認証トークンをヘッダーに付与
+    $headers = [];
+    $token = session('token');
+    if ($token) {
+      $headers['Authorization'] = 'Bearer ' . $token;
+    }
 
-    return $this->api(config("app.talent_arena_api_url") . "/{$url}", $method, $parameter);
+    return $this->api(config("app.talent_arena_api_url") . "/{$url}", $method, $parameter, $headers);
   }
 
   /**

@@ -8,7 +8,7 @@
                         <img src="/talentarena.logo.png" class="header-logo" alt="Talent Arena">
                     </a>
                     <nav class="header-nav">
-                        <a href="{{ route('login.get.form') }}" class="header-link">選手ログインはこちら</a>
+                        <a href="{{ route('login.get.attempt') }}" class="header-link">選手ログインはこちら</a>
                         <a href="{{ route('player.get.temporary') }}" class="header-link">選手登録はこちら</a>
                     </nav>
                 </header>
