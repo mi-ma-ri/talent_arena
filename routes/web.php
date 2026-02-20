@@ -57,6 +57,8 @@ Route::controller(App\Http\Controllers\PlayerController::class)
     ->group(function () {
         Route::get('info', 'getInfo')->name('get.info');
         Route::get('profile', 'getProfile')->name('get.profile');
+        Route::get('profile_edit', 'getProfileEdit')->name('get.profile_edit');
+        Route::post('profile_update', 'postProfileUpdate')->name('post.profile_update');
         Route::get('upload', 'postUpload')->name('post.upload');
     });
 
