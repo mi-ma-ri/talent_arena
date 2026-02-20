@@ -6,7 +6,7 @@ use App\Consts\CommonConsts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Lib\YoutubeClient;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\PlayerPostProfileUpdateRequest;
 use App\Http\Requests\PlayerPostEmailAuthRequest;
 use App\Http\Requests\PlayerGetAuthRequest;
 use App\Http\Requests\PlayerPostConfirmRequest;
@@ -122,7 +122,7 @@ class PlayerController extends Controller
     }
 
     /**
-     * 選手マイページトップ
+     * 選手プロフィール画面
      */
     public function getProfile(Request $request, PlayerService $player_service)
     {
@@ -140,5 +140,41 @@ class PlayerController extends Controller
                 'birth_date' => $profile['birth_date'],
             ]
         );
+    }
+
+    /**
+     * 選手編集画面
+     */
+    public function getProfileEdit(Request $request, PlayerService $player_service)
+    {
+
+        $token = session('token');
+        $profile = $player_service->getProfile($token);
+        return view(
+            'player.player_edit',
+            [
+                'address' => $profile['address'],
+                'first_name' => $profile['first_name'],
+                'second_name' => $profile['second_name'],
+                'affiliated_team' => $profile['affiliated_team'],
+                'position' => $profile['position'],
+                'birth_date' => $profile['birth_date'],
+            ]
+        );
+    }
+
+    /**
+     * 選手情報更新処理
+     */
+    public function postProfileUpdate(PlayerPostProfileUpdateRequest $request, PlayerService $player_service)
+    {
+        $token = session('token');
+        $is_update = $player_service->getProfileUpdate($token, $request->address, $request->position);
+
+        if (!$is_update) {
+            return redirect()->route('player.get.profile')->with('error', '更新に失敗しました。');
+        }
+
+        return redirect()->route('player.get.profile')->with('success', '登録が完了しました！');
     }
 }

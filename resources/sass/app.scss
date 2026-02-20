@@ -45,8 +45,7 @@ h1 {
 */
 .error-message {
     color: red;
-    margin-left: 10px;
-    font-size: 0.8em;
+    font-size: 15px;
 }
 
 /*
@@ -359,6 +358,7 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
     th {
         white-space: nowrap;
+        text-align: left;
     }
 }
 @keyframes playerInfoAnime {
@@ -430,7 +430,7 @@ table th {
 }
 
 .info_top {
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .p-post-text {
@@ -620,7 +620,8 @@ table th {
 }
 
 .edit-common {
-    padding: 15px;
+    padding: 8px;
+    margin-left: 15px;
     background-color: #ffe2c7;
 }
 
@@ -638,4 +639,26 @@ table th {
 
 .detail-background {
     background-color: #ffe2c7;
+}
+
+/*
+    フラッシュメッセージ
+*/
+.flash-message {
+    text-align: center;
+    padding: 15px;
+    margin: 80px auto 20px;
+    max-width: 400px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-success {
+    background-color: #ffe2c7;
+    color: #27262c;
+}
+
+.flash-error {
+    background-color: #dc3545;
+    color: #fff;
 }

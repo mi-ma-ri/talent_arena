@@ -105,9 +105,9 @@ class PlayerService extends BaseService
   }
 
   /**
-   * 仮登録メール送信処理
-   * param string $email
-   * return void
+   * 選手情報取得
+   * param string $token
+   * return array
    * @throws Exception
    */
   public function getProfile(string $token): array
@@ -123,5 +123,50 @@ class PlayerService extends BaseService
     $profile = $response['body']['profile'];
 
     return $profile;
+  }
+
+  /**
+   * 選手情報更新画面
+   * param string $token
+   * return array
+   * @throws Exception
+   */
+  public function getProfileEdit(string $token): array
+  {
+    $response = $this->talentArenaApi('player/profile', 'get', [
+      'token' => $token
+    ]);
+
+    if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
+      throw new Exception('選手情報を取得できませんでした。');
+    }
+
+    $profile = $response['body']['profile'];
+
+    return $profile;
+  }
+
+  /**
+   * 選手情報更新処理
+   * param string $token
+   * param string $array 
+   * return array
+   * @throws Exception
+   */
+  public function getProfileUpdate(string $token, string $address, string $position): bool
+  {
+    $response = $this->talentArenaApi('player/update', 'post', [
+      'token' => $token,
+      'address' => $address,
+      'position' => $position
+    ]);
+
+    if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
+      throw new Exception('選手情報を取得できませんでした。');
+    }
+
+    $is_update = $response['body']['update'];
+
+    return $is_update;
   }
 }
