@@ -169,4 +169,31 @@ class PlayerService extends BaseService
 
     return $is_update;
   }
+
+  /**
+   * 動画URL投稿
+   * param array $param
+   * return bool
+   * @throws Exception
+   */
+  public function postHandleUrl(array $data): bool
+  {
+    $postData = [
+      'url1' => $data['url1'],
+      'url2' => $data['url2'] ?? null,
+      'url3' => $data['url3'] ?? null,
+      'description' => $data['description'],
+    ];
+    $response = $this->talentArenaApi('player/handle', 'post', [
+      'postData' => $postData,
+    ]);
+
+    if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
+      throw new Exception('選手情報を取得できませんでした。');
+    }
+
+    $is_handle = $response['body']['insert'];
+
+    return $is_handle;
+  }
 }

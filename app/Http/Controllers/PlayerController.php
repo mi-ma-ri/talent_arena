@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Consts\CommonConsts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Lib\YoutubeClient;
 use App\Http\Requests\PlayerPostProfileUpdateRequest;
 use App\Http\Requests\PlayerPostEmailAuthRequest;
 use App\Http\Requests\PlayerGetAuthRequest;
 use App\Http\Requests\PlayerPostConfirmRequest;
-use App\Models\ScoutsTeam;
-use App\Models\VideoPosts;
-use App\Models\TeamDetails;
-use App\Http\Requests\VideoPostRequest;
+use App\Http\Requests\PlayerPostUrlRequest;
 use App\Services\PlayerService;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 use Exception;
@@ -151,7 +145,7 @@ class PlayerController extends Controller
         $token = session('token');
         $profile = $player_service->getProfile($token);
         return view(
-            'player.player_edit',
+            'player.profile_edit',
             [
                 'address' => $profile['address'],
                 'first_name' => $profile['first_name'],
@@ -176,5 +170,27 @@ class PlayerController extends Controller
         }
 
         return redirect()->route('player.get.profile')->with('success', '登録が完了しました！');
+    }
+
+    /**
+     * 動画URL投稿画面
+     */
+    public function postUrl()
+    {
+        return view('player.post_url');
+    }
+
+    /**
+     * 動画URL投稿処理
+     */
+    public function postHandleUrl(PlayerPostUrlRequest $request, PlayerService $player_service)
+    {
+        $insert = $player_service->postHandleUrl($request->all());
+
+        if (!$insert) {
+            return redirect()->route('player.get.info')->with('error', 'URL投稿に失敗しました。');
+        }
+
+        return redirect()->route('player.get.info')->with('success', 'URL投稿に成功しました！');
     }
 }
