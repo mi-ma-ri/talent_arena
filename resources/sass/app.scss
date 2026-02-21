@@ -201,7 +201,8 @@ h1 {
     color: #ffffff;
 }
 
-.video-post-texare {
+.video-post-texare,
+.video-post-textarea {
     resize: none;
 }
 
@@ -646,8 +647,8 @@ table th {
 */
 .flash-message {
     text-align: center;
-    padding: 15px;
-    margin: 80px auto 20px;
+    padding: 10px;
+    margin: 40px auto 20px;
     max-width: 400px;
     border-radius: 5px;
     font-weight: bold;
@@ -661,4 +662,173 @@ table th {
 .flash-error {
     background-color: #dc3545;
     color: #fff;
+}
+
+/*
+    動画URL投稿ページ
+    post_url.blade.php
+*/
+.page-title-section {
+    background: linear-gradient(135deg, #ffe2c7 0%, #ffd4a8 100%);
+    padding: 30px 0;
+    margin-bottom: 0;
+    text-align: center;
+    border-bottom: 4px solid #27262c;
+
+    .page-title {
+        color: #27262c;
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.post-url-container {
+    background-color: #27262c;
+    min-height: 100vh;
+}
+
+// フィールドセットのスタイルを#ffe2c7基調に上書き
+.fieldset-border {
+    border: 2px solid #ffe2c7;
+    padding: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 226, 199, 0.15) 0%,
+        rgba(255, 226, 199, 0.05) 100%
+    );
+    box-shadow: 0 4px 15px rgba(255, 226, 199, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 6px 20px rgba(255, 226, 199, 0.2);
+        border-color: #ffd4a8;
+    }
+
+    legend {
+        font-size: 1.3em;
+        font-weight: bold;
+        width: auto;
+        padding: 8px 20px;
+        margin-bottom: 15px;
+        color: #27262c;
+        background-color: #ffe2c7;
+        border-radius: 5px;
+        border-bottom: none;
+    }
+}
+
+// フォームラベルのスタイル
+.post-url-form {
+    .form-label {
+        color: #ffe2c7;
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.95);
+        border: 2px solid transparent;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        &:focus {
+            border-color: #ffe2c7;
+            box-shadow: 0 0 0 3px rgba(255, 226, 199, 0.3);
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    // 日付入力欄
+    input[type="date"] {
+        background-color: #fff;
+        color: #27262c;
+    }
+}
+
+// 戻るボタンのスタイル
+.back-btn {
+    background-color: transparent;
+    color: #ffe2c7;
+    border: 2px solid #ffe2c7;
+    padding: 15px 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #ffe2c7;
+        color: #27262c;
+    }
+}
+
+// 投稿ボタンの強調スタイル
+.post-submit-btn {
+    background: linear-gradient(135deg, #ffe2c7 0%, #ffd4a8 100%);
+    color: #27262c;
+    border: none;
+    padding: 15px 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 226, 199, 0.3);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 226, 199, 0.5);
+        background: linear-gradient(135deg, #ffd4a8 0%, #ffcb94 100%);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// ツールチップのスタイル改善
+.tooltip2 {
+    p {
+        color: #ffe2c7;
+        font-weight: 500;
+        padding: 10px 15px;
+        background-color: rgba(255, 226, 199, 0.1);
+        border-radius: 5px;
+        border-left: 4px solid #ffe2c7;
+    }
+}
+
+.description2 {
+    background: linear-gradient(135deg, #27262c 0%, #3a393f 100%);
+    border: 2px solid #ffe2c7;
+    color: #fff;
+
+    a {
+        color: #ffe2c7;
+        text-decoration: underline;
+
+        &:hover {
+            color: #ffd4a8;
+        }
+    }
+}
+
+// エラーメッセージのスタイル改善
+.error-message {
+    color: #ff6b6b;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgba(255, 107, 107, 0.1);
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 5px;
 }

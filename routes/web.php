@@ -59,7 +59,8 @@ Route::controller(App\Http\Controllers\PlayerController::class)
         Route::get('profile', 'getProfile')->name('get.profile');
         Route::get('profile_edit', 'getProfileEdit')->name('get.profile_edit');
         Route::post('profile_update', 'postProfileUpdate')->name('post.profile_update');
-        Route::get('upload', 'postUpload')->name('post.upload');
+        Route::get('upload', 'postUrl')->name('post.url');
+        Route::post('handle', 'postHandleUrl')->name('post.handle');
     });
 
 // 選手(ログアウト) - 認証済み                                                                                             
