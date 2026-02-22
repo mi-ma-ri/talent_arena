@@ -110,9 +110,12 @@ class PlayerController extends Controller
     /**
      * 選手マイページトップ
      */
-    public function getInfo()
+    public function getInfo(Request $request, PlayerService $player_service)
     {
-        return view('player.info');
+        # 動画投稿データ取得
+        $video_data = $player_service->getVideoUrl();
+
+        return view('player.info', ['video_data' => $video_data]);
     }
 
     /**
