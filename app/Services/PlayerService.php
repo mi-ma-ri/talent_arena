@@ -196,4 +196,19 @@ class PlayerService extends BaseService
 
     return $is_handle;
   }
+
+
+  /**
+   * 動画URL一覧取得
+   * return array
+   * @throws Exception
+   */
+  public function getVideoUrl(): array
+  {
+    $response = $this->talentArenaApi('player/url', 'get');
+
+    $video_data = $response['body']['video_data'];
+
+    return $video_data;
+  }
 }
