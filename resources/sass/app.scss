@@ -25,8 +25,15 @@ h1 {
     font-size: 40px;
 }
 
+.mb40 {
+    margin-bottom: 40px;
+}
 .mt50 {
     margin-top: 50px;
+}
+
+.ft15 {
+    font-size: 15px;
 }
 
 /*
@@ -777,7 +784,11 @@ table th {
 }
 
 .video-card {
-    background: linear-gradient(180deg, rgba(255, 226, 199, 0.15) 0%, rgba(255, 226, 199, 0.05) 100%);
+    background: linear-gradient(
+        180deg,
+        rgba(255, 226, 199, 0.15) 0%,
+        rgba(255, 226, 199, 0.05) 100%
+    );
     border: 2px solid #ffe2c7;
     border-radius: 10px;
     overflow: hidden;

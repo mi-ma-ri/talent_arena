@@ -15,7 +15,7 @@
 
         <div class="row justify-content-center mt40">
             <div class="col-md-6">
-                <form action="/player/email_auth" method="POST" class="d-inline-block">
+                <form action="{{ route('team.post.email_auth') }}" method="POST" class="d-inline-block">
                     @csrf
                     <fieldset>
                         <div class="mt50">
@@ -26,7 +26,7 @@
                                 id="playerEmail" name="email" placeholder="メールアドレスを入力してください">
                             <input type="hidden" name="status" value="0">
                             <input type="hidden" name="subject_type" value="0">
-                            <div class="d-flex flex-column align-items-center">
+                            <div class="d-flex flex-row justify-content-center gap-4">
                                 <button type="submit" class="btn btn-primary make_btn">
                                     送信
                                 </button>

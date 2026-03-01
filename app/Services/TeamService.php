@@ -11,7 +11,7 @@ use Exception;
 use Throwable;
 use Illuminate\Support\Facades\Log;
 
-class PlayerService extends BaseService
+class TeamService extends BaseService
 {
   /**
    * 仮登録メール送信処理
@@ -23,10 +23,8 @@ class PlayerService extends BaseService
   {
     $param = new stdClass;
     $param->email = $email;
-    # 仮登録ステータス
-    $param->status = CommonConsts::IS_TMP_MEMBER;
-    # ユーザータイプ(選手)
-    $param->subject_type = CommonConsts::SUBJECT_TYPE_PLAYERS;
+    $param->status = CommonConsts::IS_TMP_TEAM;
+    $param->subject_type = CommonConsts::SUBJECT_TYPE_TEAMS;
 
     $response = $this->talentArenaApi('register/create_email', 'get', (array)$param);
     if ($response['status'] != 200) {
@@ -37,7 +35,7 @@ class PlayerService extends BaseService
 
     $this->sendEmail(
       "Talent_Arena｜会員仮登録のお知らせ",
-      'email_auth_send',
+      'email_auth_send_team',
       $email,
       ['url' => $this->_makeAuthEmailUrl($tmp_auth['key'])]
     );
@@ -57,7 +55,7 @@ class PlayerService extends BaseService
 
   private function _makeAuthEmailUrl(string $auth_key): string
   {
-    return route('player.get.auth', ['key' => $auth_key]);
+    return route('team.get.auth', ['key' => $auth_key]);
   }
 
   /**
@@ -67,7 +65,7 @@ class PlayerService extends BaseService
    */
   public function getAuth(string $auth_key): array
   {
-    $response = $this->talentArenaApi('register/player', 'get', [
+    $response = $this->talentArenaApi('register/team', 'get', [
       'auth_key' => $auth_key
     ]);
 
@@ -75,24 +73,23 @@ class PlayerService extends BaseService
       throw new Exception('新規登録処理中のプレイヤー情報を取得できませんでした。');
     }
 
-    if ($response['body']['player']['players_status'] != CommonConsts::IS_TMP_MEMBER) {
+    if ($response['body']['team']['teams_status'] != CommonConsts::IS_TMP_TEAM) {
       throw new Exception('既に利用中のプレイヤーです。');
     }
-    $player = $response['body']['player'];
+    $team = $response['body']['team'];
 
     $result = [
-      'title' => 'ユーザー登録 | Talent Arena',
-      'email' => $player['email'],
+      'title' => 'チーム登録 | Talent Arena',
+      'email' => $team['email'],
       'auth_key' => $auth_key,
-      'subject_id' => $player['subject_id']
+      'subject_id' => $team['subject_id']
     ];
-
     return $result;
   }
 
   public function postJoin(array $data): array
   {
-    $response = $this->talentArenaApi('register/join', 'post', $data);
+    $response = $this->talentArenaApi('register/team_join', 'post', $data);
     if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
       throw new Exception('新規登録処理に失敗しました。');
     }
