@@ -31,6 +31,15 @@
                                     name="teams_name" value="{{ old('teams_name') }}" placeholder="チーム名を入力してください">
                             </div>
 
+                            <!-- パスワード -->
+                            <label for="password" class="form-label">パスワード</label>
+                            @error('password')
+                                <span class="error-message">{{ $message }}</span>
+                            @enderror
+                            <input type="password"
+                                class="form-control pt-3 pb-3 mb-2 @error('password') is-invalid @enderror"
+                                id="TeamPassword" name="password" placeholder="半角英数字8文字以上16桁以内">
+
                             {{-- 活動地域 --}}
                             <div class="mb-4">
                                 <label for="location" class="form-label">活動場所</label>
@@ -87,9 +96,10 @@
                             </div>
                         </div>
                     </fieldset>
+                    <input type="hidden" name="subject_id" value="{{ $subject_id }}">
+                    <input type="hidden" name="subject_type" value="{{ $subject_type }}">
                     <input type="hidden" name="auth_key" value="{{ $auth_key }}">
                     <input type="hidden" name="email" value="{{ $email }}">
-                    <input type="hidden" name="subject_id" value="{{ $subject_id }}">
                 </form>
             </div>
         </div>

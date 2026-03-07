@@ -59,7 +59,8 @@
                                     <h2 class="cta-title">チームの方</h2>
                                     <p class="cta-description">才能ある選手を<br>スカウトしよう</p>
                                     <div class="cta-buttons">
-                                        {{-- <a href="{{ route('login.get.attempt') }}" class="cta-btn cta-btn-primary">ログイン</a> --}}
+                                        <a href="{{ route('login.get.team.attempt') }}"
+                                            class="cta-btn cta-btn-primary">ログイン</a>
                                         <a href="{{ route('team.get.temporary') }}"
                                             class="cta-btn cta-btn-secondary">新規登録</a>
                                     </div>

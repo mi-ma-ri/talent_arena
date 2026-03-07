@@ -6,7 +6,7 @@ use stdClass;
 use Exception;
 
 
-class PlayerLoginService extends BaseService
+class TeamLoginService extends BaseService
 {
   /**
    * ログイン認証及びトークン取得
@@ -15,13 +15,14 @@ class PlayerLoginService extends BaseService
    * @return $token
    * @throws Exception
    */
-  public function auth(string $email, string $password): string
+  public function teamAuth(string $email, string $password): string
   {
     $param = new stdClass;
     $param->email = $email;
     $param->password = $password;
 
-    $response = $this->talentArenaApi('login/auth', 'get', (array)$param);
+    $response = $this->talentArenaApi('login/team-auth', 'get', (array)$param);
+
     if ($response['body']['result_code'] != 200) {
       throw new Exception($response['body']['result_message']);
     }

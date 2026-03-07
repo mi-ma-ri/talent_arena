@@ -19,6 +19,14 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>
+                                    パスワード：
+                                </th>
+                                <td>
+                                    {{ $password }}
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>チーム名：</th>
                                 <td>
                                     <p>{{ $teams_name }}</p>
@@ -69,6 +77,8 @@
                     </div>
                 </fieldset>
                 <input type="hidden" name="subject_id" value="{{ $subject_id }}">
+                <input type="hidden" name="subject_type" value="{{ $subject_type }}">
+                <input type="hidden" name="password" value="{{ $password }}">
                 <input type="hidden" name="teams_name" value="{{ $teams_name }}">
                 <input type="hidden" name="location" value="{{ $location }}">
                 <input type="hidden" name="website" value="{{ $website }}">

@@ -47,6 +47,8 @@ Route::controller(App\Http\Controllers\Auth\LoginController::class)
     ->group(function () {
         Route::get('attempt', 'getPlayerAttempt')->name('get.attempt');
         Route::post('login', 'postPlayerLogin')->name('post.login');
+        Route::get('team-attempt', 'getTeamAttempt')->name('get.team.attempt');
+        Route::post('team-login', 'postTeamLogin')->name('post.team.login');
     });
 
 // 選手(ログイン済み)
@@ -73,7 +75,7 @@ Route::controller(App\Http\Controllers\Auth\LoginController::class)
     });
 
 
-// 選手(新規登録フロー)
+// チーム(新規登録フロー)
 Route::controller(App\Http\Controllers\TeamController::class)
     ->name('team.')
     ->prefix('team')
@@ -86,4 +88,17 @@ Route::controller(App\Http\Controllers\TeamController::class)
         Route::get('email_duplicate', 'getEmailDuplicate')->name('get.email_duplicate');
         Route::post('confirm', 'postConfirm')->name('post.confirm');
         Route::post('join', 'postJoin')->name('post.join');
+    });
+// チーム(ログイン済み)
+Route::controller(App\Http\Controllers\TeamController::class)
+    ->name('player.')
+    ->prefix('player')
+    ->middleware(App\Http\Middleware\CheckPlayerLogin::class)
+    ->group(function () {
+        Route::get('info', 'getInfo')->name('get.info');
+        Route::get('profile', 'getProfile')->name('get.profile');
+        Route::get('profile_edit', 'getProfileEdit')->name('get.profile_edit');
+        Route::post('profile_update', 'postProfileUpdate')->name('post.profile_update');
+        Route::get('upload', 'postUrl')->name('post.url');
+        Route::post('handle', 'postHandleUrl')->name('post.handle');
     });
