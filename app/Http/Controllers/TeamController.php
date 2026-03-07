@@ -9,6 +9,7 @@ use App\Http\Requests\TeamGetAuthRequest;
 use App\Http\Requests\TeamPostConfirmRequest;
 
 use App\Services\TeamService;
+use App\Consts\CommonConsts;
 use Throwable;
 use Illuminate\Support\Facades\Log;
 
@@ -72,7 +73,7 @@ class TeamController extends Controller
   }
 
   /**
-   * 選手情報登録確認画面
+   * チーム情報登録確認画面
    */
   public function postConfirm(TeamPostConfirmRequest $request)
   {
@@ -82,27 +83,43 @@ class TeamController extends Controller
         'auth_key' => $request->auth_key,
         'subject_id' => $request->subject_id,
         'email' => $request->email,
+        'password' => $request->password,
         'title' => '登録情報確認',
         'teams_name' => $request->teams_name,
         'location' => $request->location,
         'website' => $request->website,
         'teams_policy' => $request->teams_policy,
         'schedule' => $request->schedule,
-        'ob_affiliation' => $request->ob_affiliation
+        'ob_affiliation' => $request->ob_affiliation,
+        'subject_type' => $request->subject_type
       ]
     );
   }
 
   /**
-   * 選手情報登録処理
+   * チーム情報登録処理
    */
   public function postJoin(Request $request, TeamService $team_service)
+  {
+    try {
+      session(['subject_type' => CommonConsts::SUBJECT_TYPE_TEAMS]);
+      return view('complete', $team_service->postJoin($request->all()));
+    } catch (Throwable $e) {
+      Log::error($e->getMessage());
+      return redirect()->route('team.get.auth');
+    }
+  }
+
+  /**
+   * チーム情報登録処理
+   */
+  public function getInfo(Request $request, TeamService $team_service)
   {
     try {
       return view('complete', $team_service->postJoin($request->all()));
     } catch (Throwable $e) {
       Log::error($e->getMessage());
-      return redirect()->route('player.get.auth');
+      return redirect()->route('team.get.auth');
     }
   }
 }

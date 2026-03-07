@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 use App\Services\PlayerLoginService;
-
-use Illuminate\Auth\Events\Login;
-use Illuminate\Support\Facades\Log;
+use App\Services\TeamLoginService;
 
 class LoginController extends Controller
 {
@@ -30,6 +26,21 @@ class LoginController extends Controller
         session(['token' => $token]);
 
         return redirect('/player/info');
+    }
+
+    # チームログイン画面
+    public function getTeamAttempt()
+    {
+        return view('auth.team_attempt');
+    }
+
+    # ログイン処理
+    public function postTeamLogin(LoginRequest $request, TeamLoginService $login_service)
+    {
+        $token = $login_service->teamAuth($request->email, $request->password);
+        session(['token' => $token]);
+
+        return redirect('/team/info');
     }
 
     public function logout(Request $request)

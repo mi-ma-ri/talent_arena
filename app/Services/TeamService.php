@@ -82,7 +82,8 @@ class TeamService extends BaseService
       'title' => 'チーム登録 | Talent Arena',
       'email' => $team['email'],
       'auth_key' => $auth_key,
-      'subject_id' => $team['subject_id']
+      'subject_id' => $team['subject_id'],
+      'subject_type' => CommonConsts::SUBJECT_TYPE_TEAMS
     ];
     return $result;
   }
