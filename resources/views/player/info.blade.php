@@ -1,8 +1,5 @@
 @extends('layout')
 @section('content')
-    <section class="page-title-section">
-        <h1 class="page-title">マイページ</h1>
-    </section>
     <div id="app">
         <header class="header">
             <a href="{{ route('player.get.info') }}" class="header-title">

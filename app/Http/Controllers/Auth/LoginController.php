@@ -52,4 +52,14 @@ class LoginController extends Controller
 
         return redirect()->route('login.get.attempt');
     }
+
+    public function teamLogout(Request $request)
+    {
+        // sessionからtokenを削除                                                                                              
+        $request->session()->forget('token');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login.get.team.attempt');
+    }
 }

@@ -103,19 +103,16 @@ class TeamService extends BaseService
   }
 
   /**
-   * 選手情報取得
-   * param string $token
+   * チーム情報取得
    * return array
    * @throws Exception
    */
-  public function getProfile(string $token): array
+  public function getTeamProfile(): array
   {
-    $response = $this->talentArenaApi('player/profile', 'get', [
-      'token' => $token
-    ]);
+    $response = $this->talentArenaApi('team/profile', 'get');
 
     if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
-      throw new Exception('選手情報を取得できませんでした。');
+      throw new Exception('チーム情報を取得できませんでした。');
     }
 
     $profile = $response['body']['profile'];
@@ -145,18 +142,15 @@ class TeamService extends BaseService
   }
 
   /**
-   * 選手情報更新処理
-   * param string $token
-   * param string $array 
-   * return array
+   * チーム情報更新処理
+   * param array $array 
+   * return bool
    * @throws Exception
    */
-  public function getProfileUpdate(string $token, string $address, string $position): bool
+  public function postTeamProfileUpdate(array $data): bool
   {
-    $response = $this->talentArenaApi('player/update', 'post', [
-      'token' => $token,
-      'address' => $address,
-      'position' => $position
+    $response = $this->talentArenaApi('team/update', 'post', [
+      'data' => $data,
     ]);
 
     if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
@@ -166,47 +160,5 @@ class TeamService extends BaseService
     $is_update = $response['body']['update'];
 
     return $is_update;
-  }
-
-  /**
-   * 動画URL投稿
-   * param array $param
-   * return bool
-   * @throws Exception
-   */
-  public function postHandleUrl(array $data): bool
-  {
-    $postData = [
-      'url1' => $data['url1'],
-      'url2' => $data['url2'] ?? null,
-      'url3' => $data['url3'] ?? null,
-      'description' => $data['description'],
-    ];
-    $response = $this->talentArenaApi('player/handle', 'post', [
-      'postData' => $postData,
-    ]);
-
-    if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
-      throw new Exception('選手情報を取得できませんでした。');
-    }
-
-    $is_handle = $response['body']['insert'];
-
-    return $is_handle;
-  }
-
-
-  /**
-   * 動画URL一覧取得
-   * return array
-   * @throws Exception
-   */
-  public function getVideoUrl(): array
-  {
-    $response = $this->talentArenaApi('player/url', 'get');
-
-    $video_data = $response['body']['video_data'];
-
-    return $video_data;
   }
 }
