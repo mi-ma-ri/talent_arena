@@ -39,7 +39,7 @@ Route::controller(App\Http\Controllers\PlayerController::class)
         Route::post('join', 'postJoin')->name('post.join');
     });
 
-// 選手(ログインフロー)
+// 選手・チームログイン共通
 Route::controller(App\Http\Controllers\Auth\LoginController::class)
     ->name('login.')
     ->prefix('login')
@@ -74,6 +74,15 @@ Route::controller(App\Http\Controllers\Auth\LoginController::class)
         Route::post('logout', 'logout')->name('post.logout');
     });
 
+// チーム(ログアウト) - 認証済み                                                                                             
+Route::controller(App\Http\Controllers\Auth\LoginController::class)
+    ->name('login.')
+    ->prefix('login')
+    ->middleware(App\Http\Middleware\CheckTeamLogin::class)
+    ->group(function () {
+        Route::post('team-logout', 'teamLogout')->name('post.team.logout');
+    });
+
 
 // チーム(新規登録フロー)
 Route::controller(App\Http\Controllers\TeamController::class)
@@ -91,14 +100,12 @@ Route::controller(App\Http\Controllers\TeamController::class)
     });
 // チーム(ログイン済み)
 Route::controller(App\Http\Controllers\TeamController::class)
-    ->name('player.')
-    ->prefix('player')
-    ->middleware(App\Http\Middleware\CheckPlayerLogin::class)
+    ->name('team.')
+    ->prefix('team')
+    ->middleware(App\Http\Middleware\CheckTeamLogin::class)
     ->group(function () {
-        Route::get('info', 'getInfo')->name('get.info');
-        Route::get('profile', 'getProfile')->name('get.profile');
-        Route::get('profile_edit', 'getProfileEdit')->name('get.profile_edit');
-        Route::post('profile_update', 'postProfileUpdate')->name('post.profile_update');
-        Route::get('upload', 'postUrl')->name('post.url');
-        Route::post('handle', 'postHandleUrl')->name('post.handle');
+        Route::get('info', 'getTeamInfo')->name('get.info');
+        Route::get('profile', 'getTeamProfile')->name('get.profile');
+        Route::get('profile_edit', 'getTeamProfileEdit')->name('get.profile_edit');
+        Route::post('profile_update', 'postTeamProfileUpdate')->name('post.profile_update');
     });

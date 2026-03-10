@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamPostEmailAuthRequest;
 use App\Http\Requests\TeamGetAuthRequest;
 use App\Http\Requests\TeamPostConfirmRequest;
+use App\Http\Requests\TeamPostProfileUpdateRequest;
 
 use App\Services\TeamService;
 use App\Consts\CommonConsts;
@@ -113,13 +114,71 @@ class TeamController extends Controller
   /**
    * チーム情報登録処理
    */
-  public function getInfo(Request $request, TeamService $team_service)
+  public function getTeamInfo()
   {
-    try {
-      return view('complete', $team_service->postJoin($request->all()));
-    } catch (Throwable $e) {
-      Log::error($e->getMessage());
-      return redirect()->route('team.get.auth');
+    return view('team.info');
+  }
+
+  /**
+   * チームプロフィール画面
+   */
+  public function getTeamProfile(Request $request, TeamService $team_service)
+  {
+    $profile = $team_service->getTeamProfile();
+
+    return view(
+      'team.profile',
+      [
+        'address' => $profile['address'],
+        'teams_name' => $profile['teams_name'],
+        'website' => $profile['website'],
+        'location' => $profile['location'],
+        'teams_policy' => $profile['teams_policy'],
+        'schedule' => $profile['schedule'],
+        'ob_affiliation' => $profile['ob_affiliation'],
+      ]
+    );
+  }
+
+  /**
+   * チーム情報編集画面
+   */
+  public function getTeamProfileEdit(Request $request, TeamService $team_service)
+  {
+    $profile = $team_service->getTeamProfile();
+
+    return view(
+      'team.profile_edit',
+      [
+        'address' => $profile['address'],
+        'teams_name' => $profile['teams_name'],
+        'website' => $profile['website'],
+        'location' => $profile['location'],
+        'teams_policy' => $profile['teams_policy'],
+        'schedule' => $profile['schedule'],
+        'ob_affiliation' => $profile['ob_affiliation'],
+      ]
+    );
+  }
+
+  /**
+   * チーム情報更新処理
+   */
+  public function postTeamProfileUpdate(TeamPostProfileUpdateRequest $request, TeamService $team_service)
+  {
+    $is_update = $team_service->postTeamProfileUpdate([
+      'address' => $request->address,
+      'website' => $request->website,
+      'location' => $request->location,
+      'teams_policy' => $request->teams_policy,
+      'schedule' => $request->schedule,
+      'ob_affiliation' => $request->ob_affiliation,
+    ]);
+
+    if (!$is_update) {
+      return redirect()->route('team.get.profile')->with('error', '更新に失敗しました。');
     }
+
+    return redirect()->route('team.get.profile')->with('success', '更新が完了しました！');
   }
 }

@@ -47,7 +47,8 @@
                                     <span class="error-message">{{ $message }}</span>
                                 @enderror
                                 <input type="text" class="form-control pt-3 pb-3 @error('location') is-invalid @enderror"
-                                    id="location" name="location" value="{{ old('location') }}" placeholder="例: 東京都渋谷区">
+                                    id="location" name="location" value="{{ old('location') }}"
+                                    placeholder="例: Aグラウンド/Bグラウンド">
                             </div>
 
                             {{-- 公式サイトURL --}}
