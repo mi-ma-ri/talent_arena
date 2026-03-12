@@ -108,4 +108,5 @@ Route::controller(App\Http\Controllers\TeamController::class)
         Route::get('profile', 'getTeamProfile')->name('get.profile');
         Route::get('profile_edit', 'getTeamProfileEdit')->name('get.profile_edit');
         Route::post('profile_update', 'postTeamProfileUpdate')->name('post.profile_update');
+        Route::get('player-videos', 'getPlayerVideos')->name('get.player_videos');
     });

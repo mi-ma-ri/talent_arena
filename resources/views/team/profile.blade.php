@@ -1,81 +1,85 @@
 @extends('layout')
 @section('content')
-    <section class="page-title-section">
-        <h1 class="page-title">チームプロフィール</h1>
-    </section>
+    <div id="app">
+        <header class="header">
+            <a href="{{ route('index.top.index') }}" class="header-title">
+                <img src="/talentarena.logo.png" class="header-logo" alt="Talent Arena">
+            </a>
+            <nav class="header-nav">
+                <a href="{{ route('team.get.info') }}" class="header-link">ダッシュボード</a>
+                <form action="{{ route('login.post.team.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="header-link">ログアウト</button>
+                </form>
+            </nav>
+        </header>
 
-    @if (session('success'))
-        <div class="flash-message flash-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        <section class="page-title-section">
+            <h1 class="page-title">チームプロフィール</h1>
+        </section>
 
-    @if (session('error'))
-        <div class="flash-message flash-error">
-            {{ session('error') }}
-        </div>
-    @endif
+        @if (session('success'))
+            <div class="flash-message flash-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
-    <div class="row">
-        <div class="row justify-content-center">
-            <div class="col-md-4 info_top">
-                <fieldset>
-                    <div class="table-container">
-                        <div class="d-flex justify-content-end mt-5">
-                            <a href="{{ route('team.get.profile_edit') }}" class="edit-button">編集</a>
+        @if (session('error'))
+            <div class="flash-message flash-error">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <main class="profile-main">
+            <div class="container">
+                <div class="profile-card">
+                    <div class="profile-card-header">
+                        <span class="profile-card-title">チーム登録情報</span>
+                        <a href="{{ route('team.get.profile_edit') }}" class="profile-edit-btn">編集</a>
+                    </div>
+                    <div class="profile-card-body">
+                        <div class="profile-row">
+                            <span class="profile-label">登録アドレス</span>
+                            <span class="profile-value">{{ $address }}</span>
                         </div>
-                        <table class="playerInfo">
-                            <tr>
-                                <th>登録アドレス</th>
-                                <td>
-                                    <p>{{ $address }}</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>登録チーム名</th>
-                                <td>
-                                    <p>{{ $teams_name }}</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>ウェブサイト</th>
-                                <td>
-                                    <a href="{{ $website }}" target="_blank">
-                                        サイトURLはこちら
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>活動地域</th>
-                                <td>
-                                    <p>{{ $location }}</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>チーム方針・規則</th>
-                                <td>
-                                    {!! nl2br(e($teams_policy)) !!}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>スケジュール</th>
-                                <td>
-                                    {!! nl2br(e($schedule)) !!}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>OB情報</th>
-                                <td>
-                                    {!! nl2br(e($ob_affiliation)) !!}
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="d-flex justify-content-end mt-5">
-                            <a href="{{ route('team.get.info') }}" class="edit-button">戻る</a>
+                        <div class="profile-row">
+                            <span class="profile-label">チーム名</span>
+                            <span class="profile-value">{{ $teams_name }}</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-label">ウェブサイト</span>
+                            <span class="profile-value">
+                                @if ($website)
+                                    <a href="{{ $website }}" target="_blank"
+                                        class="profile-link">{{ $website }}</a>
+                                @else
+                                    -
+                                @endif
+                            </span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-label">活動地域</span>
+                            <span class="profile-value">{{ $location ?? '-' }}</span>
+                        </div>
+                        <div class="profile-row profile-row-block">
+                            <span class="profile-label">チーム方針・規則</span>
+                            <p class="profile-text">{!! nl2br(e($teams_policy)) !!}</p>
+                        </div>
+                        <div class="profile-row profile-row-block">
+                            <span class="profile-label">スケジュール</span>
+                            <p class="profile-text">{!! nl2br(e($schedule)) !!}</p>
+                        </div>
+                        <div class="profile-row profile-row-block">
+                            <span class="profile-label">OB情報</span>
+                            <p class="profile-text">{!! nl2br(e($ob_affiliation)) !!}</p>
                         </div>
                     </div>
-                </fieldset>
+                </div>
+
+                <div class="back-btn-wrapper">
+                    <a href="{{ route('team.get.info') }}" class="back-btn">戻る</a>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
 @endsection

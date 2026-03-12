@@ -975,3 +975,407 @@ table th {
     display: inline-block;
     margin-bottom: 5px;
 }
+
+/*
+    チームダッシュボード
+    team/info.blade.php
+*/
+.team-info-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+}
+
+.team-info-content {
+    text-align: center;
+}
+
+.team-info-heading {
+    color: #ffe2c7;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.team-info-buttons {
+    display: flex;
+    gap: 40px;
+}
+
+.team-info-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 226, 199, 0.15) 0%,
+        rgba(255, 226, 199, 0.05) 100%
+    );
+    border: 3px solid #ffe2c7;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(255, 226, 199, 0.3);
+        background: linear-gradient(
+            180deg,
+            rgba(255, 226, 199, 0.25) 0%,
+            rgba(255, 226, 199, 0.1) 100%
+        );
+    }
+}
+
+.team-info-btn-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.team-info-btn-text {
+    color: #ffe2c7;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/*
+    選手投稿一覧
+    team/players_list.blade.php
+*/
+.players-list-main {
+    padding: 40px 0;
+}
+
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.player-card {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 226, 199, 0.12) 0%,
+        rgba(255, 226, 199, 0.04) 100%
+    );
+    border: 2px solid #ffe2c7;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(255, 226, 199, 0.2);
+    }
+}
+
+.player-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: #ffe2c7;
+}
+
+.player-name {
+    color: #27262c;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.player-position {
+    background-color: #27262c;
+    color: #ffe2c7;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.player-card-body {
+    padding: 20px;
+}
+
+.player-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 226, 199, 0.2);
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+}
+
+.player-info-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.player-info-value {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.player-video-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.video-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffe2c7 0%, #ffd4a8 100%);
+    color: #27262c;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 226, 199, 0.4);
+        color: #27262c;
+    }
+}
+
+.player-description {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 226, 199, 0.2);
+}
+
+.player-description-text {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 8px;
+    white-space: pre-wrap;
+}
+
+.no-players-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+}
+
+.back-btn-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/*
+    チームプロフィール
+    team/profile.blade.php
+*/
+.profile-main {
+    padding: 50px 0;
+}
+
+.profile-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 226, 199, 0.12) 0%,
+        rgba(255, 226, 199, 0.04) 100%
+    );
+    border: 3px solid #ffe2c7;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.profile-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    background-color: #ffe2c7;
+}
+
+.profile-card-title {
+    color: #27262c;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.profile-edit-btn {
+    background-color: #27262c;
+    color: #ffe2c7;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        opacity: 0.85;
+        color: #ffe2c7;
+    }
+}
+
+.profile-card-body {
+    padding: 32px;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 226, 199, 0.2);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.profile-row-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.profile-label {
+    color: #ffe2c7;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 160px;
+}
+
+.profile-value {
+    color: #fff;
+    font-size: 24px;
+    text-align: right;
+    word-break: break-all;
+}
+
+.profile-row-block .profile-value {
+    text-align: left;
+}
+
+.profile-link {
+    color: #ffe2c7;
+    text-decoration: underline;
+
+    &:hover {
+        color: #ffd4a8;
+    }
+}
+
+.profile-text {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/*
+    チームプロフィール編集
+    team/profile_edit.blade.php
+*/
+.profile-edit-row {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 226, 199, 0.2);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.profile-edit-row-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.profile-edit-label {
+    color: #ffe2c7;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.profile-edit-input-wrapper {
+    flex: 1;
+    width: 100%;
+}
+
+.profile-edit-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: #27262c;
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #ffe2c7;
+        box-shadow: 0 0 0 3px rgba(255, 226, 199, 0.3);
+    }
+}
+
+.profile-edit-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: #27262c;
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #ffe2c7;
+        box-shadow: 0 0 0 3px rgba(255, 226, 199, 0.3);
+    }
+}
+
+.profile-edit-static {
+    color: #fff;
+    font-size: 18px;
+}
+
+.profile-edit-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.profile-submit-btn {
+    background: linear-gradient(135deg, #ffe2c7 0%, #ffd4a8 100%);
+    color: #27262c;
+    border: none;
+    padding: 16px 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 226, 199, 0.4);
+    }
+}
