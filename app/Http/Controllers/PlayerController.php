@@ -110,12 +110,9 @@ class PlayerController extends Controller
     /**
      * 選手マイページトップ
      */
-    public function getInfo(Request $request, PlayerService $player_service)
+    public function getInfo()
     {
-        # 動画投稿データ取得
-        $video_data = $player_service->getVideoUrl();
-
-        return view('player.info', ['video_data' => $video_data]);
+        return view('player.info');
     }
 
     /**
@@ -178,7 +175,7 @@ class PlayerController extends Controller
     /**
      * 動画URL投稿画面
      */
-    public function postUrl()
+    public function getUrl()
     {
         return view('player.post_url');
     }
@@ -195,5 +192,30 @@ class PlayerController extends Controller
         }
 
         return redirect()->route('player.get.info')->with('success', 'URL投稿に成功しました！');
+    }
+
+    /**
+     * 動画URL投稿一覧取得
+     */
+    public function getUrlList(PlayerService $player_service)
+    {
+        # 動画投稿データ取得
+        $video_data = $player_service->getVideoUrl();
+
+        return view('player.url_list', ['video_data' => $video_data]);
+    }
+
+    /**
+     * チーム一覧
+     */
+    public function getTeamsProfile(PlayerService $player_service)
+    {
+        return view('player.teams_profile', $player_service->getTeamsProfile());
+    }
+
+    // チーム詳細詳細                                                                                                                  
+    public function getTeamDetail(PlayerService $player_service, int $id)
+    {
+        return view('player.team_details', $player_service->getTeamDetail($id));
     }
 }

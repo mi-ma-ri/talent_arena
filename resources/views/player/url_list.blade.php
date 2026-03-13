@@ -2,33 +2,23 @@
 @section('content')
     <div id="app">
         <section class="page-title-section">
-            <h1 class="page-title">選手動画URL投稿一覧</h1>
+            <h1 class="page-title">動画URL投稿一覧</h1>
         </section>
 
         <main class="players-list-main">
             <div class="container">
-                @if (empty($playerVideos))
+                @if (empty($video_data))
                     <div class="no-players-message">
                         <p>選手の投稿がまだありません。</p>
                     </div>
                 @else
                     <div class="players-grid">
-                        @foreach ($playerVideos as $video)
+                        @foreach ($video_data as $video)
                             <div class="player-card">
                                 <div class="player-card-header">
-                                    <span class="player-name">{{ $video['player']['first_name'] }}
-                                        {{ $video['player']['second_name'] }}</span>
-                                    <span class="player-position">{{ $video['player']['position'] }}</span>
+                                    <span class="player-name">投稿日：{{ $video['created_at'] }}
                                 </div>
                                 <div class="player-card-body">
-                                    <div class="player-info-row">
-                                        <span class="player-info-label">現所属</span>
-                                        <span class="player-info-value">{{ $video['player']['affiliated_team'] }}</span>
-                                    </div>
-                                    <div class="player-info-row">
-                                        <span class="player-info-label">生年月日</span>
-                                        <span class="player-info-value">{{ $video['player']['birth_date'] }}</span>
-                                    </div>
                                     <div class="player-video-links">
                                         @if ($video['sns_url_1'])
                                             <a href="{{ $video['sns_url_1'] }}" target="_blank" class="video-link">動画1</a>
@@ -42,7 +32,7 @@
                                     </div>
                                     @if ($video['description'])
                                         <div class="player-description">
-                                            <span class="player-info-label">コメント</span>
+                                            <span class="player-info-label">ポイント</span>
                                             <p class="player-description-text">{{ $video['description'] }}</p>
                                         </div>
                                     @endif
@@ -53,7 +43,7 @@
                 @endif
 
                 <div class="back-btn-wrapper">
-                    <a href="{{ route('team.get.info') }}" class="back-btn">戻る</a>
+                    <a href="{{ route('player.get.info') }}" class="back-btn">戻る</a>
                 </div>
             </div>
         </main>
