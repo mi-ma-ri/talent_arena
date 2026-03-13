@@ -181,4 +181,15 @@ class TeamController extends Controller
 
     return redirect()->route('team.get.profile')->with('success', '更新が完了しました！');
   }
+
+  /**
+   * 選手投稿URL一覧取得
+   */
+  public function getPlayerVideos(Request $request, TeamService $team_service)
+  {
+    return view(
+      'team.players_list',
+      $team_service->getPlayerVideos()
+    );
+  }
 }

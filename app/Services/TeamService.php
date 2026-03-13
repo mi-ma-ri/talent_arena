@@ -161,4 +161,22 @@ class TeamService extends BaseService
 
     return $is_update;
   }
+
+  /**
+   * 選手投稿URL一覧取得
+   * param array $array 
+   * return array
+   * @throws Exception
+   */
+  public function getPlayerVideos(): array
+  {
+    $response = $this->talentArenaApi('team/player-videos', 'get');
+    if ($response['status'] != 200 || empty($response['body']) || $response['body']['result_message'] != 'OK') {
+      throw new Exception('選手情報を取得できませんでした。');
+    }
+
+    $values = $response['body']['urls'];
+
+    return ['playerVideos' => $values];
+  }
 }
