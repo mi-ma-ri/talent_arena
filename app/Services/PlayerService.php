@@ -211,4 +211,40 @@ class PlayerService extends BaseService
 
     return $video_data;
   }
+
+  /**
+   * チーム情報一覧取得
+   * return array
+   * @throws Exception
+   */
+  public function getTeamsProfile(): array
+  {
+    $response = $this->talentArenaApi('player/teams-profile', 'get');
+    $teams = $response['body']['teams_profile'];
+    $teams = [];
+    foreach ($response['body']['teams_profile'] as $team) {
+      $teams[] = [
+        'id' => $team['id'],
+        'teams_name' => $team['teams_name'],
+      ];
+    }
+    return ['teams' => $teams];
+  }
+
+  /**
+   * チーム情報詳細取得
+   * return array
+   * @throws Exception
+   */
+  public function getTeamDetail(int $teamId): ?array
+  {
+    $response = $this->talentArenaApi('player/teams-profile', 'get');
+    $teams = $response['body']['teams_profile'];
+    foreach ($teams as $team) {
+      if ($team['id'] === $teamId) {
+        return ['team' => $team];
+      }
+    }
+    throw new Exception('チーム情報が見つかりませんでした。');
+  }
 }

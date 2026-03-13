@@ -61,8 +61,11 @@ Route::controller(App\Http\Controllers\PlayerController::class)
         Route::get('profile', 'getProfile')->name('get.profile');
         Route::get('profile_edit', 'getProfileEdit')->name('get.profile_edit');
         Route::post('profile_update', 'postProfileUpdate')->name('post.profile_update');
-        Route::get('upload', 'postUrl')->name('post.url');
+        Route::get('upload', 'getUrl')->name('get.url');
         Route::post('handle', 'postHandleUrl')->name('post.handle');
+        Route::get('url-list', 'getUrlList')->name('get.url_list');
+        Route::get('teams-profile', 'getTeamsProfile')->name('get.teams_profile');
+        Route::get('teams-profile/{id}', 'getTeamDetail')->name('get.team_detail');
     });
 
 // 選手(ログアウト) - 認証済み                                                                                             
